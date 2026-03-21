@@ -2,28 +2,31 @@
 const agents = [
   {
     name: "Sofía",
-    role: "Ventas",
-    desc: "Prospecta, califica leads y cierra ventas por WhatsApp 24/7.",
+    role: "Agente de Ventas",
+    desc: "Prospecta clientes, califica leads y cierra ventas por WhatsApp. Trabaja 24/7 sin descanso.",
+    tags: ["WhatsApp", "CRM", "Follow-ups"],
     image: "/agents/sofia.png",
   },
   {
     name: "Carlos",
     role: "Atención al Cliente",
-    desc: "Resuelve dudas, gestiona reclamos y mantiene felices a tus clientes.",
+    desc: "Resuelve dudas al instante, gestiona reclamos y mantiene a tus clientes felices.",
+    tags: ["Soporte", "FAQ", "Tickets"],
     image: "/agents/carlos.png",
   },
   {
     name: "Valentina",
-    role: "Agendamiento",
-    desc: "Coordina citas, envía recordatorios y optimiza tu calendario.",
+    role: "Coordinadora de Citas",
+    desc: "Agenda reuniones, envía recordatorios automáticos y optimiza tu calendario.",
+    tags: ["Calendario", "Recordatorios", "Booking"],
     image: "/agents/valentina.png",
   },
 ];
 
 const plans = [
-  { emoji: "☕", name: "Básico", hours: "1h/día", price: "$80", desc: "Perfecto para empezar" },
-  { emoji: "🕐", name: "Media Jornada", hours: "4h/día", price: "$250", desc: "El más popular", popular: true },
-  { emoji: "💼", name: "Jornada Completa", hours: "8h/día", price: "$400", desc: "Máxima productividad" },
+  { emoji: "☕", name: "Básico", hours: "1h / día", price: "80", desc: "Ideal para probar el servicio", features: ["1 agente AI", "Respaldo humano", "Reportes semanales"] },
+  { emoji: "🕐", name: "Media Jornada", hours: "4h / día", price: "250", desc: "Para negocios en crecimiento", popular: true, features: ["1 agente AI", "Respaldo humano prioritario", "Reportes diarios", "Personalización avanzada"] },
+  { emoji: "💼", name: "Jornada Completa", hours: "8h / día", price: "400", desc: "Máxima productividad", features: ["1 agente AI dedicado", "Respaldo humano 24/7", "Reportes en tiempo real", "Integración personalizada", "Soporte prioritario"] },
 ];
 ---
 
@@ -38,43 +41,100 @@ const plans = [
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Floating shapes -->
-  <div class="shape shape-1"></div>
-  <div class="shape shape-2"></div>
-  <div class="shape shape-3"></div>
+  <!-- Background elements -->
+  <div class="bg-grid"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="glow glow-3"></div>
 
   <!-- Nav -->
   <nav>
-    <a href="#" class="logo">AGENTES</a>
-    <a href="#waitlist" class="nav-cta">Únete</a>
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">◆</span>
+        AGENTES
+      </a>
+      <div class="nav-links">
+        <a href="#agentes">Agentes</a>
+        <a href="#pricing">Planes</a>
+        <a href="#waitlist" class="nav-cta">Únete →</a>
+      </div>
+    </div>
   </nav>
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-badge">✨ El futuro del trabajo ya llegó</div>
-    <h1>Contrata tu primer<br/><span class="gradient-text">empleado AI</span></h1>
-    <p class="hero-sub">
-      Un trabajador autónomo con respaldo humano. Te damos un WhatsApp, lo configuras, y trabaja para ti.<br/>
-      <strong>Costos fijos mensuales. Como un sueldo.</strong>
-    </p>
-    <a href="#waitlist" class="btn-primary">Unirme a la waitlist →</a>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Aceptando nuevos clientes
+      </div>
+      <h1>
+        Contrata tu primer
+        <span class="hero-highlight">empleado AI</span>
+      </h1>
+      <p class="hero-sub">
+        Un trabajador autónomo con respaldo humano. Te damos un WhatsApp,
+        lo configuras, y trabaja para ti. <strong>Costos fijos. Como un sueldo.</strong>
+      </p>
+      <div class="hero-actions">
+        <a href="#waitlist" class="btn-primary">
+          <span>Unirme a la waitlist</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#agentes" class="btn-ghost">Conoce al equipo</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value">24/7</span>
+          <span class="stat-label">Disponibilidad</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">$80</span>
+          <span class="stat-label">Desde / mes</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">100%</span>
+          <span class="stat-label">Respaldo humano</span>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- How it works -->
   <section class="how">
+    <div class="section-label">Proceso</div>
+    <h2>Así de simple funciona</h2>
     <div class="how-grid">
       <div class="how-step">
-        <span class="step-number">01</span>
+        <div class="step-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="step-num">01</span>
         <h3>Cuéntanos qué necesitas</h3>
-        <p>Ventas, atención al cliente, agendamiento... tú defines el rol.</p>
+        <p>Ventas, atención al cliente, agendamiento... tú defines el rol de tu agente.</p>
+      </div>
+      <div class="how-connector">
+        <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="rgba(124,92,255,0.3)" stroke-width="2" stroke-dasharray="4 4"/></svg>
       </div>
       <div class="how-step">
-        <span class="step-number">02</span>
+        <div class="step-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="step-num">02</span>
         <h3>Configuramos tu agente</h3>
-        <p>Lo entrenamos con tu información y le damos respaldo humano.</p>
+        <p>Lo entrenamos con tu información y le asignamos respaldo humano profesional.</p>
+      </div>
+      <div class="how-connector">
+        <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="rgba(124,92,255,0.3)" stroke-width="2" stroke-dasharray="4 4"/></svg>
       </div>
       <div class="how-step">
-        <span class="step-number">03</span>
+        <div class="step-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="step-num">03</span>
         <h3>Recibe un WhatsApp listo</h3>
         <p>Tu agente empieza a trabajar. Tú supervisas cuando quieras.</p>
       </div>
@@ -83,17 +143,29 @@ const plans = [
 
   <!-- Agents -->
   <section class="agents" id="agentes">
-    <h2>Conoce a tu<br/><span class="gradient-text">equipo AI</span></h2>
+    <div class="section-label">Equipo</div>
+    <h2>Conoce a tus agentes</h2>
     <div class="agents-grid">
-      {agents.map((agent) => (
-        <div class="agent">
-          <div class="agent-image-wrap">
-            <div class="agent-glow"></div>
-            <img src={agent.image} alt={agent.name} class="agent-img" />
+      {agents.map((agent, i) => (
+        <div class="agent" style={`--delay: ${i * 0.1}s`}>
+          <div class="agent-visual">
+            <div class="agent-backdrop"></div>
+            <img src={agent.image} alt={agent.name} class="agent-photo" loading="lazy" />
+            <div class="agent-status">
+              <span class="status-dot"></span>
+              Disponible
+            </div>
           </div>
-          <span class="agent-role">{agent.role}</span>
-          <h3 class="agent-name">{agent.name}</h3>
-          <p class="agent-desc">{agent.desc}</p>
+          <div class="agent-info">
+            <span class="agent-role-label">{agent.role}</span>
+            <h3 class="agent-name">{agent.name}</h3>
+            <p class="agent-desc">{agent.desc}</p>
+            <div class="agent-tags">
+              {agent.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </div>
         </div>
       ))}
     </div>
@@ -101,20 +173,35 @@ const plans = [
 
   <!-- Pricing -->
   <section class="pricing" id="pricing">
-    <h2>Planes simples,<br/><span class="gradient-text">sin sorpresas</span></h2>
+    <div class="section-label">Planes</div>
+    <h2>Precios simples, sin sorpresas</h2>
+    <p class="pricing-sub">Paga un precio fijo mensual. Sin cargos ocultos, sin cobros por token.</p>
     <div class="pricing-grid">
       {plans.map((plan) => (
         <div class={`plan ${plan.popular ? 'plan-popular' : ''}`}>
-          {plan.popular && <span class="popular-tag">Popular</span>}
-          <span class="plan-emoji">{plan.emoji}</span>
-          <h3 class="plan-name">{plan.name}</h3>
-          <p class="plan-hours">{plan.hours}</p>
+          {plan.popular && <div class="popular-badge">Más popular</div>}
+          <div class="plan-header">
+            <span class="plan-emoji">{plan.emoji}</span>
+            <h3 class="plan-name">{plan.name}</h3>
+            <p class="plan-hours">{plan.hours}</p>
+          </div>
           <div class="plan-price">
+            <span class="price-currency">$</span>
             <span class="price-amount">{plan.price}</span>
             <span class="price-period">/mes</span>
           </div>
           <p class="plan-desc">{plan.desc}</p>
-          <a href="#waitlist" class="btn-plan">Comenzar →</a>
+          <ul class="plan-features">
+            {plan.features.map((f) => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4L6 11.3 2.7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="#waitlist" class={`btn-plan ${plan.popular ? 'btn-plan-primary' : ''}`}>
+            Comenzar →
+          </a>
         </div>
       ))}
     </div>
@@ -122,17 +209,32 @@ const plans = [
 
   <!-- Waitlist -->
   <section class="waitlist" id="waitlist">
-    <h2>Únete a la<br/><span class="gradient-text">waitlist</span></h2>
-    <p class="waitlist-sub">Sé de los primeros en tener tu empleado AI.</p>
-    <form id="waitlist-form">
-      <div class="form-row">
+    <div class="waitlist-inner">
+      <div class="waitlist-left">
+        <div class="section-label">Waitlist</div>
+        <h2>Reserva tu agente</h2>
+        <p>Sé de los primeros en tener tu empleado AI. Estamos aceptando un número limitado de clientes.</p>
+        <div class="waitlist-perks">
+          <div class="perk">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16.7 5L7.5 14.2 3.3 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Acceso anticipado</span>
+          </div>
+          <div class="perk">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16.7 5L7.5 14.2 3.3 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Precio de lanzamiento garantizado</span>
+          </div>
+          <div class="perk">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16.7 5L7.5 14.2 3.3 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Configuración personalizada gratis</span>
+          </div>
+        </div>
+      </div>
+      <form id="waitlist-form">
         <input type="text" name="name" placeholder="Tu nombre" required />
         <input type="email" name="email" placeholder="tu@email.com" required />
-      </div>
-      <div class="form-row">
         <input type="text" name="company" placeholder="Empresa (opcional)" />
         <select name="agentType" required>
-          <option value="" disabled selected>¿Qué tipo de agente necesitas?</option>
+          <option value="" disabled selected>¿Qué agente necesitas?</option>
           <option value="ventas">Ventas</option>
           <option value="atencion">Atención al cliente</option>
           <option value="agendamiento">Agendamiento de citas</option>
@@ -140,18 +242,25 @@ const plans = [
           <option value="community">Community manager</option>
           <option value="otro">Otro</option>
         </select>
-      </div>
-      <textarea name="message" placeholder="Cuéntanos más sobre tu negocio (opcional)" rows="3"></textarea>
-      <button type="submit" class="btn-primary btn-submit">Unirme a la waitlist →</button>
-      <div id="form-status" class="form-status"></div>
-    </form>
+        <textarea name="message" placeholder="Cuéntanos sobre tu negocio (opcional)" rows="3"></textarea>
+        <button type="submit" class="btn-primary btn-submit">
+          <span>Unirme a la waitlist</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="form-status" class="form-status"></div>
+      </form>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <span class="logo">AGENTES</span>
-    <span class="footer-by">by Luminari</span>
-    <span class="footer-copy">© 2025 Luminari</span>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo"><span class="logo-icon">◆</span> AGENTES</span>
+        <span class="footer-by">by Luminari</span>
+      </div>
+      <span class="footer-copy">© 2025 Luminari. Todos los derechos reservados.</span>
+    </div>
   </footer>
 
   <script>
@@ -161,8 +270,9 @@ const plans = [
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('.btn-submit') as HTMLButtonElement;
+      const btnText = btn.querySelector('span')!;
       btn.disabled = true;
-      btn.textContent = 'Enviando...';
+      btnText.textContent = 'Enviando...';
       status.textContent = '';
       status.className = 'form-status';
 
@@ -186,374 +296,598 @@ const plans = [
         status.classList.add('error');
       } finally {
         btn.disabled = false;
-        btn.textContent = 'Unirme a la waitlist →';
+        btnText.textContent = 'Unirme a la waitlist';
       }
     });
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.agent, .how-step, .plan').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
 
 <style is:global>
   :root {
-    --bg: #0a0a0f;
-    --bg-subtle: #12121a;
-    --text: #f0f0f5;
-    --text-muted: #8888a0;
-    --accent-1: #7c5cff;
-    --accent-2: #00d4ff;
-    --accent-gradient: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-    --radius: 16px;
-    --max-w: 1100px;
+    --bg: #08080c;
+    --bg-card: rgba(255,255,255,0.02);
+    --bg-card-hover: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.06);
+    --border-hover: rgba(255,255,255,0.12);
+    --text: #eeeef0;
+    --text-secondary: #9494a8;
+    --text-muted: #5e5e72;
+    --accent: #7c5cff;
+    --accent-light: #a78bff;
+    --accent-cyan: #00d4ff;
+    --accent-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
+    --max-w: 1120px;
+    --radius: 20px;
+    --radius-sm: 12px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
-    position: relative;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* Floating shapes */
-  .shape {
+  /* Background */
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .glow {
     position: fixed;
     border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.15;
+    filter: blur(150px);
     pointer-events: none;
     z-index: 0;
   }
-  .shape-1 {
-    width: 600px; height: 600px;
-    background: var(--accent-1);
-    top: -200px; right: -200px;
-  }
-  .shape-2 {
-    width: 400px; height: 400px;
-    background: var(--accent-2);
-    bottom: 20%; left: -150px;
-  }
-  .shape-3 {
-    width: 500px; height: 500px;
-    background: #ff6bca;
-    bottom: -200px; right: 20%;
-  }
+  .glow-1 { width: 500px; height: 500px; background: var(--accent); opacity: 0.08; top: -150px; right: -100px; }
+  .glow-2 { width: 400px; height: 400px; background: var(--accent-cyan); opacity: 0.05; bottom: 30%; left: -100px; }
+  .glow-3 { width: 350px; height: 350px; background: #ff4da6; opacity: 0.04; bottom: -100px; right: 15%; }
 
   /* Nav */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
+    z-index: 100;
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    background: rgba(8, 8, 12, 0.75);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 3rem;
-    z-index: 100;
-    backdrop-filter: blur(20px);
-    background: rgba(10, 10, 15, 0.7);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
   .logo {
-    font-size: 1.2rem;
-    font-weight: 900;
-    letter-spacing: 0.2em;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
     text-decoration: none;
     color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
-  .nav-cta {
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-decoration: none;
-    color: var(--accent-2);
-    border: 1px solid rgba(0, 212, 255, 0.3);
-    padding: 0.5rem 1.5rem;
-    border-radius: 100px;
-    transition: all 0.3s;
-  }
-  .nav-cta:hover {
-    background: rgba(0, 212, 255, 0.1);
-    border-color: var(--accent-2);
-  }
-
-  /* Typography */
-  .gradient-text {
+  .logo-icon {
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-size: 1.1rem;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    color: var(--accent-light) !important;
+    background: rgba(124, 92, 255, 0.08);
+    border: 1px solid rgba(124, 92, 255, 0.2);
+    padding: 0.45rem 1.2rem !important;
+    border-radius: 100px;
+    transition: all 0.2s !important;
+  }
+  .nav-cta:hover {
+    background: rgba(124, 92, 255, 0.15) !important;
+    border-color: rgba(124, 92, 255, 0.4) !important;
   }
 
-  h1 {
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-  }
-
-  h2 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 3rem;
-  }
-
+  /* Sections */
   section {
     position: relative;
     z-index: 1;
     max-width: var(--max-w);
     margin: 0 auto;
-    padding: 6rem 2rem;
+    padding: 7rem 2rem;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin-bottom: 1rem;
   }
 
   /* Buttons */
   .btn-primary {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     background: var(--accent-gradient);
     color: #fff;
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 1rem 2.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.85rem 2rem;
     border-radius: 100px;
     text-decoration: none;
     border: none;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.3s;
+    transition: all 0.25s;
+    font-family: inherit;
   }
   .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(124, 92, 255, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(124, 92, 255, 0.35);
+  }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.85rem 1.5rem;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover {
+    color: var(--text);
+    border-color: var(--border-hover);
+    background: var(--bg-card);
   }
 
   /* Hero */
   .hero {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.5rem;
-    padding-top: 8rem;
+    align-items: center;
+    padding-top: 6rem;
   }
+  .hero-content { max-width: 640px; }
   .hero-badge {
-    display: inline-block;
-    width: fit-content;
-    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    color: var(--accent-2);
-    background: rgba(0, 212, 255, 0.08);
-    border: 1px solid rgba(0, 212, 255, 0.15);
-    padding: 0.5rem 1.2rem;
+    color: var(--accent-light);
+    background: rgba(124, 92, 255, 0.06);
+    border: 1px solid rgba(124, 92, 255, 0.12);
+    padding: 0.45rem 1rem;
     border-radius: 100px;
+    margin-bottom: 2rem;
   }
-  .hero-sub {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    max-width: 520px;
-    line-height: 1.7;
+  .badge-dot {
+    width: 6px; height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
   }
 
-  /* How it works */
-  .how {
-    padding: 4rem 2rem;
-  }
-  .how-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-  }
-  .how-step { position: relative; }
-  .step-number {
-    font-size: 5rem;
+  h1 {
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
     font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-highlight {
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    opacity: 0.2;
-    line-height: 1;
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+  .hero-sub strong { color: var(--text); }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+  }
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .stat-value {
     display: block;
-    margin-bottom: -1rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--border);
+  }
+
+  /* How */
+  .how-grid {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .how-step {
+    flex: 1;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .how-step.visible { opacity: 1; transform: translateY(0); }
+  .how-connector {
+    padding-top: 2rem;
+    flex-shrink: 0;
+  }
+  .step-icon {
+    width: 48px; height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(124, 92, 255, 0.08);
+    border: 1px solid rgba(124, 92, 255, 0.15);
+    color: var(--accent-light);
+    margin-bottom: 1.2rem;
+  }
+  .step-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    display: block;
   }
   .how-step h3 {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
   }
   .how-step p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
   }
 
   /* Agents */
-  .agents { text-align: center; }
   .agents-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    margin-top: 4rem;
+    gap: 2.5rem;
+    margin-top: 3rem;
   }
   .agent {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--delay);
+  }
+  .agent.visible { opacity: 1; transform: translateY(0); }
+
+  .agent-visual {
+    position: relative;
+    height: 340px;
+    margin-bottom: 1.5rem;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: var(--radius);
   }
-  .agent-image-wrap {
-    position: relative;
-    width: 220px;
-    height: 280px;
-    margin-bottom: 1rem;
-  }
-  .agent-glow {
+  .agent-backdrop {
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 180px;
-    height: 180px;
-    background: var(--accent-gradient);
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.3;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(124, 92, 255, 0.06) 50%, rgba(124, 92, 255, 0.12) 100%);
+    border-radius: var(--radius);
   }
-  .agent-img {
+  .agent-photo {
     position: relative;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: bottom;
     z-index: 1;
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    width: 85%;
+    height: 95%;
+    object-fit: contain;
+    object-position: bottom center;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.4));
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .agent-role {
-    font-size: 0.75rem;
+  .agent:hover .agent-photo {
+    transform: scale(1.03) translateY(-4px);
+  }
+  .agent-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    letter-spacing: 0.15em;
+    color: #4ade80;
+    background: rgba(8, 8, 12, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 0.35rem 0.8rem;
+    border-radius: 100px;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+  }
+  .status-dot {
+    width: 5px; height: 5px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .agent-info { padding: 0 0.25rem; }
+  .agent-role-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent-2);
+    color: var(--accent-light);
+    margin-bottom: 0.3rem;
+    display: block;
   }
   .agent-name {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 800;
+    margin-bottom: 0.5rem;
   }
   .agent-desc {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .agent-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 0.72rem;
+    font-weight: 500;
     color: var(--text-muted);
-    max-width: 260px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
   }
 
   /* Pricing */
   .pricing { text-align: center; }
+  .pricing-sub {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: 3rem;
+  }
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
+    gap: 1.5rem;
+    text-align: left;
   }
   .plan {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 2.5rem 2rem;
-    text-align: center;
+    padding: 2rem;
     position: relative;
-    transition: transform 0.3s, border-color 0.3s;
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
   }
+  .plan.visible { opacity: 1; transform: translateY(0); }
   .plan:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255,255,255,0.12);
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
   }
   .plan-popular {
-    border-color: rgba(124, 92, 255, 0.4);
-    background: rgba(124, 92, 255, 0.05);
+    border-color: rgba(124, 92, 255, 0.3) !important;
+    background: rgba(124, 92, 255, 0.04) !important;
   }
-  .popular-tag {
+  .plan-popular:hover {
+    border-color: rgba(124, 92, 255, 0.5) !important;
+  }
+  .popular-badge {
     position: absolute;
-    top: -12px;
+    top: -11px;
     left: 50%;
     transform: translateX(-50%);
     background: var(--accent-gradient);
     color: #fff;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    padding: 0.3rem 1.2rem;
+    padding: 0.25rem 1rem;
     border-radius: 100px;
+    white-space: nowrap;
   }
-  .plan-emoji { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
-  .plan-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; }
-  .plan-hours { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
-  .plan-price { margin-bottom: 1rem; }
-  .price-amount { font-size: 3rem; font-weight: 900; }
-  .price-period { color: var(--text-muted); font-size: 0.9rem; }
-  .plan-desc { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+  .plan-header { margin-bottom: 1.5rem; }
+  .plan-emoji { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+  .plan-name { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.15rem; }
+  .plan-hours { font-size: 0.82rem; color: var(--text-muted); }
+  .plan-price { margin-bottom: 1rem; display: flex; align-items: baseline; gap: 0.15rem; }
+  .price-currency { font-size: 1.2rem; font-weight: 700; color: var(--text-secondary); }
+  .price-amount { font-size: 3rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
+  .price-period { font-size: 0.85rem; color: var(--text-muted); margin-left: 0.25rem; }
+  .plan-desc { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+  .plan-features {
+    list-style: none;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+  .plan-features svg { color: var(--accent-light); flex-shrink: 0; }
   .btn-plan {
-    display: inline-block;
+    display: block;
+    text-align: center;
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--text);
     text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 0.7rem 1.8rem;
-    border-radius: 100px;
-    transition: all 0.3s;
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    transition: all 0.2s;
   }
   .btn-plan:hover {
-    background: rgba(255,255,255,0.05);
-    border-color: rgba(255,255,255,0.3);
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+  }
+  .btn-plan-primary {
+    background: var(--accent-gradient) !important;
+    border-color: transparent !important;
+    color: #fff !important;
+  }
+  .btn-plan-primary:hover {
+    box-shadow: 0 4px 15px rgba(124, 92, 255, 0.3);
   }
 
   /* Waitlist */
-  .waitlist { text-align: center; max-width: 650px; }
-  .waitlist-sub {
-    color: var(--text-muted);
-    margin-bottom: 2.5rem;
-    font-size: 1.1rem;
+  .waitlist { max-width: var(--max-w); }
+  .waitlist-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 3.5rem;
   }
+  .waitlist-left h2 { margin-bottom: 1rem; }
+  .waitlist-left p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .waitlist-perks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .perk {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+  }
+  .perk svg { color: #4ade80; flex-shrink: 0; }
+
   form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    text-align: left;
-  }
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 0.85rem;
   }
   input, select, textarea {
     width: 100%;
-    padding: 1rem 1.2rem;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
     color: var(--text);
     font-family: inherit;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     outline: none;
-    transition: border-color 0.3s;
+    transition: border-color 0.2s;
   }
   input:focus, select:focus, textarea:focus {
-    border-color: var(--accent-1);
+    border-color: var(--accent);
   }
-  input::placeholder, textarea::placeholder {
-    color: var(--text-muted);
-  }
+  input::placeholder, textarea::placeholder { color: var(--text-muted); }
   select { cursor: pointer; }
   select option { background: var(--bg); color: var(--text); }
-  textarea { resize: vertical; min-height: 80px; }
-  .btn-submit {
-    width: 100%;
-    font-size: 1rem;
-    margin-top: 0.5rem;
-  }
+  textarea { resize: vertical; min-height: 70px; }
+  .btn-submit { width: 100%; justify-content: center; margin-top: 0.5rem; }
   .form-status {
     text-align: center;
-    font-size: 0.95rem;
-    min-height: 1.5em;
+    font-size: 0.9rem;
+    min-height: 1.3em;
   }
   .form-status.success { color: #4ade80; }
   .form-status.error { color: #f87171; }
@@ -562,31 +896,47 @@ const plans = [
   footer {
     position: relative;
     z-index: 1;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    justify-content: center;
-    padding: 3rem 2rem;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    flex-wrap: wrap;
+    gap: 0.75rem;
   }
   .footer-by {
+    font-size: 0.8rem;
     color: var(--text-muted);
-    font-size: 0.85rem;
   }
   .footer-copy {
+    font-size: 0.78rem;
     color: var(--text-muted);
-    font-size: 0.8rem;
-    margin-left: auto;
   }
 
   /* Responsive */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    section { padding: 4rem 1.5rem; }
-    .how-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .agents-grid { grid-template-columns: 1fr; gap: 4rem; }
-    .pricing-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
-    .form-row { grid-template-columns: 1fr; }
+  @media (max-width: 900px) {
+    .how-grid { flex-direction: column; }
+    .how-connector { display: none; }
+    .agents-grid { grid-template-columns: 1fr; max-width: 380px; margin-inline: auto; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 380px; margin-inline: auto; }
+    .waitlist-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 2rem; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0; }
+    .nav-inner { padding: 0.85rem 1.25rem; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    section { padding: 5rem 1.25rem; }
+    .hero { min-height: auto; padding-top: 8rem; padding-bottom: 5rem; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .hero-actions { flex-direction: column; }
+    .hero-actions .btn-primary, .hero-actions .btn-ghost { text-align: center; justify-content: center; }
+    .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
   }
 </style>
