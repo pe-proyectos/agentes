@@ -278,7 +278,7 @@ const plans = [
 
       try {
         const data = Object.fromEntries(new FormData(form));
-        const res = await fetch('/api/waitlist', {
+        const res = await fetch('https://agentes-api.luminari.agency/api/waitlist', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
