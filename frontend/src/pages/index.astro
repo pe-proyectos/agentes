@@ -338,12 +338,14 @@ const plans = [
     document.querySelectorAll('.reveal').forEach(el => {
       const rect = el.getBoundingClientRect();
       if (rect.top > window.innerHeight) {
-        // Below viewport — animate in on scroll
         el.classList.add('will-anim');
         io.observe(el);
       }
-      // Above viewport or in view — stays visible (no animation)
     });
+    // Fallback: ensure everything is visible after 2s
+    setTimeout(() => {
+      document.querySelectorAll('.reveal.will-anim:not(.shown)').forEach(el => el.classList.add('shown'));
+    }, 2000);
   </script>
 </body>
 </html>
