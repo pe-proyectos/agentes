@@ -64,7 +64,7 @@ const plans = [
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-left anim-up">
+    <div class="hero-left anim-up in-view">
       <div class="hero-pill">
         <span class="pill-dot"></span>
         Disponible ahora
@@ -81,7 +81,7 @@ const plans = [
         <span class="hero-note">Desde $80/mes · Activo en 24h</span>
       </div>
     </div>
-    <div class="hero-right anim-up" style="--delay: 0.15s">
+    <div class="hero-right anim-up in-view" style="--delay: 0.15s">
       <div class="phone-frame">
         <div class="phone-notch"></div>
         <div class="wa-chat">
@@ -382,29 +382,36 @@ const plans = [
 
   /* ===== GLASS CARDS ===== */
   .glass-card {
-    background: var(--surface);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.45);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.5);
     border-radius: var(--radius);
+    box-shadow: 0 4px 16px rgba(0,80,40,0.04), inset 0 1px 0 rgba(255,255,255,0.6);
     transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s, border-color 0.3s;
   }
   .glass-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0,80,40,0.06);
-    border-color: var(--border-hover);
+    box-shadow: 0 12px 40px rgba(0,80,40,0.08), inset 0 1px 0 rgba(255,255,255,0.7);
+    border-color: rgba(255,255,255,0.7);
   }
 
   /* ===== ANIMATIONS ===== */
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
   .anim-up {
     opacity: 0;
     transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
-    transition-delay: var(--delay, 0s);
   }
   .anim-up.in-view {
-    opacity: 1;
-    transform: translateY(0);
+    animation: slideUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
+    animation-delay: var(--delay, 0s);
+  }
+  /* Fallback: show content if JS fails */
+  @media (prefers-reduced-motion: reduce) {
+    .anim-up { opacity: 1; transform: none; }
   }
 
   /* ===== NAV ===== */
@@ -670,29 +677,32 @@ const plans = [
   }
   .ann-text {
     font-family: var(--font-hand);
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--green-dark);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--green-deep);
     white-space: nowrap;
     line-height: 1.2;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.8);
   }
-  .ann-arrow { width: 60px; height: 45px; }
+  .ann-arrow { width: 65px; height: 50px; }
   .ann-1 {
-    top: 28%;
-    right: -140px;
+    top: 32%;
+    right: -155px;
+    align-items: flex-start;
   }
   .ann-2 {
-    bottom: 28%;
-    left: -160px;
+    bottom: 25%;
+    left: -175px;
+    align-items: flex-end;
   }
   .ann-3 {
-    bottom: -28px;
+    bottom: -32px;
     left: 50%;
     transform: translateX(-50%);
   }
   .ann-bottom {
-    font-size: 1rem;
-    color: var(--green);
+    font-size: 1.2rem;
+    color: var(--green-dark);
     text-align: center;
   }
 
