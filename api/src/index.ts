@@ -74,6 +74,28 @@ const app = new Elysia({ prefix: "/api" })
     });
     return { entries, total: entries.length };
   })
+  .delete("/waitlist/:id", async ({ params, headers }) => {
+    const token = headers["x-admin-token"];
+    if (token !== process.env.ADMIN_TOKEN) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
+    }
+    await prisma.waitlistEntry.delete({ where: { id: params.id } });
+    return { success: true };
+  })
+  .get("/waitlist/stats", async ({ headers }) => {
+    const token = headers["x-admin-token"];
+    if (token !== process.env.ADMIN_TOKEN) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
+    }
+    const total = await prisma.waitlistEntry.count();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const todayCount = await prisma.waitlistEntry.count({ where: { createdAt: { gte: today } } });
+    const weekAgo = new Date(Date.now() - 7 * 86400000);
+    const weekCount = await prisma.waitlistEntry.count({ where: { createdAt: { gte: weekAgo } } });
+    const byAgent = await prisma.waitlistEntry.groupBy({ by: ["agentType"], _count: true, orderBy: { _count: { agentType: "desc" } } });
+    return { total, today: todayCount, week: weekCount, byAgent };
+  })
   .listen(PORT);
 
 console.log(`🚀 Agentes API running on port ${PORT}`);

@@ -1,0 +1,214 @@
+---
+// Admin dashboard for managing leads
+---
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>Admin — AGENTES</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,sans-serif;background:#0a0a0a;color:#e0e0e0;min-height:100vh}
+    .login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh}
+    .login-box{background:#141414;border:1px solid #222;border-radius:12px;padding:2rem;width:360px}
+    .login-box h1{font-size:1.25rem;margin-bottom:1.5rem;color:#fff}
+    .login-box input{width:100%;padding:.75rem;background:#0a0a0a;border:1px solid #333;border-radius:8px;color:#fff;font-size:.95rem;margin-bottom:1rem}
+    .login-box button{width:100%;padding:.75rem;background:#25D366;color:#000;font-weight:700;border:none;border-radius:8px;cursor:pointer;font-size:.95rem}
+    .login-box button:hover{background:#2ee072}
+    .dash{display:none;padding:1.5rem;max-width:1100px;margin:0 auto}
+    .dash.active{display:block}
+    .dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
+    .dash-header h1{font-size:1.5rem;color:#fff}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
+    .stat-card{background:#141414;border:1px solid #222;border-radius:12px;padding:1.25rem}
+    .stat-card .num{font-size:2rem;font-weight:700;color:#25D366}
+    .stat-card .label{font-size:.85rem;color:#888;margin-top:.25rem}
+    .leads-table{width:100%;background:#141414;border:1px solid #222;border-radius:12px;overflow:hidden}
+    .leads-table table{width:100%;border-collapse:collapse}
+    .leads-table th{text-align:left;padding:.75rem 1rem;background:#1a1a1a;color:#888;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #222}
+    .leads-table td{padding:.75rem 1rem;border-bottom:1px solid #1a1a1a;font-size:.9rem}
+    .leads-table tr:last-child td{border-bottom:none}
+    .badge{display:inline-block;padding:.2rem .6rem;border-radius:20px;font-size:.75rem;font-weight:600}
+    .badge-ventas{background:rgba(37,211,102,.15);color:#25D366}
+    .badge-soporte{background:rgba(59,130,246,.15);color:#3b82f6}
+    .badge-agenda{background:rgba(168,85,247,.15);color:#a855f7}
+    .empty{text-align:center;padding:3rem;color:#555}
+    .btn-sm{padding:.4rem .8rem;background:#222;color:#ccc;border:1px solid #333;border-radius:6px;cursor:pointer;font-size:.8rem}
+    .btn-sm:hover{background:#333}
+    .btn-danger{background:#331a1a;color:#f87171;border-color:#4a2020}
+    .btn-danger:hover{background:#4a2020}
+    .btn-logout{background:transparent;border:1px solid #333;color:#888;padding:.5rem 1rem;border-radius:8px;cursor:pointer}
+    .btn-export{background:#1a1a2e;border:1px solid #333;color:#818cf8;padding:.5rem 1rem;border-radius:8px;cursor:pointer;font-weight:600}
+    .actions{display:flex;gap:.5rem}
+    @media(max-width:768px){
+      .leads-table{overflow-x:auto}
+      .leads-table table{min-width:600px}
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrap" id="login-section">
+    <div class="login-box">
+      <h1>◆ AGENTES Admin</h1>
+      <input type="password" id="token-input" placeholder="Token de administrador" autofocus/>
+      <button id="login-btn">Entrar</button>
+      <p id="login-err" style="color:#f87171;font-size:.85rem;margin-top:.75rem;display:none"></p>
+    </div>
+  </div>
+
+  <div class="dash" id="dash-section">
+    <div class="dash-header">
+      <h1>◆ AGENTES — Leads</h1>
+      <div style="display:flex;gap:.75rem">
+        <button class="btn-export" id="export-btn">📥 Exportar CSV</button>
+        <button class="btn-logout" id="logout-btn">Salir</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card"><div class="num" id="s-total">0</div><div class="label">Total leads</div></div>
+      <div class="stat-card"><div class="num" id="s-today">0</div><div class="label">Hoy</div></div>
+      <div class="stat-card"><div class="num" id="s-week">0</div><div class="label">Esta semana</div></div>
+      <div class="stat-card"><div class="num" id="s-top">—</div><div class="label">Agente más pedido</div></div>
+    </div>
+
+    <div class="leads-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>WhatsApp</th>
+            <th>Agente</th>
+            <th>Empresa</th>
+            <th>Mensaje</th>
+          </tr>
+        </thead>
+        <tbody id="leads-body">
+          <tr><td colspan="7" class="empty">Cargando...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const API = 'https://agentes-api.luminari.agency/api';
+    let token = localStorage.getItem('agentes-admin-token') || '';
+    let leads: any[] = [];
+
+    const $ = (s: string) => document.querySelector(s)!;
+
+    function showDash() {
+      ($('#login-section') as HTMLElement).style.display = 'none';
+      ($('#dash-section') as HTMLElement).classList.add('active');
+      loadLeads();
+    }
+
+    async function loadLeads() {
+      try {
+        const r = await fetch(`${API}/waitlist`, { headers: { 'x-admin-token': token } });
+        if (!r.ok) throw new Error('Unauthorized');
+        const data = await r.json();
+        leads = data.entries || [];
+        renderStats();
+        renderTable();
+      } catch {
+        localStorage.removeItem('agentes-admin-token');
+        location.reload();
+      }
+    }
+
+    function renderStats() {
+      ($('#s-total') as HTMLElement).textContent = String(leads.length);
+      const today = new Date().toISOString().slice(0, 10);
+      const todayLeads = leads.filter(l => l.createdAt?.slice(0, 10) === today);
+      ($('#s-today') as HTMLElement).textContent = String(todayLeads.length);
+      
+      const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString();
+      const weekLeads = leads.filter(l => l.createdAt >= weekAgo);
+      ($('#s-week') as HTMLElement).textContent = String(weekLeads.length);
+
+      const counts: Record<string, number> = {};
+      leads.forEach(l => { counts[l.agentType] = (counts[l.agentType] || 0) + 1; });
+      const top = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+      ($('#s-top') as HTMLElement).textContent = top ? `${top[0]} (${top[1]})` : '—';
+    }
+
+    function badgeClass(type: string) {
+      const t = type.toLowerCase();
+      if (t.includes('venta') || t.includes('sofía') || t.includes('sofia')) return 'badge-ventas';
+      if (t.includes('soporte') || t.includes('carlos')) return 'badge-soporte';
+      return 'badge-agenda';
+    }
+
+    function renderTable() {
+      const tbody = $('#leads-body') as HTMLElement;
+      if (!leads.length) {
+        tbody.innerHTML = '<tr><td colspan="7" class="empty">No hay leads aún. ¡Compartan la página!</td></tr>';
+        return;
+      }
+      tbody.innerHTML = leads.map(l => `
+        <tr>
+          <td>${new Date(l.createdAt).toLocaleDateString('es-PE', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}</td>
+          <td><strong>${esc(l.name)}</strong></td>
+          <td><a href="mailto:${esc(l.email)}" style="color:#818cf8">${esc(l.email)}</a></td>
+          <td>${l.phone ? `<a href="https://wa.me/${l.phone.replace(/\D/g,'')}" target="_blank" style="color:#25D366">${esc(l.phone)}</a>` : '—'}</td>
+          <td><span class="badge ${badgeClass(l.agentType)}">${esc(l.agentType)}</span></td>
+          <td>${esc(l.company || '—')}</td>
+          <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(l.message || '')}">${esc(l.message || '—')}</td>
+        </tr>
+      `).join('');
+    }
+
+    function esc(s: string) { return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c] || c)); }
+
+    // Export CSV
+    $('#export-btn')?.addEventListener('click', () => {
+      if (!leads.length) return;
+      const headers = ['Fecha','Nombre','Email','WhatsApp','Agente','Empresa','Mensaje'];
+      const rows = leads.map(l => [
+        new Date(l.createdAt).toISOString(),
+        l.name, l.email, l.phone || '', l.agentType, l.company || '', l.message || ''
+      ]);
+      const csv = [headers, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `agentes-leads-${new Date().toISOString().slice(0,10)}.csv`;
+      a.click();
+    });
+
+    // Login
+    $('#login-btn')?.addEventListener('click', async () => {
+      const input = ($('#token-input') as HTMLInputElement).value.trim();
+      if (!input) return;
+      try {
+        const r = await fetch(`${API}/waitlist`, { headers: { 'x-admin-token': input } });
+        if (!r.ok) throw new Error();
+        token = input;
+        localStorage.setItem('agentes-admin-token', token);
+        showDash();
+      } catch {
+        const err = $('#login-err') as HTMLElement;
+        err.textContent = 'Token inválido';
+        err.style.display = 'block';
+      }
+    });
+
+    ($('#token-input') as HTMLElement)?.addEventListener('keydown', (e: Event) => {
+      if ((e as KeyboardEvent).key === 'Enter') ($('#login-btn') as HTMLElement).click();
+    });
+
+    // Logout
+    $('#logout-btn')?.addEventListener('click', () => {
+      localStorage.removeItem('agentes-admin-token');
+      location.reload();
+    });
+
+    // Auto-login if token stored
+    if (token) showDash();
+  </script>
+</body>
+</html>
