@@ -8,6 +8,7 @@ const plans = [
   { name: "Básico", hours: "1h/día", price: "80", pricePen: "300", desc: "Para empezar a probar", features: ["1 agente AI", "Respaldo humano", "Reportes semanales", "3 días gratis de prueba"] },
   { name: "Pro", hours: "4h/día", price: "250", pricePen: "950", desc: "Para negocios en crecimiento", popular: true, features: ["1 agente AI", "Respaldo prioritario", "Reportes diarios", "Personalización avanzada", "3 días gratis de prueba"] },
   { name: "Full", hours: "8h/día", price: "400", pricePen: "1,500", desc: "Máxima productividad", features: ["1 agente dedicado", "Respaldo 24/7", "Reportes tiempo real", "Integración custom", "Soporte prioritario", "3 días gratis de prueba"] },
+  { name: "24/7", hours: "24h/día", price: "600", pricePen: "2,280", desc: "Tu agente nunca duerme", features: ["1 agente AI dedicado", "Operación 24/7 sin pausas", "Respaldo humano ilimitado", "Reportes tiempo real", "Integración custom", "Soporte prioritario", "Account manager dedicado", "3 días gratis de prueba"] },
 ];
 ---
 <html lang="es">
@@ -686,7 +687,7 @@ const plans = [
 
   /* === PRICING === */
   .pricing-sec{text-align:center}
-  .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;text-align:left}
+  .plans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;text-align:left}
   .pl-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:2rem 1.75rem;position:relative;display:flex;flex-direction:column;transition:all .3s}
   .pl-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,60,30,.05)}
   .pl-pop{border-color:var(--green)!important;box-shadow:0 0 0 1px var(--green),0 8px 30px rgba(37,211,102,.08)!important}
@@ -782,7 +783,8 @@ const plans = [
     .hero-sub{max-width:100%}
     .hero-btns{justify-content:center}
     .hero-logos{align-items:center}
-    .steps-grid,.agents-grid,.plans-grid,.proof-grid{grid-template-columns:1fr;max-width:400px;margin-inline:auto}
+    .steps-grid,.agents-grid,.proof-grid{grid-template-columns:1fr;max-width:400px;margin-inline:auto}
+    .plans-grid{grid-template-columns:1fr 1fr;max-width:600px;margin-inline:auto}
     .start-wrap{grid-template-columns:1fr;padding:2rem}
     .stats-inner{flex-wrap:wrap;gap:1.5rem}
     .stat-div{display:none}
