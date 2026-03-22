@@ -1,0 +1,277 @@
+---
+const title = "Casos de Éxito — Negocios que ya usan AGENTES AI";
+const description = "Descubre cómo clínicas, restaurantes y empresas en Perú aumentaron sus ventas y redujeron costos con agentes AI por WhatsApp. Resultados reales.";
+---
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{title}</title>
+  <meta name="description" content={description}/>
+  <meta property="og:title" content={title}/>
+  <meta property="og:description" content={description}/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://agentes.luminari.agency/casos-de-exito"/>
+  <link rel="canonical" href="https://agentes.luminari.agency/casos-de-exito"/>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": title,
+    "description": description,
+    "url": "https://agentes.luminari.agency/casos-de-exito"
+  })}></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script defer src="https://umami.luminari.agency/script.js" data-website-id="9a5bb1d1-9bc1-417a-8b4b-72b44044d168"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#0a0a0f;--card:#12121a;--border:#1e1e2e;--green:#25D366;--green-d:#1da851;--text:#e4e4e7;--muted:#71717a}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--green);text-decoration:none}a:hover{text-decoration:underline}
+    nav{max-width:1100px;margin:0 auto;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between}
+    nav a{color:var(--text)}
+    .logo{font-weight:800;font-size:1.1rem;letter-spacing:-0.5px}
+    .nav-r a{margin-left:1.5rem;font-size:.9rem;color:var(--muted);transition:color .2s}
+    .nav-r a:hover{color:var(--green);text-decoration:none}
+    .nav-cta{background:var(--green)!important;color:#000!important;padding:.5rem 1.2rem;border-radius:8px;font-weight:600}
+
+    .hero{text-align:center;padding:4rem 2rem 3rem;max-width:800px;margin:0 auto}
+    .hero .tag{display:inline-block;background:rgba(37,211,102,.12);color:var(--green);padding:.4rem 1rem;border-radius:20px;font-size:.85rem;font-weight:600;margin-bottom:1.5rem}
+    .hero h1{font-size:2.5rem;font-weight:800;letter-spacing:-1.5px;line-height:1.15;margin-bottom:1rem}
+    .hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto}
+
+    .cases{max-width:900px;margin:0 auto;padding:0 2rem 4rem}
+    .case{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;margin-bottom:2.5rem;position:relative;overflow:hidden}
+    .case::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--green)}
+    .case-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+    .case-info h2{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;margin-bottom:.3rem}
+    .case-info .industry{color:var(--muted);font-size:.9rem}
+    .case-badge{background:rgba(37,211,102,.12);color:var(--green);font-weight:700;font-size:.9rem;padding:.5rem 1rem;border-radius:10px;white-space:nowrap}
+    .case-problem{margin-bottom:1.5rem}
+    .case-problem h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.5rem}
+    .case-problem p{font-size:.98rem;color:var(--text)}
+    .case-solution{margin-bottom:1.5rem}
+    .case-solution h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;color:var(--green);margin-bottom:.5rem}
+    .case-solution p{font-size:.98rem}
+    .case-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-top:1.5rem}
+    .result-item{background:rgba(37,211,102,.06);border:1px solid rgba(37,211,102,.15);border-radius:12px;padding:1rem;text-align:center}
+    .result-item .num{font-size:1.8rem;font-weight:800;color:var(--green)}
+    .result-item .label{font-size:.8rem;color:var(--muted);margin-top:.25rem}
+    .case-quote{background:rgba(37,211,102,.06);border-left:3px solid var(--green);padding:1rem 1.5rem;margin-top:1.5rem;border-radius:0 12px 12px 0;font-style:italic;font-size:.95rem}
+    .case-quote .author{font-style:normal;font-weight:600;color:var(--green);margin-top:.5rem;font-size:.85rem}
+
+    .summary{max-width:900px;margin:0 auto 3rem;padding:0 2rem}
+    .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
+    .summary-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;text-align:center}
+    .summary-card .big{font-size:2.5rem;font-weight:800;color:var(--green)}
+    .summary-card .desc{color:var(--muted);font-size:.9rem;margin-top:.5rem}
+
+    .cta-sec{text-align:center;padding:3rem 2rem 4rem;max-width:700px;margin:0 auto}
+    .cta-sec h2{font-size:1.8rem;font-weight:800;margin-bottom:1rem;letter-spacing:-0.5px}
+    .cta-sec p{color:var(--muted);margin-bottom:1.5rem}
+    .btn-glow{display:inline-block;background:var(--green);color:#000;font-weight:700;padding:.85rem 2.5rem;border-radius:10px;font-size:1rem;text-decoration:none;transition:opacity .2s}
+    .btn-glow:hover{opacity:.9;text-decoration:none}
+
+    .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--green);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 4px 15px rgba(37,211,102,.4);z-index:50;text-decoration:none}
+
+    footer{text-align:center;padding:2rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+    @media(max-width:640px){.hero h1{font-size:1.8rem}.case{padding:1.5rem}.case-header{flex-direction:column}.case-results{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="logo">◆ AGENTES</a>
+    <div class="nav-r">
+      <a href="/#agentes">Agentes</a>
+      <a href="/precios">Precios</a>
+      <a href="/demo">Demo</a>
+      <a href="/blog">Blog</a>
+      <a href="/#empezar" class="nav-cta">Empezar</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <span class="tag">📊 Casos reales</span>
+    <h1>Negocios que ya facturan más con agentes AI</h1>
+    <p>Resultados reales de empresas en Perú que automatizaron su atención con AGENTES. Sin humo, solo números.</p>
+  </section>
+
+  <section class="summary">
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="big">+47%</div>
+        <div class="desc">Aumento promedio en conversiones</div>
+      </div>
+      <div class="summary-card">
+        <div class="big">2min</div>
+        <div class="desc">Tiempo de respuesta promedio</div>
+      </div>
+      <div class="summary-card">
+        <div class="big">68%</div>
+        <div class="desc">Reducción en costos operativos</div>
+      </div>
+      <div class="summary-card">
+        <div class="big">24/7</div>
+        <div class="desc">Atención sin interrupciones</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cases">
+
+    <div class="case">
+      <div class="case-header">
+        <div class="case-info">
+          <h2>Clínica Dental — Chiclayo</h2>
+          <div class="industry">Salud · Plan Pro · Agente Sofía (Ventas)</div>
+        </div>
+        <div class="case-badge">+S/4,200/mes</div>
+      </div>
+      <div class="case-problem">
+        <h3>🔴 El Problema</h3>
+        <p>La recepcionista atendía llamadas, WhatsApp y pacientes presenciales al mismo tiempo. El 40% de los mensajes de WhatsApp quedaban sin responder por más de 3 horas, y muchos pacientes nuevos buscaban otra clínica.</p>
+      </div>
+      <div class="case-solution">
+        <h3>✅ La Solución</h3>
+        <p>Sofía (agente AI de ventas) responde WhatsApp en menos de 30 segundos, califica al paciente, presenta servicios con precios, y agenda la cita directamente. Si el caso es complejo, lo escala a la recepcionista con contexto completo.</p>
+      </div>
+      <div class="case-results">
+        <div class="result-item"><div class="num">14</div><div class="label">Citas nuevas/semana</div></div>
+        <div class="result-item"><div class="num">92%</div><div class="label">Tasa de respuesta</div></div>
+        <div class="result-item"><div class="num">28s</div><div class="label">Tiempo de respuesta</div></div>
+        <div class="result-item"><div class="num">3.2x</div><div class="label">ROI en 30 días</div></div>
+      </div>
+      <div class="case-quote">
+        "Sofía cerró 3 ventas la primera semana. Yo ni tuve que intervenir. Ahora la recepcionista se enfoca en los pacientes que llegan."
+        <div class="author">— Dr. Cristian C., Director</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-header">
+        <div class="case-info">
+          <h2>Consultorio Geriátrico — Lima</h2>
+          <div class="industry">Salud · Plan Básico · Agente Valentina (Citas)</div>
+        </div>
+        <div class="case-badge">+35 citas/mes</div>
+      </div>
+      <div class="case-problem">
+        <h3>🔴 El Problema</h3>
+        <p>Los hijos de pacientes geriátricos escribían por WhatsApp fuera de horario de oficina — noches, fines de semana. El doctor no podía responder y perdía consultas frecuentemente. Muchos terminaban buscando otro especialista.</p>
+      </div>
+      <div class="case-solution">
+        <h3>✅ La Solución</h3>
+        <p>Valentina (agente de citas) atiende 24/7. Responde preguntas sobre servicios, disponibilidad y ubicación. Agenda citas verificando horarios disponibles y envía recordatorio 24h antes.</p>
+      </div>
+      <div class="case-results">
+        <div class="result-item"><div class="num">35</div><div class="label">Citas nuevas/mes</div></div>
+        <div class="result-item"><div class="num">24/7</div><div class="label">Disponibilidad</div></div>
+        <div class="result-item"><div class="num">85%</div><div class="label">Asistencia a citas</div></div>
+        <div class="result-item"><div class="num">0</div><div class="label">Citas perdidas/sem</div></div>
+      </div>
+      <div class="case-quote">
+        "Mis pacientes reciben respuesta inmediata. Antes perdía consultas por no contestar a tiempo. Ahora ni los fines de semana se me escapa uno."
+        <div class="author">— Dr. Juan J., Geriatra</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-header">
+        <div class="case-info">
+          <h2>Restaurante Fusión — Piura</h2>
+          <div class="industry">Gastronomía · Plan Pro · Agente Carlos (Soporte)</div>
+        </div>
+        <div class="case-badge">-70% en llamadas</div>
+      </div>
+      <div class="case-problem">
+        <h3>🔴 El Problema</h3>
+        <p>El restaurante recibía 50+ mensajes diarios preguntando lo mismo: horarios, carta, si aceptan reservas, si tienen estacionamiento. El personal de sala perdía tiempo respondiendo en lugar de atender mesas.</p>
+      </div>
+      <div class="case-solution">
+        <h3>✅ La Solución</h3>
+        <p>Carlos (agente de soporte) maneja las preguntas frecuentes, envía la carta digital, confirma disponibilidad y toma reservas. Escala solo los pedidos especiales (eventos, catering) al gerente.</p>
+      </div>
+      <div class="case-results">
+        <div class="result-item"><div class="num">-70%</div><div class="label">Menos llamadas</div></div>
+        <div class="result-item"><div class="num">45</div><div class="label">Reservas/mes via AI</div></div>
+        <div class="result-item"><div class="num">4.8★</div><div class="label">Satisfacción</div></div>
+        <div class="result-item"><div class="num">2h</div><div class="label">Tiempo liberado/día</div></div>
+      </div>
+      <div class="case-quote">
+        "El agente sabe la carta mejor que yo. Los clientes llegan con su reserva lista y hasta saben qué van a pedir. Nunca pensé que una IA pudiera hacer eso."
+        <div class="author">— Miguel R., Gerente</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-header">
+        <div class="case-info">
+          <h2>Inmobiliaria Digital — Lima</h2>
+          <div class="industry">Inmobiliaria · Plan Full · Agente Sofía (Ventas)</div>
+        </div>
+        <div class="case-badge">+22 leads calificados/mes</div>
+      </div>
+      <div class="case-problem">
+        <h3>🔴 El Problema</h3>
+        <p>Los anuncios en portales generaban muchos mensajes, pero el 60% eran curiosos sin presupuesto real. Los asesores perdían horas filtrando leads que nunca convertían.</p>
+      </div>
+      <div class="case-solution">
+        <h3>✅ La Solución</h3>
+        <p>Sofía califica cada lead automáticamente: pregunta presupuesto, zona de interés, tipo de propiedad y timeline de compra. Solo pasa leads calificados al asesor, con toda la info resumida.</p>
+      </div>
+      <div class="case-results">
+        <div class="result-item"><div class="num">22</div><div class="label">Leads calificados/mes</div></div>
+        <div class="result-item"><div class="num">3x</div><div class="label">Conversión de leads</div></div>
+        <div class="result-item"><div class="num">5min</div><div class="label">Respuesta a leads</div></div>
+        <div class="result-item"><div class="num">15h</div><div class="label">Horas ahorradas/sem</div></div>
+      </div>
+      <div class="case-quote">
+        "Antes respondía 100 mensajes para cerrar 2 ventas. Ahora Sofía me pasa 20 leads ya calificados y cierro 5. Literalmente triplicó mi productividad."
+        <div class="author">— Andrea M., Asesora comercial</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-header">
+        <div class="case-info">
+          <h2>Estudio Contable — Trujillo</h2>
+          <div class="industry">Contabilidad · Plan Básico · Agente Valentina (Citas)</div>
+        </div>
+        <div class="case-badge">+18 clientes nuevos</div>
+      </div>
+      <div class="case-problem">
+        <h3>🔴 El Problema</h3>
+        <p>El estudio no tenía presencia digital. Los clientes nuevos llegaban por referidos y el proceso de onboarding era por teléfono: lento, repetitivo, y ocupaba 2 horas diarias de la asistente.</p>
+      </div>
+      <div class="case-solution">
+        <h3>✅ La Solución</h3>
+        <p>Valentina responde consultas sobre servicios (declaraciones, planillas, RUC, constitución de empresa), cotiza según el tipo de servicio, y agenda la reunión inicial con el contador.</p>
+      </div>
+      <div class="case-results">
+        <div class="result-item"><div class="num">18</div><div class="label">Clientes nuevos en 2 meses</div></div>
+        <div class="result-item"><div class="num">S/80</div><div class="label">Costo de adquisición</div></div>
+        <div class="result-item"><div class="num">100%</div><div class="label">Respuestas contestadas</div></div>
+        <div class="result-item"><div class="num">2h/día</div><div class="label">Tiempo ahorrado</div></div>
+      </div>
+      <div class="case-quote">
+        "No teníamos WhatsApp Business ni nada. Pusimos el número con el agente en Google y en 2 meses ya teníamos 18 clientes nuevos. Increíble."
+        <div class="author">— CPA Luis T., Socio fundador</div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="cta-sec">
+    <h2>¿Listo para ser el próximo caso de éxito?</h2>
+    <p>Activa tu agente AI hoy. Prueba 3 días gratis, sin compromiso. Si no ves resultados, no pagas.</p>
+    <a href="/#empezar" class="btn-glow">Empezar prueba gratis →</a>
+    <br/><br/>
+    <a href="https://wa.me/51987654321?text=Hola!%20Vi%20los%20casos%20de%20éxito%20y%20quiero%20probar%20un%20agente%20AI.%20🚀" target="_blank" rel="noopener" style="color:var(--green);font-size:.95rem">O escríbenos directo por WhatsApp →</a>
+  </section>
+
+  <a href="https://wa.me/51987654321?text=Hola!%20Quiero%20probar%20un%20agente%20AI%20para%20mi%20negocio.%20🚀" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">💬</a>
+
+  <footer>© 2026 AGENTES by Luminari · <a href="/">Inicio</a></footer>
+</body>
+</html>
