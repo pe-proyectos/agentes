@@ -74,9 +74,9 @@ const specialties = [
     <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
     <a href="/" class="logo">◆ AGENTES</a>
     <div class="nav-r" id="nav-menu">
-      <a href="/#planes" class="nav-link">Planes</a>
+      <a href="/precios" class="nav-link">Planes</a>
       <a href="/#faq" class="nav-link">FAQ</a>
-      <a href="/#empezar" class="nav-cta">Probar gratis →</a>
+      <a href="#empezar" class="nav-cta">Probar gratis →</a>
     </div>
   </nav>
 
@@ -86,7 +86,7 @@ const specialties = [
       <h1>Tu consultorio atendiendo<br/>pacientes por <span class="glow-text">WhatsApp 24/7.</span></h1>
       <p class="uc-sub">{agent.name} agenda citas, responde consultas y envía recordatorios automáticamente. Tus pacientes atendidos al instante, tú enfocado en lo que importa. <strong>Prueba 3 días gratis.</strong></p>
       <div class="uc-btns">
-        <a href="/#empezar" class="btn-glow">Activar agente para mi clínica →</a>
+        <a href="#empezar" class="btn-glow">Activar agente para mi clínica →</a>
         <a href="#demo" class="btn-outline">Ver ejemplo ↓</a>
       </div>
       <div class="trust-badges">
@@ -242,15 +242,39 @@ const specialties = [
       </div>
     </div>
     <div style="text-align:center;margin-top:2rem">
-      <a href="/#planes" class="btn-outline-dark">Ver todos los planes →</a>
+      <a href="/precios" class="btn-outline-dark">Ver todos los planes →</a>
     </div>
   </section>
 
   <section class="sec final-cta">
     <h2>Tu consultorio merece atención 24/7</h2>
     <p>3 días gratis. Sin tarjeta de crédito. Tu agente activo en menos de 24 horas.</p>
-    <a href="/#empezar" class="btn-glow btn-lg">Activar agente para mi clínica →</a>
+    <a href="#empezar" class="btn-glow btn-lg">Activar agente para mi clínica →</a>
   </section>
+
+
+  <section class="sec" id="empezar" style="max-width:100%;background:linear-gradient(180deg,rgba(37,211,102,.03),rgba(37,211,102,.08));padding:5rem 2.5rem">
+    <div style="max-width:550px;margin:0 auto;text-align:center">
+      <span class="tag">🚀 Prueba gratis</span>
+      <h2>Activa tu agente de clínicas hoy</h2>
+      <p style="color:var(--text2);margin-bottom:2rem">3 días gratis. Sin tarjeta. Setup en menos de 24h.</p>
+      <form id="lead-form" style="text-align:left">
+        <input type="text" name="name" placeholder="Tu nombre *" required/>
+        <input type="email" name="email" placeholder="Email corporativo *" required/>
+        <input type="tel" name="phone" placeholder="WhatsApp (opcional)"/>
+        <input type="text" name="company" placeholder="Empresa (opcional)"/>
+        <textarea name="message" placeholder="¿Qué necesitas? (opcional)" rows="3"></textarea>
+        <input type="hidden" name="agentType" value="clinicas"/>
+        <button type="submit" class="btn-glow btn-full">Empezar prueba gratis →</button>
+        <p class="form-msg" id="form-msg"></p>
+      </form>
+    </div>
+  </section>
+
+  <a href="#empezar" class="wa-float" aria-label="Empezar ahora">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.37 0-4.567-.818-6.297-2.187l-.44-.362-3.065 1.028 1.028-3.065-.362-.44A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+    <span>Empezar ahora</span>
+  </a>
 
   <footer>
     <span>◆ AGENTES <span class="by">by Luminari</span></span>
@@ -390,6 +414,18 @@ const specialties = [
     .roi-box{flex-direction:column}
     footer{flex-direction:column;gap:.5rem;text-align:center}
   }
+  .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;display:flex;align-items:center;gap:.5rem;background:#25D366;color:#fff;padding:.75rem 1.25rem;border-radius:100px;text-decoration:none;font-family:var(--font);font-size:.87rem;font-weight:600;box-shadow:0 4px 20px rgba(37,211,102,.4),0 2px 8px rgba(0,0,0,.15);transition:all .25s;animation:wafloat-in .6s ease-out}
+  .wa-float:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 6px 28px rgba(37,211,102,.5),0 4px 12px rgba(0,0,0,.2)}
+  .wa-float svg{flex-shrink:0}
+  @keyframes wafloat-in{from{opacity:0;transform:translateY(20px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+  @media(max-width:600px){.wa-float span{display:none}.wa-float{padding:.9rem;border-radius:50%}}
+  input,select,textarea{width:100%;padding:.72rem .85rem;background:#fafffe;border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:var(--font);font-size:.87rem;outline:none;transition:border-color .15s,box-shadow .15s}
+  input:focus,select:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(37,211,102,.1)}
+  input::placeholder,textarea::placeholder{color:var(--text3)}
+  textarea{resize:vertical;min-height:65px}
+  .btn-full{width:100%;text-align:center;justify-content:center;margin-top:.3rem}
+  .form-msg{font-size:.83rem;text-align:center;min-height:1.2em;margin-top:.5rem}
+  .form-msg.ok{color:var(--green-d)} .form-msg.err{color:#dc2626}
 </style>
 <script>
   const navToggle = document.getElementById("nav-toggle");
@@ -404,6 +440,30 @@ const specialties = [
       navToggle.setAttribute("aria-expanded","false");
     }));
   }
+</script>
+<script>
+  const form = document.getElementById('lead-form');
+  const msg = document.getElementById('form-msg');
+  if(form) form.addEventListener('submit', async(e)=>{{
+    e.preventDefault();
+    const fd = new FormData(form);
+    const data = Object.fromEntries(fd);
+    msg.textContent = 'Enviando...';
+    msg.className = 'form-msg';
+    try {{
+      const r = await fetch('https://agentes-api.luminari.agency/api/waitlist', {{
+        method:'POST', headers:{{'Content-Type':'application/json'}}, body:JSON.stringify(data)
+      }});
+      if(!r.ok) throw new Error('Error');
+      msg.textContent = '¡Listo! Te contactamos en menos de 24h 🚀';
+      msg.className = 'form-msg ok';
+      form.reset();
+      window.umami?.track('waitlist-submit', {{ agentType: data.agentType, source: 'clinicas' }});
+    }} catch(err) {{
+      msg.textContent = 'Error al enviar. Intenta de nuevo.';
+      msg.className = 'form-msg err';
+    }}
+  }});
 </script>
 </body>
 </html>
