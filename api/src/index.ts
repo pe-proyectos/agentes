@@ -114,13 +114,14 @@ async function sendWelcomeEmail(entry: { name: string; email: string; phone?: st
 </body></html>`;
 
   try {
-    await resend.emails.send({
+    console.log(`📧 Attempting to send welcome email to ${entry.email} (API key present: ${!!process.env.RESEND_API_KEY})`);
+    const result = await resend.emails.send({
       from: "AGENTES by Luminari <noreply@luminari.agency>",
       to: entry.email,
       subject: "🚀 ¡Recibimos tu solicitud! — AGENTES by Luminari",
       html,
     });
-    console.log(`✉️ Welcome email sent to ${entry.email}`);
+    console.log(`✉️ Welcome email sent to ${entry.email}`, JSON.stringify(result));
   } catch (e) {
     console.error("Resend email error:", e);
   }
@@ -142,8 +143,9 @@ const app = new Elysia({ prefix: "/api" })
           message: body.message || null,
         },
       });
-      notifyDiscord(entry);
-      sendWelcomeEmail(entry);
+      // Fire-and-forget but log errors
+      notifyDiscord(entry).catch(e => console.error("Discord notify failed:", e));
+      sendWelcomeEmail(entry).catch(e => console.error("Welcome email failed:", e));
       return { success: true, id: entry.id };
     },
     {
