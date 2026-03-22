@@ -74,7 +74,7 @@ const specialties = [
     <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
     <a href="/" class="logo">◆ AGENTES</a>
     <div class="nav-r" id="nav-menu">
-      <a href="/precios" class="nav-link">Planes</a>
+      <a href="/#planes" class="nav-link">Planes</a>
       <a href="/#faq" class="nav-link">FAQ</a>
       <a href="#empezar" class="nav-cta">Probar gratis →</a>
     </div>
@@ -242,7 +242,7 @@ const specialties = [
       </div>
     </div>
     <div style="text-align:center;margin-top:2rem">
-      <a href="/precios" class="btn-outline-dark">Ver todos los planes →</a>
+      <a href="/#planes" class="btn-outline-dark">Ver todos los planes →</a>
     </div>
   </section>
 
@@ -417,8 +417,8 @@ const specialties = [
   .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;display:flex;align-items:center;gap:.5rem;background:#25D366;color:#fff;padding:.75rem 1.25rem;border-radius:100px;text-decoration:none;font-family:var(--font);font-size:.87rem;font-weight:600;box-shadow:0 4px 20px rgba(37,211,102,.4),0 2px 8px rgba(0,0,0,.15);transition:all .25s;animation:wafloat-in .6s ease-out}
   .wa-float:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 6px 28px rgba(37,211,102,.5),0 4px 12px rgba(0,0,0,.2)}
   .wa-float svg{flex-shrink:0}
-  @keyframes wafloat-in{from{opacity:0;transform:translateY(20px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}
-  @media(max-width:600px){.wa-float span{display:none}.wa-float{padding:.9rem;border-radius:50%}
+  @keyframes wafloat-in{from{opacity:0;transform:translateY(20px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+  @media(max-width:600px){.wa-float span{display:none}.wa-float{padding:.9rem;border-radius:50%}}
   input,select,textarea{width:100%;padding:.72rem .85rem;background:#fafffe;border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:var(--font);font-size:.87rem;outline:none;transition:border-color .15s,box-shadow .15s}
   input:focus,select:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(37,211,102,.1)}
   input::placeholder,textarea::placeholder{color:var(--text3)}
