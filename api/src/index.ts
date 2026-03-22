@@ -4,6 +4,34 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 const PORT = Number(process.env.PORT) || 3000;
+const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_URL || "";
+
+async function notifyDiscord(entry: { name: string; email: string; company?: string | null; agentType: string; message?: string | null }) {
+  if (!DISCORD_WEBHOOK) return;
+  try {
+    const fields = [
+      { name: "👤 Nombre", value: entry.name, inline: true },
+      { name: "📧 Email", value: entry.email, inline: true },
+      { name: "🤖 Agente", value: entry.agentType, inline: true },
+    ];
+    if (entry.company) fields.push({ name: "🏢 Empresa", value: entry.company, inline: true });
+    if (entry.message) fields.push({ name: "💬 Mensaje", value: entry.message, inline: false });
+    await fetch(DISCORD_WEBHOOK, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        embeds: [{
+          title: "🚀 Nuevo lead en AGENTES",
+          color: 0x25D366,
+          fields,
+          timestamp: new Date().toISOString(),
+        }],
+      }),
+    });
+  } catch (e) {
+    console.error("Discord webhook error:", e);
+  }
+}
 
 const app = new Elysia({ prefix: "/api" })
   .use(cors())
@@ -20,6 +48,7 @@ const app = new Elysia({ prefix: "/api" })
           message: body.message || null,
         },
       });
+      notifyDiscord(entry);
       return { success: true, id: entry.id };
     },
     {

@@ -43,6 +43,7 @@ const plans = [
       <div class="nav-r">
         <a href="#agentes" class="nav-link">Equipo</a>
         <a href="#planes" class="nav-link">Planes</a>
+        <a href="#faq" class="nav-link">FAQ</a>
         <a href="#empezar" class="nav-cta">Empezar →</a>
       </div>
     </nav>
@@ -181,6 +182,70 @@ const plans = [
     </div>
   </section>
 
+  <!-- ===== SOCIAL PROOF ===== -->
+  <section class="sec proof-sec">
+    <span class="tag">Resultados</span>
+    <h2>Lo que dicen nuestros clientes</h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p>"Sofía cerró 3 ventas la primera semana. Yo ni tuve que intervenir."</p>
+        <div class="proof-author">
+          <strong>Dr. Cristian C.</strong>
+          <span>Clínica dental · Chiclayo</span>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p>"Mis pacientes reciben respuesta inmediata. Antes perdía consultas por no contestar a tiempo."</p>
+        <div class="proof-author">
+          <strong>Dr. Juan J.</strong>
+          <span>Geriatra · Lima</span>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-stars">★★★★★</div>
+        <p>"El agente agenda citas solo. Yo solo reviso el calendario cada mañana. Increíble."</p>
+        <div class="proof-author">
+          <strong>Dr. Gustavo D.</strong>
+          <span>Especialista · Lima</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="sec faq-sec" id="faq">
+    <span class="tag">Preguntas</span>
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>¿Qué pasa si la IA no sabe responder?</summary>
+        <p>Cada agente tiene respaldo humano. Si la IA no puede resolver algo, un humano de nuestro equipo toma el control de la conversación sin que el cliente lo note.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Necesito un número de WhatsApp nuevo?</summary>
+        <p>Sí, te proporcionamos un número dedicado ya configurado. También podemos integrarlo con tu número existente según el plan.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cuánto tarda en estar listo?</summary>
+        <p>Menos de 24 horas. Nos cuentas qué necesitas, configuramos el agente con tu información y lo activamos.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Puedo cancelar cuando quiera?</summary>
+        <p>Sí, sin penalidades ni contratos a largo plazo. Pagas mes a mes.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Los precios son en dólares o soles?</summary>
+        <p>Los precios están en dólares (USD). Aceptamos Yape, Plin, transferencia bancaria, y tarjetas VISA.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué tipo de negocios atienden?</summary>
+        <p>Clínicas, consultorios, tiendas, restaurantes, inmobiliarias — cualquier negocio que atienda clientes por WhatsApp.</p>
+      </details>
+    </div>
+  </section>
+
   <!-- ===== EMPEZAR (disguised waitlist) ===== -->
   <section class="sec start-sec" id="empezar">
     <div class="start-wrap">
@@ -244,7 +309,7 @@ const plans = [
     const io = new IntersectionObserver((es) => {
       es.forEach(e => { if (e.isIntersecting) { (e.target as HTMLElement).style.opacity = '1'; (e.target as HTMLElement).style.transform = 'translateY(0)'; io.unobserve(e.target); }});
     }, { threshold: 0.1 });
-    document.querySelectorAll('.step-card, .ag-card, .pl-card').forEach(el => {
+    document.querySelectorAll('.step-card, .ag-card, .pl-card, .proof-card, .faq-item').forEach(el => {
       (el as HTMLElement).style.opacity = '0';
       (el as HTMLElement).style.transform = 'translateY(24px)';
       (el as HTMLElement).style.transition = 'opacity .6s ease, transform .6s ease';
@@ -252,7 +317,7 @@ const plans = [
     });
     // Fallback
     setTimeout(() => {
-      document.querySelectorAll('.step-card, .ag-card, .pl-card').forEach(el => {
+      document.querySelectorAll('.step-card, .ag-card, .pl-card, .proof-card, .faq-item').forEach(el => {
         (el as HTMLElement).style.opacity = '1';
         (el as HTMLElement).style.transform = 'translateY(0)';
       });
@@ -417,6 +482,25 @@ const plans = [
   .btn-outline-dark:hover{border-color:var(--green);color:var(--green-d);background:rgba(37,211,102,.04)}
   .btn-sm{font-size:.87rem!important;padding:.7rem 1.5rem!important;display:block;text-align:center;width:100%;border-radius:var(--r-sm)!important}
 
+  /* === SOCIAL PROOF === */
+  .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+  .proof-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:all .3s}
+  .proof-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,60,30,.05)}
+  .proof-stars{color:#f59e0b;font-size:1rem;margin-bottom:.75rem;letter-spacing:.1em}
+  .proof-card>p{font-size:.9rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:1.25rem}
+  .proof-author strong{display:block;font-size:.85rem;font-weight:700;color:var(--text)}
+  .proof-author span{font-size:.75rem;color:var(--text3)}
+
+  /* === FAQ === */
+  .faq-list{max-width:700px;margin:2rem auto 0;display:flex;flex-direction:column;gap:.5rem}
+  .faq-item{background:#fff;border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden;transition:all .2s}
+  .faq-item[open]{box-shadow:0 4px 16px rgba(0,60,30,.04)}
+  .faq-item summary{padding:1rem 1.25rem;font-size:.9rem;font-weight:600;color:var(--text);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  .faq-item summary::after{content:'+';font-size:1.2rem;font-weight:400;color:var(--text3);transition:transform .2s}
+  .faq-item[open] summary::after{content:'−'}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item p{padding:0 1.25rem 1rem;font-size:.85rem;color:var(--text2);line-height:1.7}
+
   /* === START === */
   .start-sec{padding-bottom:6rem}
   .start-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:3rem;box-shadow:0 4px 20px rgba(0,60,30,.03)}
@@ -446,7 +530,7 @@ const plans = [
     .hero-sub{max-width:100%}
     .hero-btns{justify-content:center}
     .hero-logos{align-items:center}
-    .steps-grid,.agents-grid,.plans-grid{grid-template-columns:1fr;max-width:400px;margin-inline:auto}
+    .steps-grid,.agents-grid,.plans-grid,.proof-grid{grid-template-columns:1fr;max-width:400px;margin-inline:auto}
     .start-wrap{grid-template-columns:1fr;padding:2rem}
     .stats-inner{flex-wrap:wrap;gap:1.5rem}
     .stat-div{display:none}
