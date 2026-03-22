@@ -342,7 +342,7 @@ const plans = [
     <div class="start-wrap">
       <div class="start-left">
         <div class="free-trial-badge">🎁 PRUEBA GRATIS</div>
-        <div class="urgency-badge">⚡ Solo 3 cupos disponibles en marzo</div>
+        <div class="urgency-badge" id="urgency-badge">⚡ Solo 3 cupos disponibles</div>
         <h2>3 días gratis. Sin compromiso.</h2>
         <p>Completa tus datos y en menos de 24h tendrás tu agente funcionando. Si no te convence, no pagas nada.</p>
         <ul>
@@ -401,6 +401,13 @@ const plans = [
   </footer>
 
   <script>
+    // === Dynamic urgency badge ===
+    {
+      const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+      const badge = document.getElementById('urgency-badge');
+      if (badge) badge.textContent = `⚡ Solo 3 cupos disponibles en ${meses[new Date().getMonth()]}`;
+    }
+
     // === Mobile nav ===
     const navToggle = document.getElementById('nav-toggle')!;
     const navMenu = document.getElementById('nav-menu')!;
