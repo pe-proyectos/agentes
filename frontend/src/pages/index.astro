@@ -66,6 +66,7 @@ const plans = [
     <nav>
       <a href="#" class="logo">◆ AGENTES</a>
       <div class="nav-r">
+        <a href="#calculadora" class="nav-link">Ahorro</a>
         <a href="#agentes" class="nav-link">Equipo</a>
         <a href="#planes" class="nav-link">Planes</a>
         <a href="#faq" class="nav-link">FAQ</a>
@@ -142,6 +143,52 @@ const plans = [
       <div class="stat-item"><strong>3 días</strong><span>Gratis de prueba</span></div>
     </div>
   </div>
+
+  <!-- ===== ROI CALCULATOR ===== -->
+  <section class="sec calc-sec" id="calculadora">
+    <span class="tag">Ahorro</span>
+    <h2>¿Cuánto te ahorras con un agente AI?</h2>
+    <p class="sec-sub">Compara el costo de un empleado humano vs un agente AI de AGENTES.</p>
+    <div class="calc-wrap">
+      <div class="calc-left">
+        <label class="calc-label">Sueldo mensual de un empleado (USD)</label>
+        <input type="range" id="calc-salary" min="300" max="2000" value="800" step="50"/>
+        <div class="calc-range-labels"><span>$300</span><span id="calc-salary-val">$800</span><span>$2,000</span></div>
+
+        <label class="calc-label" style="margin-top:1.25rem">Horas diarias que necesitas</label>
+        <input type="range" id="calc-hours" min="1" max="8" value="4" step="1"/>
+        <div class="calc-range-labels"><span>1h</span><span id="calc-hours-val">4h</span><span>8h</span></div>
+      </div>
+      <div class="calc-right">
+        <div class="calc-compare">
+          <div class="calc-col calc-human">
+            <span class="calc-col-label">👤 Empleado humano</span>
+            <div class="calc-col-price" id="calc-human-price">$800<span>/mes</span></div>
+            <ul>
+              <li>Horario limitado</li>
+              <li>Vacaciones, faltas</li>
+              <li>Capacitación lenta</li>
+              <li>1 conversación a la vez</li>
+            </ul>
+          </div>
+          <div class="calc-vs">VS</div>
+          <div class="calc-col calc-ai">
+            <span class="calc-col-label">🤖 Agente AGENTES</span>
+            <div class="calc-col-price" id="calc-ai-price">$250<span>/mes</span></div>
+            <ul>
+              <li>✓ Disponible 24/7</li>
+              <li>✓ Nunca falta</li>
+              <li>✓ Listo en 24h</li>
+              <li>✓ Multiples chats simultáneos</li>
+            </ul>
+          </div>
+        </div>
+        <div class="calc-savings">
+          Ahorras <strong id="calc-savings-val">$550</strong>/mes → <strong id="calc-savings-year">$6,600</strong>/año
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== HOW IT WORKS ===== -->
   <section class="sec steps-sec">
@@ -277,6 +324,7 @@ const plans = [
     <div class="start-wrap">
       <div class="start-left">
         <div class="free-trial-badge">🎁 PRUEBA GRATIS</div>
+        <div class="urgency-badge">⚡ Solo 3 cupos disponibles en marzo</div>
         <h2>3 días gratis. Sin compromiso.</h2>
         <p>Completa tus datos y en menos de 24h tendrás tu agente funcionando. Si no te convence, no pagas nada.</p>
         <ul>
@@ -346,6 +394,26 @@ const plans = [
       (el as HTMLElement).style.transition = 'opacity .6s ease, transform .6s ease';
       io.observe(el);
     });
+    // === ROI Calculator ===
+    const plans_map: Record<string, number> = { '1': 80, '2': 80, '3': 80, '4': 250, '5': 250, '6': 250, '7': 250, '8': 400 };
+    const salarySlider = document.getElementById('calc-salary') as HTMLInputElement;
+    const hoursSlider = document.getElementById('calc-hours') as HTMLInputElement;
+    function updateCalc() {
+      const salary = Number(salarySlider.value);
+      const hours = Number(hoursSlider.value);
+      const aiPrice = hours <= 1 ? 80 : hours <= 4 ? 250 : 400;
+      const savings = Math.max(0, salary - aiPrice);
+      document.getElementById('calc-salary-val')!.textContent = `$${salary}`;
+      document.getElementById('calc-hours-val')!.textContent = `${hours}h`;
+      document.getElementById('calc-human-price')!.innerHTML = `$${salary}<span>/mes</span>`;
+      document.getElementById('calc-ai-price')!.innerHTML = `$${aiPrice}<span>/mes</span>`;
+      document.getElementById('calc-savings-val')!.textContent = `$${savings}`;
+      document.getElementById('calc-savings-year')!.textContent = `$${(savings * 12).toLocaleString()}`;
+    }
+    salarySlider.addEventListener('input', updateCalc);
+    hoursSlider.addEventListener('input', updateCalc);
+    updateCalc();
+
     // Fallback
     setTimeout(() => {
       document.querySelectorAll('.step-card, .ag-card, .pl-card, .proof-card, .faq-item').forEach(el => {
@@ -469,6 +537,31 @@ const plans = [
   .sec h2{font-size:clamp(1.7rem,3.5vw,2.3rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;line-height:1.2}
   .sec-sub{color:var(--text2);font-size:.95rem;margin-bottom:2.5rem}
 
+  /* === CALCULATOR === */
+  .calc-sec{text-align:center}
+  .calc-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:2.5rem;text-align:left;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;box-shadow:0 4px 20px rgba(0,60,30,.03);margin-top:2rem}
+  .calc-label{display:block;font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.5rem}
+  .calc-wrap input[type=range]{width:100%;accent-color:var(--green);height:6px;cursor:pointer}
+  .calc-range-labels{display:flex;justify-content:space-between;font-size:.72rem;color:var(--text3);margin-top:.25rem}
+  .calc-range-labels span:nth-child(2){font-weight:700;color:var(--green-d);font-size:.85rem}
+  .calc-compare{display:flex;align-items:stretch;gap:1rem}
+  .calc-col{flex:1;padding:1.25rem;border-radius:var(--r-sm);text-align:center}
+  .calc-human{background:#fef2f2;border:1px solid #fecaca}
+  .calc-ai{background:#f0fdf4;border:1px solid #bbf7d0}
+  .calc-col-label{font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:.5rem}
+  .calc-col-price{font-size:1.8rem;font-weight:900;letter-spacing:-.02em;margin-bottom:.75rem}
+  .calc-col-price span{font-size:.75rem;font-weight:400;color:var(--text3)}
+  .calc-human .calc-col-price{color:#dc2626}
+  .calc-ai .calc-col-price{color:var(--green-d)}
+  .calc-col ul{list-style:none;text-align:left;display:flex;flex-direction:column;gap:.3rem}
+  .calc-col li{font-size:.78rem;color:var(--text2)}
+  .calc-human li{color:#991b1b}
+  .calc-ai li{color:var(--green-dd)}
+  .calc-vs{display:flex;align-items:center;font-size:1rem;font-weight:900;color:var(--text3)}
+  .calc-savings{margin-top:1.25rem;text-align:center;font-size:1rem;color:var(--text);background:linear-gradient(135deg,rgba(37,211,102,.08),rgba(18,140,126,.05));padding:.75rem;border-radius:var(--r-sm)}
+  .calc-savings strong{color:var(--green-d);font-size:1.2rem}
+  @media(max-width:900px){.calc-wrap{grid-template-columns:1fr}.calc-compare{flex-direction:column}}
+
   /* === STEPS === */
   .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
   .step-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:2rem 1.5rem;transition:all .3s;position:relative;overflow:hidden}
@@ -549,6 +642,7 @@ const plans = [
   .btn-full{width:100%;text-align:center;justify-content:center;margin-top:.3rem}
   .free-trial-badge{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.1em;color:#fff;background:linear-gradient(135deg,var(--green),var(--green-d));padding:.4rem 1rem;border-radius:100px;margin-bottom:1rem;animation:badge-pulse 2s ease-in-out infinite}
   @keyframes badge-pulse{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.3)}50%{box-shadow:0 0 0 8px rgba(37,211,102,0)}}
+  .urgency-badge{display:inline-block;font-size:.78rem;font-weight:700;color:#dc2626;background:#fef2f2;border:1px solid #fecaca;padding:.35rem .9rem;border-radius:100px;margin-bottom:.5rem}
   .form-msg{font-size:.83rem;text-align:center;min-height:1.2em}
   .form-msg.ok{color:var(--green-d)} .form-msg.err{color:#dc2626}
 
