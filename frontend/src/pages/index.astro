@@ -11,6 +11,7 @@ const plans = [
   { name: "24/7", hours: "24h/día", price: "600", pricePen: "2,280", desc: "Tu agente nunca duerme", features: ["1 agente AI dedicado", "Operación 24/7 sin pausas", "Respaldo humano ilimitado", "Reportes tiempo real", "Integración custom", "Soporte prioritario", "Account manager dedicado", "3 días gratis de prueba"] },
 ];
 import WhatsAppFloat from "../components/WhatsAppFloat.astro";
+import ExitIntentPopup from "../components/ExitIntentPopup.astro";
 ---
 <html lang="es">
 <head>
@@ -505,6 +506,7 @@ import WhatsAppFloat from "../components/WhatsAppFloat.astro";
     }, 2500);
   </script>
 <WhatsAppFloat />
+<ExitIntentPopup />
 </body>
 </html>
 

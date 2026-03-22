@@ -1,0 +1,96 @@
+<!-- Exit Intent Popup -->
+<div id="exit-popup-backdrop" class="exit-backdrop" style="display:none">
+  <div class="exit-modal" data-umami-event="exit-intent-show">
+    <button class="exit-close" id="exit-close" aria-label="Cerrar">&times;</button>
+    <div class="exit-emoji">🎁</div>
+    <h2 class="exit-title">¡Espera!</h2>
+    <p class="exit-subtitle">Llévate una <strong>consulta gratuita de 15 minutos</strong> con nuestro equipo</p>
+    <form id="exit-form" class="exit-form">
+      <input type="text" name="name" placeholder="Tu nombre" required class="exit-input" />
+      <input type="tel" name="phone" placeholder="Tu WhatsApp (ej: 51999888777)" required class="exit-input" />
+      <button type="submit" class="exit-submit" data-umami-event="exit-intent-submit">Quiero mi consulta gratis →</button>
+    </form>
+    <p class="exit-note">Sin compromiso · Respuesta en menos de 24h</p>
+    <p id="exit-msg" class="exit-msg" style="display:none"></p>
+  </div>
+</div>
+
+<style>
+  .exit-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s ease}
+  .exit-backdrop.show{opacity:1}
+  .exit-modal{background:#141414;border:1px solid rgba(37,211,102,.2);border-radius:16px;padding:2.5rem;max-width:420px;width:90%;position:relative;transform:translateY(20px);transition:transform .3s ease}
+  .exit-backdrop.show .exit-modal{transform:translateY(0)}
+  .exit-close{position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:1.8rem;cursor:pointer;line-height:1}
+  .exit-close:hover{color:#fff}
+  .exit-emoji{font-size:3rem;text-align:center;margin-bottom:.5rem}
+  .exit-title{color:#fff;text-align:center;font-size:1.6rem;margin:0 0 .5rem}
+  .exit-subtitle{color:#aaa;text-align:center;font-size:.95rem;margin:0 0 1.5rem;line-height:1.4}
+  .exit-subtitle strong{color:#25D366}
+  .exit-form{display:flex;flex-direction:column;gap:.75rem}
+  .exit-input{background:#0a0a0a;border:1px solid #333;border-radius:8px;padding:.75rem 1rem;color:#fff;font-size:.95rem;outline:none}
+  .exit-input:focus{border-color:#25D366}
+  .exit-submit{background:#25D366;color:#0a0a0a;border:none;border-radius:8px;padding:.85rem;font-size:1rem;font-weight:700;cursor:pointer;transition:background .2s}
+  .exit-submit:hover{background:#1eba56}
+  .exit-note{color:#666;text-align:center;font-size:.8rem;margin:.75rem 0 0}
+  .exit-msg{text-align:center;font-size:.9rem;margin-top:.5rem;padding:.5rem;border-radius:6px}
+  .exit-msg.ok{color:#25D366}
+  .exit-msg.err{color:#ff6b6b}
+</style>
+
+<script>
+(function(){
+  const KEY='exit-popup-shown';
+  if(sessionStorage.getItem(KEY)) return;
+  const bd=document.getElementById('exit-popup-backdrop');
+  if(!bd) return;
+
+  function show(){
+    if(sessionStorage.getItem(KEY)) return;
+    sessionStorage.setItem(KEY,'1');
+    bd.style.display='flex';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>bd.classList.add('show')));
+  }
+  function hide(){
+    bd.classList.remove('show');
+    setTimeout(()=>bd.style.display='none',300);
+  }
+
+  // Desktop: mouse leaves toward top
+  document.addEventListener('mouseout',function(e){
+    if(e.clientY<5 && !e.relatedTarget) show();
+  });
+
+  // Mobile: 45s + scroll up
+  let mobileReady=false, lastY=0;
+  setTimeout(()=>{mobileReady=true},45000);
+  window.addEventListener('scroll',function(){
+    const y=window.scrollY;
+    if(mobileReady && y<lastY && y>200) show();
+    lastY=y;
+  },{passive:true});
+
+  // Close
+  document.getElementById('exit-close').addEventListener('click',hide);
+  bd.addEventListener('click',function(e){if(e.target===bd)hide()});
+
+  // Form
+  document.getElementById('exit-form').addEventListener('submit',async function(e){
+    e.preventDefault();
+    const msg=document.getElementById('exit-msg');
+    const fd=new FormData(this);
+    try{
+      const r=await fetch('https://agentes-api.luminari.agency/api/waitlist',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:fd.get('name'),phone:fd.get('phone'),agentType:'exit-intent'})
+      });
+      if(!r.ok) throw new Error();
+      msg.textContent='¡Listo! Te contactamos pronto 🎉';
+      msg.className='exit-msg ok';msg.style.display='block';
+      setTimeout(hide,2500);
+    }catch{
+      msg.textContent='Error, intenta de nuevo';
+      msg.className='exit-msg err';msg.style.display='block';
+    }
+  });
+})();
+</script>
