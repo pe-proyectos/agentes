@@ -473,13 +473,13 @@ const plans = [
       io.observe(el);
     });
     // === ROI Calculator ===
-    const plans_map: Record<string, number> = { '1': 80, '2': 80, '3': 80, '4': 250, '5': 250, '6': 250, '7': 250, '8': 400 };
+    const plans_map: Record<string, number> = { '1': 80, '2': 80, '3': 80, '4': 250, '5': 250, '6': 250, '7': 250, '8': 400, '24': 600 };
     const salarySlider = document.getElementById('calc-salary') as HTMLInputElement;
     const hoursSlider = document.getElementById('calc-hours') as HTMLInputElement;
     function updateCalc() {
       const salary = Number(salarySlider.value);
       const hours = Number(hoursSlider.value);
-      const aiPrice = hours <= 1 ? 80 : hours <= 4 ? 250 : 400;
+      const aiPrice = hours <= 1 ? 80 : hours <= 4 ? 250 : hours <= 8 ? 400 : 600;
       const savings = Math.max(0, salary - aiPrice);
       document.getElementById('calc-salary-val')!.textContent = `$${salary}`;
       document.getElementById('calc-hours-val')!.textContent = `${hours}h`;
