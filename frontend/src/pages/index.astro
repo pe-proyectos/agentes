@@ -356,7 +356,17 @@ const plans = [
     </div>
   </section>
 
-  <!-- WhatsApp float removed: needs real number -->
+  <!-- Floating CTA -->
+  <a href="#empezar" class="wa-float" aria-label="Empezar ahora">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.616l4.532-1.474A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.17 0-4.207-.69-5.87-1.882l-.42-.312-2.689.875.891-2.633-.345-.445A9.722 9.722 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12s-4.365 9.75-9.75 9.75z"/></svg>
+    <span>Empezar gratis</span>
+  </a>
+
+  <!-- Sticky mobile CTA bar -->
+  <div class="sticky-cta" id="sticky-cta">
+    <span>3 días gratis</span>
+    <a href="#empezar" class="btn-glow btn-sticky">Activar agente →</a>
+  </div>
 
   <!-- ===== FOOTER ===== -->
   <footer>
@@ -413,6 +423,25 @@ const plans = [
     salarySlider.addEventListener('input', updateCalc);
     hoursSlider.addEventListener('input', updateCalc);
     updateCalc();
+
+    // === Dynamic month in urgency badge ===
+    const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    const urgBadge = document.querySelector('.urgency-badge');
+    if (urgBadge) urgBadge.textContent = `⚡ Solo 3 cupos disponibles en ${months[new Date().getMonth()]}`;
+
+    // === Sticky CTA on scroll ===
+    const stickyCta = document.getElementById('sticky-cta');
+    const empezarSec = document.getElementById('empezar');
+    if (stickyCta && empezarSec) {
+      let lastY = 0;
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        const empRect = empezarSec.getBoundingClientRect();
+        const show = y > 400 && empRect.top > window.innerHeight;
+        stickyCta.classList.toggle('visible', show);
+        lastY = y;
+      }, { passive: true });
+    }
 
     // Fallback
     setTimeout(() => {
@@ -656,7 +685,15 @@ const plans = [
   .wa-float:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 6px 28px rgba(37,211,102,.5),0 4px 12px rgba(0,0,0,.2)}
   .wa-float svg{flex-shrink:0}
   @keyframes wafloat-in{from{opacity:0;transform:translateY(20px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
-  @media(max-width:600px){.wa-float span{display:none}.wa-float{padding:.9rem;border-radius:50%}}
+  @media(max-width:600px){.wa-float span{display:none}.wa-float{padding:.9rem;border-radius:50%;bottom:4.5rem}}
+
+  /* === STICKY MOBILE CTA === */
+  .sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:998;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:.65rem 1.25rem;display:none;align-items:center;justify-content:space-between;box-shadow:0 -4px 20px rgba(0,0,0,.08);transform:translateY(100%);transition:transform .3s ease}
+  .sticky-cta.visible{transform:translateY(0)}
+  .sticky-cta span{font-size:.82rem;font-weight:700;color:var(--green-d)}
+  .btn-sticky{font-size:.82rem!important;padding:.6rem 1.2rem!important;border-radius:100px!important;white-space:nowrap}
+  @media(max-width:900px){.sticky-cta{display:flex}}
+  @media(min-width:901px){.sticky-cta{display:none!important}}
 
   /* === RESPONSIVE === */
   @media(max-width:900px){
