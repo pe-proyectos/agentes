@@ -1,0 +1,401 @@
+---
+const title = "Agente AI para Inmobiliarias | Ventas WhatsApp 24/7 | AGENTES";
+const description = "Automatiza la atención de tu inmobiliaria por WhatsApp. Califica leads, envía info de propiedades y agenda visitas 24/7. Ideal para corredores e inmobiliarias en Perú. Prueba 3 días gratis.";
+const agent = { name: "Sofía", role: "Ventas", image: "/agents/sofia.png" };
+const benefits = [
+  { icon: "⚡", title: "Califica leads al instante", desc: "Tu agente pregunta presupuesto, zona y tipo de propiedad. Solo te llegan leads calificados." },
+  { icon: "🏠", title: "Envía info de propiedades", desc: "Fotos, precios, metraje y ubicación al instante. El cliente recibe todo sin esperar." },
+  { icon: "📅", title: "Agenda visitas automáticamente", desc: "Revisa tu disponibilidad, propone horarios y confirma. El prospecto solo elige cuándo." },
+  { icon: "🔄", title: "Follow-ups automáticos", desc: "Si un lead no responde, el agente hace seguimiento a las 24h, 48h y 7 días. No se escapa ninguno." },
+  { icon: "📊", title: "Atiende fines de semana", desc: "Los prospectos buscan departamentos sábados y domingos. Tu agente responde cuando tú descansas." },
+  { icon: "🛡️", title: "Respaldo humano", desc: "Si la consulta requiere negociación o es compleja, un humano toma el control sin que el cliente lo note." },
+];
+const painPoints = [
+  { problem: "Tus leads se enfrían porque tardas en responder", solution: "Tu agente responde en menos de 5 segundos, a cualquier hora" },
+  { problem: "Repites la misma info de propiedades todo el día", solution: "El agente envía fichas completas con fotos y precios al instante" },
+  { problem: "No tienes sistema de seguimiento y pierdes prospectos", solution: "Follow-ups automáticos a las 24h, 48h y 7 días" },
+  { problem: "Pierdes consultas de fines de semana y feriados", solution: "El agente atiende 24/7, incluyendo sábados, domingos y feriados" },
+];
+const conversation = [
+  { type: "in", text: "Hola, vi un departamento en Miraflores en su página. ¿Está disponible?", time: "10:15" },
+  { type: "out", text: "¡Hola! 👋 Sí, tenemos varios departamentos disponibles en Miraflores. Para ayudarte mejor:\n\n¿Cuántos dormitorios necesitas?\n¿Cuál es tu presupuesto aproximado?", time: "10:15" },
+  { type: "in", text: "Busco 2 dormitorios, máximo $120,000", time: "10:16" },
+  { type: "out", text: "¡Perfecto! Tengo 3 opciones para ti:\n\n🏠 Depa en Av. Pardo — 75m², 2 dorm, $115,000\n🏠 Depa en Ca. Berlín — 68m², 2 dorm, $108,000\n🏠 Depa en Av. Benavides — 80m², 2 dorm, $119,000\n\n¿Te gustaría agendar una visita a alguno?", time: "10:16" },
+  { type: "in", text: "El de Av. Pardo me interesa. ¿Puedo verlo este sábado?", time: "10:17" },
+  { type: "out", text: "✅ ¡Agendado!\n🏠 Depa Av. Pardo — 75m², 2 dorm\n📅 Sábado 10:00 AM\n📍 Av. Pardo 456, Miraflores\n👤 Te atenderá Ricardo, nuestro asesor\n\nTe enviaré un recordatorio el viernes. ¿Alguna pregunta adicional? 😊", time: "10:17" },
+];
+const testimonials = [
+  { text: "Antes respondía leads al día siguiente y ya no les interesaba. Ahora el agente los atiende al toque y yo solo cierro.", name: "Ricardo V.", role: "Corredor independiente · Lima", stars: 5 },
+  { text: "El follow-up automático es oro. Recuperamos prospectos que pensábamos perdidos. Se paga solo.", name: "Patricia H.", role: "Inmobiliaria · Surco", stars: 5 },
+  { text: "Los fines de semana era cuando más consultas llegaban y nadie respondía. Ahora Sofía atiende y agenda visitas sola.", name: "Fernando C.", role: "Constructora · San Isidro", stars: 5 },
+];
+const industries = [
+  "Inmobiliarias", "Corredores", "Constructoras", "Departamentos", "Casas",
+  "Terrenos", "Alquileres", "Proyectos nuevos",
+];
+---
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{title}</title>
+  <meta name="description" content={description}/>
+  <meta name="keywords" content="agente AI para inmobiliarias, WhatsApp inmobiliaria, ventas inmobiliarias WhatsApp, chatbot inmobiliaria, leads inmobiliarios"/>
+  <meta property="og:title" content={title}/>
+  <meta property="og:description" content={description}/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://agentes.luminari.agency/inmobiliarias"/>
+  <meta property="og:image" content="https://agentes.luminari.agency/og.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="canonical" href="https://agentes.luminari.agency/inmobiliarias"/>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Agente AI para Inmobiliarias",
+    "description": description,
+    "url": "https://agentes.luminari.agency/inmobiliarias",
+    "provider": { "@type": "Organization", "name": "Luminari", "url": "https://luminari.agency" },
+    "offers": {
+      "@type": "Offer",
+      "name": "Agente AI para Inmobiliarias",
+      "price": "80",
+      "priceCurrency": "USD",
+      "description": "Agente AI para calificación de leads y ventas inmobiliarias por WhatsApp"
+    }
+  })}></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script defer src="https://umami.luminari.agency/script.js" data-website-id="9a5bb1d1-9bc1-417a-8b4b-72b44044d168"></script>
+</head>
+<body>
+  <nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="/" class="logo">◆ AGENTES</a>
+    <div class="nav-r" id="nav-menu">
+      <a href="/#planes" class="nav-link">Planes</a>
+      <a href="/#faq" class="nav-link">FAQ</a>
+      <a href="/#empezar" class="nav-cta">Probar gratis →</a>
+    </div>
+  </nav>
+
+  <header class="uc-hero">
+    <div class="uc-hero-inner">
+      <span class="uc-tag">🏠 Para Inmobiliarias y Corredores</span>
+      <h1>Tu inmobiliaria cerrando<br/>ventas por <span class="glow-text">WhatsApp 24/7.</span></h1>
+      <p class="uc-sub">{agent.name} califica leads, envía info de propiedades y agenda visitas automáticamente. Tus prospectos atendidos al instante, tú enfocado en cerrar. <strong>Prueba 3 días gratis.</strong></p>
+      <div class="uc-btns">
+        <a href="/#empezar" class="btn-glow">Activar agente para mi inmobiliaria →</a>
+        <a href="#demo" class="btn-outline">Ver ejemplo ↓</a>
+      </div>
+      <div class="trust-badges">
+        <span class="trust-badge">✓ Setup en 24h</span>
+        <span class="trust-badge">✓ Sin tarjeta de crédito</span>
+        <span class="trust-badge">✓ Inmobiliarias en Lima ya lo usan</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Pain points -->
+  <section class="sec">
+    <span class="tag">El problema</span>
+    <h2>¿Te suena familiar?</h2>
+    <p class="sec-sub">Estos problemas le cuestan comisiones a tu inmobiliaria cada semana.</p>
+    <div class="pain-grid">
+      {painPoints.map(pp => (
+        <div class="pain-card">
+          <div class="pain-problem">
+            <span class="pain-x">✗</span>
+            <p>{pp.problem}</p>
+          </div>
+          <div class="pain-arrow">→</div>
+          <div class="pain-solution">
+            <span class="pain-check">✓</span>
+            <p>{pp.solution}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Demo conversation -->
+  <section class="sec alt-bg" id="demo">
+    <span class="tag">Ejemplo real</span>
+    <h2>Así atiende {agent.name} a tus prospectos</h2>
+    <p class="sec-sub">Conversación real de un agente AI calificando un lead y agendando una visita.</p>
+    <div class="demo-phone">
+      <div class="wa">
+        <div class="wa-top">
+          <span class="wa-back">‹</span>
+          <div class="wa-av">S</div>
+          <div><div class="wa-n">{agent.name} — {agent.role}</div><div class="wa-s">en línea</div></div>
+        </div>
+        <div class="wa-msgs">
+          <div class="wa-day">Hoy</div>
+          {conversation.map(m => (
+            <div class={`msg msg-${m.type}`}><p set:html={m.text.replace(/\n/g, '<br/>')}></p><span>{m.time}{m.type === 'out' ? ' ✓✓' : ''}</span></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="sec">
+    <span class="tag">Beneficios</span>
+    <h2>¿Qué hace un agente AI en tu inmobiliaria?</h2>
+    <div class="benefits-grid">
+      {benefits.map(b => (
+        <div class="benefit-card">
+          <span class="benefit-icon">{b.icon}</span>
+          <h3>{b.title}</h3>
+          <p>{b.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="sec alt-bg">
+    <span class="tag">Inmobiliarias que ya lo usan</span>
+    <h2>Lo que dicen nuestros clientes</h2>
+    <div class="test-grid">
+      {testimonials.map(t => (
+        <div class="test-card">
+          <div class="test-stars">{'★'.repeat(t.stars)}</div>
+          <p class="test-text">"{t.text}"</p>
+          <div class="test-author">
+            <strong>{t.name}</strong>
+            <span>{t.role}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="sec">
+    <span class="tag">Tipos de negocio</span>
+    <h2>Funciona para todo el sector inmobiliario</h2>
+    <p class="sec-sub">Configuramos tu agente con tus propiedades, precios, zonas y disponibilidad.</p>
+    <div class="spec-grid">
+      {industries.map(s => <span class="spec-chip">{s}</span>)}
+    </div>
+  </section>
+
+  <!-- ROI -->
+  <section class="sec alt-bg">
+    <span class="tag">Números reales</span>
+    <h2>El costo de no contestar</h2>
+    <div class="roi-box">
+      <div class="roi-item">
+        <span class="roi-num">8</span>
+        <p>leads que pierdes a la semana por responder tarde</p>
+      </div>
+      <div class="roi-item">
+        <span class="roi-num">×</span>
+        <p></p>
+      </div>
+      <div class="roi-item">
+        <span class="roi-num">S/2,000</span>
+        <p>comisión promedio por venta</p>
+      </div>
+      <div class="roi-item">
+        <span class="roi-num">=</span>
+        <p></p>
+      </div>
+      <div class="roi-item roi-total">
+        <span class="roi-num">S/64,000</span>
+        <p>que pierdes al año por no atender a tiempo</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;color:var(--text2);font-size:.95rem">
+      Un agente AI cuesta desde <strong>$80/mes (≈S/300)</strong>. Se paga solo con 1 venta.
+    </p>
+  </section>
+
+  <!-- Pricing quick -->
+  <section class="sec">
+    <span class="tag">Inversión</span>
+    <h2>Desde $80/mes</h2>
+    <p class="sec-sub">Menos que una comisión. Atiende leads las 24 horas.</p>
+    <div class="price-compare">
+      <div class="pc-item pc-human">
+        <h4>👤 Asistente de ventas</h4>
+        <p class="pc-price">~S/1,500/mes</p>
+        <ul>
+          <li>Horario de oficina</li>
+          <li>1 lead a la vez</li>
+          <li>No atiende fines de semana</li>
+        </ul>
+      </div>
+      <div class="pc-vs">VS</div>
+      <div class="pc-item pc-ai">
+        <h4>🤖 {agent.name} (Agente AI)</h4>
+        <p class="pc-price">Desde S/300/mes</p>
+        <ul>
+          <li>✓ 24/7, fines de semana incluidos</li>
+          <li>✓ Múltiples leads a la vez</li>
+          <li>✓ Respaldo humano incluido</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem">
+      <a href="/#planes" class="btn-outline-dark">Ver todos los planes →</a>
+    </div>
+  </section>
+
+  <section class="sec final-cta">
+    <h2>Tu inmobiliaria merece atención 24/7</h2>
+    <p>3 días gratis. Sin tarjeta de crédito. Tu agente activo en menos de 24 horas.</p>
+    <a href="/#empezar" class="btn-glow btn-lg">Activar agente para mi inmobiliaria →</a>
+  </section>
+
+  <footer>
+    <span>◆ AGENTES <span class="by">by Luminari</span></span>
+    <span class="copy">© 2026 Luminari</span>
+  </footer>
+
+<style is:global>
+  :root{--bg:#fafffe;--dark:#0a0f0d;--text:#1a2e23;--text2:#3d5a4a;--text3:#7a9484;--green:#25D366;--green-d:#128C7E;--green-dd:#075E54;--green-l:#DCF8C6;--border:rgba(0,60,30,0.08);--r:18px;--r-sm:10px;--mw:1100px;--font:'Inter',system-ui,sans-serif}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--bg)}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(10,15,13,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(37,211,102,0.08)}
+  .logo{font-size:.95rem;font-weight:800;letter-spacing:.12em;color:#fff;text-decoration:none}
+  .nav-r{display:flex;align-items:center;gap:1.5rem}
+  .nav-link{color:rgba(255,255,255,.65);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .2s}
+  .nav-link:hover{color:#fff}
+  .nav-cta{background:var(--green);color:#fff;padding:.55rem 1.2rem;border-radius:100px;font-size:.82rem;font-weight:600;text-decoration:none;transition:all .25s}
+  .nav-cta:hover{background:var(--green-d);transform:translateY(-1px)}
+
+  .uc-hero{background:var(--dark);padding:8rem 2.5rem 4rem;text-align:center;position:relative;overflow:hidden}
+  .uc-hero::before{content:'';position:absolute;inset:-20%;background:radial-gradient(ellipse at 50% 30%,rgba(37,211,102,.3),transparent 60%);filter:blur(80px);z-index:0}
+  .uc-hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+  .uc-tag{display:inline-block;background:rgba(37,211,102,.12);color:var(--green);padding:.4rem 1rem;border-radius:100px;font-size:.82rem;font-weight:600;margin-bottom:1.5rem}
+  .uc-hero h1{font-size:clamp(2rem,5vw,3.2rem);color:#fff;line-height:1.15;margin-bottom:1.25rem;font-weight:800}
+  .glow-text{background:linear-gradient(135deg,var(--green),#6ee7b7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .uc-sub{color:rgba(255,255,255,.7);font-size:1.05rem;max-width:550px;margin:0 auto 2rem}
+  .uc-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+  .trust-badges{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+  .trust-badge{color:rgba(255,255,255,.5);font-size:.78rem;font-weight:500}
+
+  .btn-glow{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;padding:.85rem 2rem;border-radius:100px;font-family:var(--font);font-size:.92rem;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:all .25s;border:none;cursor:pointer}
+  .btn-glow:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,211,102,.5)}
+  .btn-glow.btn-lg{padding:1rem 2.5rem;font-size:1.05rem}
+  .btn-outline{display:inline-flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.8);padding:.85rem 2rem;border-radius:100px;font-size:.92rem;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,.2);transition:all .25s}
+  .btn-outline:hover{border-color:rgba(255,255,255,.5);color:#fff}
+  .btn-outline-dark{display:inline-flex;align-items:center;gap:.5rem;color:var(--green-d);padding:.75rem 1.5rem;border-radius:100px;font-size:.88rem;font-weight:600;text-decoration:none;border:1.5px solid var(--green-d);transition:all .25s}
+  .btn-outline-dark:hover{background:var(--green-d);color:#fff}
+
+  .sec{padding:5rem 2.5rem;max-width:var(--mw);margin:0 auto}
+  .tag{display:inline-block;background:rgba(37,211,102,.08);color:var(--green-d);padding:.3rem .8rem;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.75rem}
+  .sec h2{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;margin-bottom:.5rem}
+  .sec-sub{color:var(--text2);font-size:1rem;max-width:550px;margin-bottom:2.5rem}
+  .alt-bg{background:linear-gradient(180deg,rgba(37,211,102,.03),transparent);max-width:100%;padding-left:2.5rem;padding-right:2.5rem}
+  .alt-bg>*{max-width:var(--mw);margin-left:auto;margin-right:auto}
+
+  .pain-grid{display:flex;flex-direction:column;gap:1rem;max-width:700px}
+  .pain-card{display:flex;align-items:center;gap:1rem;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.5rem;transition:all .25s}
+  .pain-card:hover{transform:translateX(4px);box-shadow:0 4px 20px rgba(0,0,0,.05)}
+  .pain-problem{display:flex;align-items:flex-start;gap:.5rem;flex:1;color:var(--text3)}
+  .pain-x{color:#e53e3e;font-weight:700;font-size:1.1rem;flex-shrink:0}
+  .pain-arrow{color:var(--green);font-weight:700;font-size:1.2rem;flex-shrink:0}
+  .pain-solution{display:flex;align-items:flex-start;gap:.5rem;flex:1;color:var(--text)}
+  .pain-check{color:var(--green);font-weight:700;font-size:1.1rem;flex-shrink:0}
+  .pain-card p{font-size:.88rem;line-height:1.45}
+
+  .demo-phone{max-width:420px;margin:2rem auto;border-radius:var(--r);overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.12);border:1px solid var(--border)}
+  .wa{background:#e5ddd5}
+  .wa-top{display:flex;align-items:center;gap:.5rem;background:var(--green-dd);color:#fff;padding:.6rem .8rem}
+  .wa-back{font-size:1.2rem;opacity:.7}
+  .wa-av{width:32px;height:32px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+  .wa-n{font-size:.85rem;font-weight:600}
+  .wa-s{font-size:.7rem;opacity:.7}
+  .wa-msgs{padding:.75rem;display:flex;flex-direction:column;gap:.35rem;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='%23e5ddd5'/%3E%3Cpath d='M30 30m-1 0a1 1 0 102 0 1 1 0 10-2 0' fill='%23d4cdc4' opacity='.3'/%3E%3C/svg%3E")}
+  .wa-day{text-align:center;font-size:.7rem;background:rgba(255,255,255,.85);color:#666;padding:.25rem .7rem;border-radius:6px;align-self:center;margin:.25rem 0}
+  .msg{max-width:85%;padding:.45rem .6rem .15rem;border-radius:8px;font-size:.82rem;line-height:1.45}
+  .msg p{margin-bottom:.15rem}
+  .msg span{display:block;text-align:right;font-size:.62rem;color:#999;margin-top:2px}
+  .msg-in{background:#fff;align-self:flex-start;border-top-left-radius:0}
+  .msg-out{background:var(--green-l);align-self:flex-end;border-top-right-radius:0}
+
+  .benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+  .benefit-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;transition:all .25s}
+  .benefit-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.06)}
+  .benefit-icon{font-size:1.5rem;display:block;margin-bottom:.5rem}
+  .benefit-card h3{font-size:1rem;font-weight:700;margin-bottom:.35rem}
+  .benefit-card p{font-size:.88rem;color:var(--text2);line-height:1.5}
+
+  .test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+  .test-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.5rem}
+  .test-stars{color:#f59e0b;font-size:1rem;margin-bottom:.75rem}
+  .test-text{font-size:.92rem;color:var(--text);line-height:1.5;margin-bottom:1rem;font-style:italic}
+  .test-author strong{display:block;font-size:.85rem}
+  .test-author span{font-size:.78rem;color:var(--text3)}
+
+  .spec-grid{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+  .spec-chip{background:rgba(37,211,102,.06);border:1px solid rgba(37,211,102,.15);color:var(--green-d);padding:.5rem 1rem;border-radius:100px;font-size:.82rem;font-weight:500}
+
+  .roi-box{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+  .roi-item{text-align:center;min-width:100px}
+  .roi-num{display:block;font-size:2rem;font-weight:800;color:var(--green-d)}
+  .roi-item p{font-size:.78rem;color:var(--text2);max-width:140px;margin:0 auto}
+  .roi-total .roi-num{color:#e53e3e;font-size:2.2rem}
+
+  .price-compare{display:flex;gap:1.5rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+  .pc-item{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.5rem 2rem;flex:1;min-width:250px;max-width:350px}
+  .pc-item h4{font-size:.95rem;margin-bottom:.5rem}
+  .pc-price{font-size:1.8rem;font-weight:800;margin-bottom:.75rem;color:var(--green-d)}
+  .pc-human .pc-price{color:var(--text3)}
+  .pc-item ul{list-style:none;font-size:.88rem;color:var(--text2)}
+  .pc-item li{padding:.25rem 0}
+  .pc-vs{font-size:1.2rem;font-weight:800;color:var(--text3)}
+
+  .final-cta{text-align:center;padding:5rem 2.5rem;max-width:100%;background:linear-gradient(180deg,transparent,rgba(37,211,102,.05))}
+  .final-cta h2{margin-bottom:.75rem}
+  .final-cta p{color:var(--text2);margin-bottom:2rem;font-size:1.05rem}
+
+  footer{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 2.5rem;border-top:1px solid var(--border);font-size:.82rem;font-weight:600;color:var(--text2)}
+  .by{font-weight:400;color:var(--text3)}
+  .copy{font-size:.75rem;color:var(--text3)}
+
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;z-index:101;flex-direction:column;gap:5px}
+  .nav-toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+  @media(max-width:600px){
+    .nav-toggle{display:flex}
+    .nav-r{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(10,15,13,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:1.5rem;gap:1rem;border-bottom:1px solid rgba(37,211,102,.1)}
+    .nav-r.open{display:flex}
+    .nav-link{display:block!important;font-size:1rem;padding:.5rem 0}
+    .nav-cta{text-align:center}
+    nav{padding:.75rem 1.25rem}
+    .nav-link{display:none}
+    .uc-hero{padding:6.5rem 1.25rem 3rem}
+    .sec{padding:3.5rem 1.25rem}
+    .price-compare{flex-direction:column}
+    .pain-card{flex-direction:column;text-align:center}
+    .pain-arrow{transform:rotate(90deg)}
+    .roi-box{flex-direction:column}
+    footer{flex-direction:column;gap:.5rem;text-align:center}
+  }
+</style>
+<script>
+  const navToggle = document.getElementById("nav-toggle");
+  const navMenu = document.getElementById("nav-menu");
+  if(navToggle && navMenu){
+    navToggle.addEventListener("click",()=>{
+      const open=navMenu.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded",String(open));
+    });
+    navMenu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+      navMenu.classList.remove("open");
+      navToggle.setAttribute("aria-expanded","false");
+    }));
+  }
+</script>
+</body>
+</html>
