@@ -26,7 +26,7 @@ const plans = [
   <link rel="canonical" href="https://agentes.luminari.agency"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
@@ -90,6 +90,15 @@ const plans = [
         <div class="phone-label">
           <span class="pl-dot"></span>
           Conversación real de un agente AI
+        </div>
+        <!-- Hand-drawn annotations -->
+        <div class="ann ann-ai">
+          <svg class="ann-arrow" width="50" height="40" viewBox="0 0 50 40"><path d="M45 5 C30 5, 15 10, 8 35" stroke="#25D366" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M3 28 L8 35 L14 30" stroke="#25D366" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>¡Esto lo hace la IA!</span>
+        </div>
+        <div class="ann ann-auto">
+          <span>Agenda sola 🤯</span>
+          <svg class="ann-arrow" width="50" height="40" viewBox="0 0 50 40"><path d="M5 5 C20 5, 35 10, 42 35" stroke="#25D366" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M36 30 L42 35 L47 28" stroke="#25D366" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
       </div>
     </section>
@@ -208,7 +217,7 @@ const plans = [
   <!-- ===== FOOTER ===== -->
   <footer>
     <span>◆ AGENTES <span class="by">by Luminari</span></span>
-    <span class="copy">© 2025 Luminari</span>
+    <span class="copy">© 2026 Luminari</span>
   </footer>
 
   <script>
@@ -341,6 +350,14 @@ const plans = [
   .phone-label{display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:rgba(255,255,255,.35);font-weight:500}
   .pl-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
   @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(37,211,102,.4)}50%{opacity:.6;box-shadow:0 0 0 5px rgba(37,211,102,0)}}
+
+  /* === ANNOTATIONS === */
+  .ann{position:absolute;z-index:3;font-family:'Caveat',cursive;font-size:1.1rem;font-weight:700;color:var(--green);display:flex;align-items:flex-start;gap:.2rem;white-space:nowrap;filter:drop-shadow(0 2px 8px rgba(0,0,0,.3))}
+  .ann-ai{top:35%;right:-80px}
+  .ann-ai span{margin-top:-5px}
+  .ann-auto{bottom:25%;left:-70px}
+  .ann-auto span{margin-top:-5px}
+  @media(max-width:900px){.ann{display:none}}
 
   /* === STATS BAR === */
   .stats-bar{background:#fff;border-bottom:1px solid var(--border);position:relative;z-index:2}
