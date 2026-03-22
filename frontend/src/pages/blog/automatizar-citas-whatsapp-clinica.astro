@@ -1,0 +1,166 @@
+---
+const title = "Cómo automatizar citas por WhatsApp en tu clínica o consultorio";
+const description = "Reduce llamadas perdidas y citas olvidadas. Un agente AI agenda, confirma y recuerda citas automáticamente por WhatsApp.";
+const date = "2026-03-18";
+const readTime = "6 min";
+---
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{title} — AGENTES</title>
+  <meta name="description" content={description}/>
+  <meta property="og:title" content={title}/>
+  <meta property="og:description" content={description}/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://agentes.luminari.agency/blog/automatizar-citas-whatsapp-clinica"/>
+  <link rel="canonical" href="https://agentes.luminari.agency/blog/automatizar-citas-whatsapp-clinica"/>
+  <script type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "datePublished": date,
+    "author": { "@type": "Organization", "name": "AGENTES by Luminari" },
+    "publisher": { "@type": "Organization", "name": "AGENTES by Luminari" }
+  })}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script defer src="https://umami.luminari.agency/script.js" data-website-id="9a5bb1d1-9bc1-417a-8b4b-72b44044d168"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#0a0a0f;--card:#12121a;--border:#1e1e2e;--green:#25D366;--green-d:#1da851;--text:#e4e4e7;--muted:#71717a}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.8}
+    a{color:var(--green);text-decoration:none}a:hover{text-decoration:underline}
+    nav{max-width:1100px;margin:0 auto;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between}
+    nav a{color:var(--text)}
+    .logo{font-weight:800;font-size:1.1rem;letter-spacing:-0.5px}
+    .nav-r a{margin-left:1.5rem;font-size:.9rem;color:var(--muted);transition:color .2s}
+    .nav-r a:hover{color:var(--green);text-decoration:none}
+    .nav-cta{background:var(--green)!important;color:#000!important;padding:.5rem 1.2rem;border-radius:8px;font-weight:600}
+    article{max-width:720px;margin:2rem auto 4rem;padding:0 2rem}
+    .breadcrumb{font-size:.85rem;color:var(--muted);margin-bottom:2rem}
+    .breadcrumb a{color:var(--muted)}.breadcrumb a:hover{color:var(--green)}
+    h1{font-size:2.2rem;font-weight:800;letter-spacing:-1px;line-height:1.2;margin-bottom:1rem}
+    .meta{color:var(--muted);font-size:.9rem;margin-bottom:2.5rem}
+    h2{font-size:1.5rem;font-weight:700;margin:2.5rem 0 1rem;letter-spacing:-0.5px}
+    p{margin-bottom:1.25rem;font-size:1.02rem}
+    ul,ol{margin:0 0 1.25rem 1.5rem}li{margin-bottom:.5rem}
+    strong{color:#fff}
+    .highlight{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:12px;padding:1.5rem;margin:2rem 0}
+    .chat-example{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin:2rem 0;font-size:.95rem}
+    .chat-example .msg{padding:.5rem .8rem;border-radius:10px;margin-bottom:.5rem;max-width:80%}
+    .chat-example .user{background:#1a3a2a;margin-left:auto;text-align:right}
+    .chat-example .bot{background:#1e1e2e}
+    .chat-example .label{font-size:.75rem;color:var(--muted);margin-bottom:.2rem}
+    .cta-box{background:linear-gradient(135deg,rgba(37,211,102,.1),rgba(37,211,102,.05));border:1px solid rgba(37,211,102,.3);border-radius:16px;padding:2rem;text-align:center;margin:3rem 0}
+    .cta-box h3{color:var(--green);margin-top:0}
+    .btn-glow{display:inline-block;background:var(--green);color:#000;font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;margin-top:1rem}
+    .btn-glow:hover{text-decoration:none;opacity:.9}
+    footer{text-align:center;padding:2rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="logo">◆ AGENTES</a>
+    <div class="nav-r">
+      <a href="/">Inicio</a>
+      <a href="/precios">Precios</a>
+      <a href="/blog">Blog</a>
+      <a href="/#empezar" class="nav-cta">Probar gratis →</a>
+    </div>
+  </nav>
+
+  <article>
+    <div class="breadcrumb"><a href="/">Inicio</a> / <a href="/blog">Blog</a> / Automatizar citas WhatsApp</div>
+    <h1>{title}</h1>
+    <p class="meta">{date} · {readTime} lectura</p>
+
+    <p>Si tienes una clínica o consultorio, conoces el problema: <strong>pacientes que llaman y nadie contesta</strong>, citas que se olvidan, WhatsApp que se llena de mensajes sin responder. Mientras tanto, estás atendiendo pacientes.</p>
+
+    <p>La solución no es contratar otra recepcionista. Es tener un <strong>agente AI en WhatsApp</strong> que haga el trabajo pesado por ti.</p>
+
+    <h2>El problema real de las clínicas en Perú</h2>
+    <ul>
+      <li><strong>30-40% de llamadas se pierden</strong> porque la recepcionista está ocupada</li>
+      <li><strong>20-25% de citas no se cumplen</strong> porque el paciente olvidó</li>
+      <li><strong>Horas pico:</strong> Lunes y martes por la mañana reciben el 60% de solicitudes</li>
+      <li><strong>WhatsApp sin responder:</strong> Mensajes de las 10pm que nadie lee hasta las 8am</li>
+    </ul>
+
+    <div class="highlight">
+      <strong>📊 Impacto económico:</strong> Una clínica con 20 citas/día que pierde el 25% deja de facturar aproximadamente S/3,000-5,000 al mes en citas no realizadas.
+    </div>
+
+    <h2>¿Cómo funciona un agente AI para citas?</h2>
+    <p>Así se ve una conversación real:</p>
+
+    <div class="chat-example">
+      <div class="msg user">
+        <div class="label">Paciente</div>
+        Hola, quiero agendar una cita con el Dr. García
+      </div>
+      <div class="msg bot">
+        <div class="label">🤖 Valentina (Agente AI)</div>
+        ¡Hola! 👋 Con gusto te agendo con el Dr. García. Tiene disponibilidad:<br/>
+        📅 Martes 25 — 10:00am, 3:00pm<br/>
+        📅 Miércoles 26 — 9:00am, 11:00am, 4:00pm<br/>
+        ¿Cuál te funciona mejor?
+      </div>
+      <div class="msg user">
+        <div class="label">Paciente</div>
+        El martes a las 10
+      </div>
+      <div class="msg bot">
+        <div class="label">🤖 Valentina</div>
+        ✅ Listo! Cita agendada:<br/>
+        👨‍⚕️ Dr. García<br/>
+        📅 Martes 25, 10:00am<br/>
+        📍 Consultorio 3, 2do piso<br/><br/>
+        Te enviaré un recordatorio el lunes por la noche. ¿Necesitas algo más?
+      </div>
+    </div>
+
+    <h2>¿Qué puede hacer el agente?</h2>
+    <ol>
+      <li><strong>Agendar citas</strong> — Muestra disponibilidad real y confirma al instante</li>
+      <li><strong>Enviar recordatorios</strong> — 24h y 2h antes de la cita</li>
+      <li><strong>Reagendar o cancelar</strong> — Sin llamar, sin esperar</li>
+      <li><strong>Responder preguntas frecuentes</strong> — Horarios, dirección, preparación para exámenes</li>
+      <li><strong>Escalar a humano</strong> — Si el paciente tiene una urgencia o pide hablar con alguien</li>
+    </ol>
+
+    <h2>Resultados reales</h2>
+    <ul>
+      <li>📉 <strong>Reducción del 70% en citas perdidas</strong> gracias a recordatorios automáticos</li>
+      <li>⚡ <strong>Tiempo de respuesta &lt; 5 segundos</strong> vs 2-4 horas promedio manual</li>
+      <li>📈 <strong>30% más citas agendadas</strong> porque los pacientes pueden agendar a cualquier hora</li>
+      <li>😊 <strong>Recepcionista menos estresada</strong> — se enfoca en atención presencial</li>
+    </ul>
+
+    <h2>¿Cuánto cuesta?</h2>
+    <p>Con AGENTES, el agente de citas comienza desde <strong>S/300/mes</strong> (plan Básico con 1h/día). Para clínicas con alto volumen, el plan Profesional (S/750/mes) incluye 4h/día y seguimiento activo.</p>
+
+    <p>Compáralo con una recepcionista adicional: <strong>S/1,500+/mes</strong> con beneficios, que solo trabaja 8 horas y no responde de noche ni fines de semana.</p>
+
+    <h2>Cómo empezar</h2>
+    <ol>
+      <li>Regístrate para la <strong>prueba gratis de 3 días</strong></li>
+      <li>Nos compartes tus horarios, doctores y servicios</li>
+      <li>Configuramos el agente en menos de 24 horas</li>
+      <li>Recibes un número de WhatsApp listo para recibir pacientes</li>
+    </ol>
+
+    <div class="cta-box">
+      <h3>Deja de perder pacientes por no contestar a tiempo</h3>
+      <p>Prueba un agente AI que agenda citas por WhatsApp. 3 días gratis, sin compromiso.</p>
+      <a href="/#empezar" class="btn-glow">Activar prueba gratis →</a>
+    </div>
+  </article>
+
+  <footer>
+    <p>© 2026 AGENTES by Luminari. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
