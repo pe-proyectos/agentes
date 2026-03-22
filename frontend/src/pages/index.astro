@@ -148,16 +148,9 @@
       position: relative;
       overflow: hidden;
       border-radius: var(--radius);
-      min-height: 320px;
     }
     .carousel-slide {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      opacity: 0;
-      transform: translateX(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      pointer-events: none;
-      display: flex;
+      display: none;
       align-items: center;
       gap: 40px;
       padding: 48px 40px;
@@ -165,12 +158,10 @@
       backdrop-filter: blur(16px);
       border: 1px solid rgba(37,211,102,0.15);
       border-radius: var(--radius);
+      animation: fadeIn 0.5s ease;
     }
     .carousel-slide.active {
-      opacity: 1;
-      transform: translateX(0);
-      pointer-events: all;
-      position: relative;
+      display: flex;
     }
     .carousel-slide .slide-icon {
       flex-shrink: 0;
