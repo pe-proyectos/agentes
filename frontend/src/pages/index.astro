@@ -48,6 +48,18 @@ const plans = [
       "bestRating": "5"
     }
   })}></script>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "¿Qué pasa si la IA no sabe responder?", "acceptedAnswer": { "@type": "Answer", "text": "Cada agente tiene respaldo humano. Si la IA no puede resolver algo, un humano de nuestro equipo toma el control de la conversación sin que el cliente lo note." }},
+      { "@type": "Question", "name": "¿Necesito un número de WhatsApp nuevo?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, te proporcionamos un número dedicado ya configurado. También podemos integrarlo con tu número existente según el plan." }},
+      { "@type": "Question", "name": "¿Cuánto tarda en estar listo?", "acceptedAnswer": { "@type": "Answer", "text": "Menos de 24 horas. Nos cuentas qué necesitas, configuramos el agente con tu información y lo activamos." }},
+      { "@type": "Question", "name": "¿Puedo cancelar cuando quiera?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, sin penalidades ni contratos a largo plazo. Pagas mes a mes." }},
+      { "@type": "Question", "name": "¿Los precios son en dólares o soles?", "acceptedAnswer": { "@type": "Answer", "text": "Los precios están en dólares (USD). Aceptamos Yape, Plin, transferencia bancaria, y tarjetas VISA." }},
+      { "@type": "Question", "name": "¿Qué tipo de negocios atienden?", "acceptedAnswer": { "@type": "Answer", "text": "Clínicas, consultorios, tiendas, restaurantes, inmobiliarias — cualquier negocio que atienda clientes por WhatsApp." }}
+    ]
+  })}></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -72,6 +84,7 @@ const plans = [
         <a href="#calculadora" class="nav-link">Ahorro</a>
         <a href="#agentes" class="nav-link">Equipo</a>
         <a href="#planes" class="nav-link">Planes</a>
+        <a href="/precios" class="nav-link">Precios</a>
         <a href="#faq" class="nav-link">FAQ</a>
         <a href="#empezar" class="nav-cta">Probar gratis →</a>
       </div>
