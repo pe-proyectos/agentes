@@ -24,6 +24,30 @@ const plans = [
   <meta name="twitter:card" content="summary_large_image"/>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
   <link rel="canonical" href="https://agentes.luminari.agency"/>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AGENTES by Luminari",
+    "applicationCategory": "BusinessApplication",
+    "description": "Agentes AI autónomos con respaldo humano para WhatsApp. Ventas, soporte y agendamiento automatizado.",
+    "url": "https://agentes.luminari.agency",
+    "offers": [
+      { "@type": "Offer", "name": "Básico", "price": "80", "priceCurrency": "USD", "description": "1 agente AI, 1h/día, respaldo humano" },
+      { "@type": "Offer", "name": "Pro", "price": "250", "priceCurrency": "USD", "description": "1 agente AI, 4h/día, respaldo prioritario" },
+      { "@type": "Offer", "name": "Full", "price": "400", "priceCurrency": "USD", "description": "1 agente dedicado, 8h/día, respaldo 24/7" }
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Luminari",
+      "url": "https://luminari.agency"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "ratingCount": "3",
+      "bestRating": "5"
+    }
+  })}></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
