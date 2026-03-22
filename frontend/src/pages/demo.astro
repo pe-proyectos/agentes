@@ -1,0 +1,366 @@
+---
+const scenarios = [
+  { id: 'ventas', name: 'Sofía — Ventas', avatar: 'S', color: '#25D366' },
+  { id: 'citas', name: 'Valentina — Citas', avatar: 'V', color: '#a855f7' },
+  { id: 'soporte', name: 'Carlos — Soporte', avatar: 'C', color: '#3b82f6' },
+];
+---
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Demo Interactiva — Prueba un Agente AI en vivo | AGENTES</title>
+  <meta name="description" content="Prueba gratis cómo un agente AI responde por WhatsApp. Demo interactiva: ventas, citas y soporte. Sin registro."/>
+  <meta property="og:title" content="Demo Interactiva — Prueba un Agente AI | AGENTES"/>
+  <meta property="og:description" content="Escríbele a un agente AI y mira cómo responde en tiempo real. Sin registro."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://agentes.luminari.agency/demo"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="canonical" href="https://agentes.luminari.agency/demo"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script defer src="https://umami.luminari.agency/script.js" data-website-id="9a5bb1d1-9bc1-417a-8b4b-72b44044d168"></script>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Demo Interactiva — Agentes AI por WhatsApp",
+    "description": "Prueba gratis cómo un agente AI responde por WhatsApp. Demo interactiva sin registro.",
+    "url": "https://agentes.luminari.agency/demo"
+  })}></script>
+</head>
+<body>
+  <nav>
+    <a href="/" class="logo">◆ AGENTES</a>
+    <div class="nav-r">
+      <a href="/#agentes" class="nav-link">Equipo</a>
+      <a href="/#planes" class="nav-link">Planes</a>
+      <a href="/blog" class="nav-link">Blog</a>
+      <a href="/#empezar" class="nav-cta">Probar gratis →</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="demo-hero">
+      <span class="tag">Demo en vivo</span>
+      <h1>Habla con un agente AI.<br/><span class="glow">Ahora mismo.</span></h1>
+      <p>Elige un agente y escríbele como si fueras un cliente. Mira cómo responde en tiempo real.</p>
+    </section>
+
+    <section class="demo-picker">
+      {scenarios.map((s, i) => (
+        <button class={`pick-btn ${i === 0 ? 'active' : ''}`} data-scenario={s.id}>
+          <span class="pick-av" style={`background:${s.color}22;color:${s.color}`}>{s.avatar}</span>
+          <span class="pick-name">{s.name}</span>
+        </button>
+      ))}
+    </section>
+
+    <section class="demo-chat-wrap">
+      <div class="phone-frame">
+        <div class="ph-notch"></div>
+        <div class="wa">
+          <div class="wa-top">
+            <a href="/" class="wa-back">‹</a>
+            <div class="wa-av" id="chat-avatar">S</div>
+            <div>
+              <div class="wa-name" id="chat-name">Sofía — Ventas</div>
+              <div class="wa-status" id="chat-status">en línea</div>
+            </div>
+          </div>
+          <div class="wa-msgs" id="chat-msgs">
+            <div class="wa-day">Hoy</div>
+            <div class="msg msg-out"><p>Hola, quiero saber más sobre su servicio</p><span class="time">Ahora</span></div>
+          </div>
+          <div class="wa-typing" id="typing" style="display:none">
+            <div class="typing-dots"><span></span><span></span><span></span></div>
+          </div>
+          <form class="wa-input" id="chat-form">
+            <input type="text" id="chat-input" placeholder="Escribe un mensaje..." autocomplete="off"/>
+            <button type="submit" aria-label="Enviar">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="demo-hints">
+        <h3>💡 Prueba estas frases:</h3>
+        <div class="hints-list" id="hints-list"></div>
+        <div class="demo-cta">
+          <p>¿Te gustó cómo responde?</p>
+          <a href="/#empezar" class="btn-glow">Activa tu agente gratis →</a>
+          <a href="https://wa.me/51987654321?text=Hola%21%20Vi%20la%20demo%20y%20quiero%20probar%20un%20agente%20AI.%20%F0%9F%9A%80" target="_blank" rel="noopener" class="wa-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.616l4.532-1.474A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.17 0-4.207-.69-5.87-1.882l-.42-.312-2.689.875.891-2.633-.345-.445A9.722 9.722 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12s-4.365 9.75-9.75 9.75z"/></svg>
+            O escríbenos por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>◆ AGENTES <span class="by">by Luminari</span></span>
+    <span class="copy">© 2026 Luminari</span>
+  </footer>
+
+  <script>
+  // === CONVERSATION ENGINE ===
+  const conversations = {
+    ventas: {
+      avatar: 'S', name: 'Sofía — Ventas', greeting: '¡Hola! 👋 Soy Sofía, tu agente de ventas AI. ¿En qué puedo ayudarte?',
+      hints: ['¿Cuánto cuesta?', '¿Tienen descuentos?', 'Quiero comprar', '¿Hacen envíos a provincia?', '¿Aceptan Yape?'],
+      responses: {
+        precio: ['Nuestro plan más popular es el Pro a $250/mes. Incluye 4 horas diarias de atención AI + respaldo humano. ¿Te cuento qué incluye? 📋', '¡Claro! Tenemos 3 planes:\n\n• Básico: $80/mes (1h/día)\n• Pro: $250/mes (4h/día) ⭐\n• Full: $400/mes (8h/día)\n\nTodos incluyen 3 días de prueba gratis. ¿Cuál te interesa?'],
+        descuento: ['¡Sí! Si contratas el plan anual, te damos 2 meses gratis. 🎁 Además, los primeros 3 días son de prueba sin costo. ¿Quieres que te active la prueba?'],
+        comprar: ['¡Excelente decisión! 🚀 Para activarte la prueba gratis de 3 días, necesito:\n\n1. Tu nombre\n2. Nombre de tu negocio\n3. ¿Qué tipo de agente necesitas? (ventas, soporte, citas)\n\n¿Me los compartes?'],
+        envio: ['¡Sí! Nuestro servicio es 100% digital — funciona en todo Perú y Latinoamérica. Solo necesitas WhatsApp. 🌎 ¿De dónde nos escribes?'],
+        pago: ['Aceptamos todos los métodos:\n\n• Yape ✅\n• Plin ✅\n• Transferencia BCP/BBVA ✅\n• Tarjeta VISA ✅\n\n¿Quieres que te genere un link de pago? 💳'],
+        default: ['¡Interesante pregunta! Déjame ayudarte. Nuestros agentes AI manejan ventas, soporte y citas por WhatsApp. ¿Qué necesita tu negocio? 🤔', 'Con gusto te ayudo. ¿Me cuentas un poco más sobre tu negocio? Así te recomiendo el mejor plan. 😊', '¡Buena pregunta! Te puedo agendar una demo personalizada de 15 minutos para mostrarte todo en detalle. ¿Te parece? 📅']
+      }
+    },
+    citas: {
+      avatar: 'V', name: 'Valentina — Citas', greeting: '¡Hola! 😊 Soy Valentina. Te ayudo a agendar tu cita. ¿Con qué especialista necesitas?',
+      hints: ['Quiero una cita con el doctor', '¿Tienen horarios disponibles mañana?', '¿Cuánto cuesta la consulta?', 'Necesito cancelar mi cita', '¿Atienden los sábados?'],
+      responses: {
+        cita: ['¡Claro! Tenemos disponibilidad esta semana. 📅\n\n• Martes 10:00 AM\n• Miércoles 3:00 PM\n• Jueves 11:00 AM\n\n¿Cuál horario te queda mejor?', 'Con gusto te agendo. ¿Me confirmas tu nombre completo y un número de contacto? Así te reservo el horario. 📝'],
+        horario: ['¡Sí! Mañana tenemos estos horarios disponibles:\n\n🕐 9:00 AM\n🕐 11:30 AM\n🕐 2:00 PM\n🕐 4:30 PM\n\n¿Cuál prefieres? Te lo reservo ahora mismo. ✅'],
+        precio: ['La consulta general es S/80. Primera consulta incluye evaluación completa. 💊\n\n¿Quieres que te agende? Tenemos horarios disponibles esta semana.'],
+        cancelar: ['Sin problema. Para cancelar necesito:\n\n1. Tu nombre completo\n2. Fecha de la cita\n\n¿Me los compartes? La cancelación es gratuita si es con 24h de anticipación. ✅'],
+        sabado: ['¡Sí atendemos sábados! 🗓️ Horario: 9:00 AM a 1:00 PM.\n\nEste sábado tenemos 3 horarios disponibles. ¿Te reservo uno?'],
+        default: ['Te ayudo a coordinar tu cita. ¿Me dices qué día y hora te conviene? Reviso disponibilidad al instante. 📅', '¡Con gusto! Para agendarte necesito tu nombre y horario preferido. ¿Me los compartes? 😊']
+      }
+    },
+    soporte: {
+      avatar: 'C', name: 'Carlos — Soporte', greeting: '¡Hola! 👋 Soy Carlos, tu agente de soporte. ¿En qué puedo ayudarte hoy?',
+      hints: ['Tengo un problema con mi pedido', '¿Cuál es el horario de atención?', 'Quiero hacer un reclamo', '¿Cómo hago una devolución?', 'Mi pago no se procesó'],
+      responses: {
+        pedido: ['Lamento el inconveniente. 😟 Para ayudarte necesito tu número de pedido o el correo con el que compraste. ¿Me lo compartes?\n\nLo reviso al instante. 🔍'],
+        horario: ['Nuestro horario de atención:\n\n📅 Lunes a Viernes: 8:00 AM - 8:00 PM\n📅 Sábados: 9:00 AM - 2:00 PM\n📅 Domingos: Cerrado\n\n¡Pero yo estoy disponible 24/7! 🤖 ¿En qué te ayudo?'],
+        reclamo: ['Entiendo tu frustración y quiero ayudarte. 🙏\n\nPor favor, cuéntame:\n1. ¿Qué pasó?\n2. ¿Cuándo ocurrió?\n3. ¿Tienes número de pedido?\n\nLo escalo al equipo de inmediato.'],
+        devolucion: ['Las devoluciones son fáciles:\n\n1️⃣ Escríbenos con tu # de pedido\n2️⃣ Te enviamos la etiqueta de envío\n3️⃣ Dejas el paquete en la agencia\n4️⃣ Reembolso en 3-5 días hábiles\n\n¿Quieres iniciar una? 📦'],
+        pago: ['¡Tranquilo! Los pagos pueden demorar hasta 10 minutos en procesarse. ⏳\n\n¿Podrías verificar:\n• ¿El monto fue debitado de tu cuenta?\n• ¿Recibiste email de confirmación?\n\nSi el cobro se hizo pero no ves tu pedido, lo verifico manualmente. 🔧'],
+        default: ['Entendido. Déjame buscar la mejor solución para ti. ¿Me das un momento? 🔍', '¡Con gusto te ayudo! Cuéntame más detalles para resolver esto lo más rápido posible. 💪']
+      }
+    }
+  };
+
+  let current = 'ventas';
+  let msgCount = 0;
+  const maxMsgs = 15;
+
+  function findResponse(scenario, text) {
+    const t = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const r = conversations[scenario].responses;
+    
+    const rules = [
+      [/cuanto|cuesta|precio|costo|tarifa|cobr/, 'precio'],
+      [/descuento|oferta|promoci|rebaj/, 'descuento'],
+      [/comprar|contratar|quiero|activar|adquirir/, 'comprar'],
+      [/envio|provincia|lima|departamento|region/, 'envio'],
+      [/yape|plin|pago|visa|tarjeta|transferen/, 'pago'],
+      [/cita|agenda|reserv|turno|consulta/, 'cita'],
+      [/horario|disponib|manana|hoy|semana|hora/, 'horario'],
+      [/cancel|anular/, 'cancelar'],
+      [/sabado|domingo|fin de semana/, 'sabado'],
+      [/pedido|orden|compra|envio|paquete/, 'pedido'],
+      [/reclamo|queja|inconveniente|problema|mal/, 'reclamo'],
+      [/devolu|reembolso|cambio|regres/, 'devolucion'],
+      [/pago|cobr|debito|cargo|transfer/, 'pago'],
+    ];
+
+    for (const [regex, key] of rules) {
+      if (regex.test(t) && r[key]) {
+        const arr = r[key];
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+    }
+    const def = r.default;
+    return def[Math.floor(Math.random() * def.length)];
+  }
+
+  function addMessage(text, isOut) {
+    const msgs = document.getElementById('chat-msgs');
+    const div = document.createElement('div');
+    div.className = `msg ${isOut ? 'msg-out' : 'msg-in'} msg-new`;
+    const now = new Date();
+    const time = `${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
+    div.innerHTML = `<p>${text.replace(/\n/g, '<br/>')}</p><span class="time">${time}${isOut ? ' ✓✓' : ''}</span>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function showTyping() {
+    document.getElementById('typing').style.display = 'flex';
+    document.getElementById('chat-status').textContent = 'escribiendo...';
+  }
+
+  function hideTyping() {
+    document.getElementById('typing').style.display = 'none';
+    document.getElementById('chat-status').textContent = 'en línea';
+  }
+
+  function switchScenario(id) {
+    current = id;
+    msgCount = 0;
+    const s = conversations[id];
+    document.getElementById('chat-avatar').textContent = s.avatar;
+    document.getElementById('chat-name').textContent = s.name;
+    document.getElementById('chat-status').textContent = 'en línea';
+    
+    const msgs = document.getElementById('chat-msgs');
+    msgs.innerHTML = '<div class="wa-day">Hoy</div>';
+    
+    // Show greeting after short delay
+    setTimeout(() => {
+      showTyping();
+      setTimeout(() => {
+        hideTyping();
+        addMessage(s.greeting, false);
+      }, 800);
+    }, 300);
+
+    // Update hints
+    const hints = document.getElementById('hints-list');
+    hints.innerHTML = s.hints.map(h => `<button class="hint-btn">${h}</button>`).join('');
+    hints.querySelectorAll('.hint-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('chat-input').value = btn.textContent;
+        document.getElementById('chat-form').dispatchEvent(new Event('submit'));
+      });
+    });
+
+    // Update picker
+    document.querySelectorAll('.pick-btn').forEach(b => b.classList.toggle('active', b.dataset.scenario === id));
+  }
+
+  // Init
+  document.querySelectorAll('.pick-btn').forEach(btn => {
+    btn.addEventListener('click', () => switchScenario(btn.dataset.scenario));
+  });
+
+  document.getElementById('chat-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if (!text || msgCount >= maxMsgs) return;
+    
+    input.value = '';
+    msgCount++;
+    addMessage(text, true);
+
+    if (msgCount >= maxMsgs) {
+      setTimeout(() => {
+        addMessage('Has alcanzado el límite de la demo. ¡Activa tu agente real para conversaciones ilimitadas! 🚀 <a href="/#empezar" style="color:#128C7E;font-weight:600">Probar gratis →</a>', false);
+      }, 500);
+      return;
+    }
+
+    // Simulate typing delay
+    const delay = 600 + Math.random() * 1200;
+    showTyping();
+    setTimeout(() => {
+      hideTyping();
+      const response = findResponse(current, text);
+      addMessage(response, false);
+      window.umami?.track('demo-message', { scenario: current, msgCount });
+    }, delay);
+  });
+
+  // Boot
+  switchScenario('ventas');
+  </script>
+
+  <style is:global>
+    :root{--bg:#fafffe;--dark:#0a0f0d;--text:#1a2e23;--text2:#3d5a4a;--text3:#7a9484;--green:#25D366;--green-d:#128C7E;--green-dd:#075E54;--green-l:#DCF8C6;--border:rgba(0,60,30,0.08);--r:18px;--r-sm:10px;--mw:1100px;--font:'Inter',system-ui,sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--bg)}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(250,255,254,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .logo{font-size:.95rem;font-weight:800;letter-spacing:.12em;color:var(--dark);text-decoration:none}
+    .nav-r{display:flex;align-items:center;gap:1.5rem}
+    .nav-link{font-size:.85rem;color:var(--text2);text-decoration:none;font-weight:500;transition:color .15s}
+    .nav-link:hover{color:var(--text)}
+    .nav-cta{font-size:.82rem;font-weight:600;color:#fff;background:var(--green);padding:.45rem 1.1rem;border-radius:100px;text-decoration:none;transition:all .2s}
+    .nav-cta:hover{background:#2ee072}
+
+    main{max-width:var(--mw);margin:0 auto;padding:6rem 2rem 3rem}
+
+    .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--green-d);background:rgba(37,211,102,.08);padding:.25rem .7rem;border-radius:100px;margin-bottom:.75rem}
+
+    .demo-hero{text-align:center;padding:2rem 0 2.5rem}
+    .demo-hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.02em;line-height:1.15;margin-bottom:.75rem}
+    .glow{color:var(--green);text-shadow:0 0 30px rgba(37,211,102,.2)}
+    .demo-hero p{color:var(--text2);font-size:1rem;max-width:500px;margin:0 auto}
+
+    .demo-picker{display:flex;justify-content:center;gap:.75rem;margin-bottom:2.5rem;flex-wrap:wrap}
+    .pick-btn{display:flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;background:#fff;border:1.5px solid var(--border);border-radius:100px;cursor:pointer;font-family:var(--font);font-size:.85rem;font-weight:600;color:var(--text);transition:all .2s}
+    .pick-btn:hover{border-color:var(--green);background:rgba(37,211,102,.03)}
+    .pick-btn.active{border-color:var(--green);background:rgba(37,211,102,.06);box-shadow:0 0 0 3px rgba(37,211,102,.1)}
+    .pick-av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800}
+
+    .demo-chat-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+
+    .phone-frame{background:#111;border-radius:36px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,.15),0 0 0 1px rgba(0,0,0,.05);max-width:380px;margin:0 auto;position:relative}
+    .ph-notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:90px;height:20px;background:#111;border-radius:0 0 14px 14px;z-index:5}
+    .wa{border-radius:28px;overflow:hidden;background:#ECE5DD;display:flex;flex-direction:column;height:580px}
+    .wa-top{background:var(--green-dd);color:#fff;padding:1.8rem .8rem .6rem;display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+    .wa-back{font-size:1.1rem;opacity:.7;text-decoration:none;color:#fff}
+    .wa-av{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700}
+    .wa-name{font-size:.8rem;font-weight:600}
+    .wa-status{font-size:.62rem;opacity:.7}
+    .wa-msgs{flex:1;overflow-y:auto;padding:.5rem;display:flex;flex-direction:column;gap:.25rem;scroll-behavior:smooth}
+    .wa-day{text-align:center;font-size:.6rem;color:#8696a0;background:rgba(255,255,255,.8);padding:.15rem .5rem;border-radius:6px;align-self:center;margin:.15rem 0}
+    .msg{max-width:85%;padding:.45rem .6rem;border-radius:7px;font-size:.78rem;line-height:1.45;animation:none}
+    .msg-new{animation:msgIn .3s ease-out}
+    @keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .msg .time{display:block;text-align:right;font-size:.55rem;color:#8696a0;margin-top:.1rem}
+    .msg p{word-break:break-word}
+    .msg p a{color:var(--green-d);text-decoration:underline}
+    .msg-in{background:#fff;align-self:flex-start;border-radius:0 7px 7px 7px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+    .msg-out{background:var(--green-l);align-self:flex-end;border-radius:7px 0 7px 7px}
+
+    .wa-typing{display:flex;align-items:center;padding:.3rem .6rem;align-self:flex-start}
+    .typing-dots{background:#fff;border-radius:12px;padding:.45rem .6rem;display:flex;gap:3px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+    .typing-dots span{width:6px;height:6px;background:#8696a0;border-radius:50%;animation:typeDot 1.4s infinite}
+    .typing-dots span:nth-child(2){animation-delay:.2s}
+    .typing-dots span:nth-child(3){animation-delay:.4s}
+    @keyframes typeDot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+
+    .wa-input{display:flex;gap:.5rem;padding:.4rem;background:#f0f2f5;flex-shrink:0}
+    .wa-input input{flex:1;padding:.55rem .8rem;border-radius:20px;border:none;background:#fff;font-family:var(--font);font-size:.82rem;outline:none}
+    .wa-input button{width:36px;height:36px;border-radius:50%;background:var(--green);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;transition:background .15s;flex-shrink:0}
+    .wa-input button:hover{background:#2ee072}
+
+    .demo-hints{padding-top:1rem}
+    .demo-hints h3{font-size:.95rem;margin-bottom:1rem}
+    .hints-list{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+    .hint-btn{padding:.45rem .9rem;background:#fff;border:1px solid var(--border);border-radius:100px;font-family:var(--font);font-size:.8rem;color:var(--text2);cursor:pointer;transition:all .2s}
+    .hint-btn:hover{border-color:var(--green);color:var(--green-d);background:rgba(37,211,102,.04)}
+
+    .demo-cta{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;text-align:center}
+    .demo-cta p{font-size:.9rem;font-weight:600;margin-bottom:1rem}
+    .btn-glow{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font);font-size:.9rem;font-weight:700;color:var(--dark);background:var(--green);padding:.8rem 1.8rem;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:all .25s;box-shadow:0 0 20px rgba(37,211,102,.15),0 4px 14px rgba(37,211,102,.2)}
+    .btn-glow:hover{background:#2ee072;transform:translateY(-1px);box-shadow:0 0 30px rgba(37,211,102,.25),0 6px 20px rgba(37,211,102,.3)}
+    .wa-link{display:flex;align-items:center;justify-content:center;gap:.4rem;margin-top:.75rem;color:var(--green);font-weight:600;font-size:.85rem;text-decoration:none}
+    .wa-link:hover{opacity:.8}
+
+    footer{border-top:1px solid var(--border);padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;max-width:var(--mw);margin:0 auto;font-size:.82rem;font-weight:700;letter-spacing:.06em;color:var(--green-dd)}
+    .by{font-weight:400;color:var(--text3);letter-spacing:0}
+    .copy{font-size:.75rem;color:var(--text3);font-weight:400;letter-spacing:0}
+
+    @media(max-width:900px){
+      .demo-chat-wrap{grid-template-columns:1fr}
+      .phone-frame{max-width:100%}
+      .wa{height:500px}
+      main{padding:5rem 1rem 2rem}
+      nav{padding:.75rem 1.25rem}
+    }
+    @media(max-width:600px){
+      .nav-r{gap:.75rem}
+      .nav-link{display:none}
+    }
+  </style>
+</body>
+</html>
