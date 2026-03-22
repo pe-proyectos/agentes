@@ -389,7 +389,27 @@ const plans = [
         const r = await fetch('https://agentes-api.luminari.agency/api/waitlist', {
           method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data)
         });
-        if (r.ok) { msg.textContent = '🎉 ¡Recibido! Te contactamos en menos de 24h.'; msg.className = 'form-msg ok'; form.reset(); window.umami?.track('waitlist-submit', { agentType: data.agentType }); }
+        if (r.ok) {
+          window.umami?.track('waitlist-submit', { agentType: data.agentType });
+          const userName = data.name;
+          const userPhone = data.phone?.toString().replace(/\D/g, '') || '';
+          form.reset();
+          // Show success state
+          form.style.display = 'none';
+          const successDiv = document.createElement('div');
+          successDiv.className = 'form-success';
+          successDiv.innerHTML = `
+            <div class="success-icon">🎉</div>
+            <h3>¡Listo, ${userName}!</h3>
+            <p>Tu solicitud fue recibida. Para activar tu prueba gratis más rápido, escríbenos por WhatsApp:</p>
+            <a href="https://wa.me/51987654321?text=${encodeURIComponent(`Hola! Soy ${userName}, acabo de registrarme en AGENTES para una prueba gratis. 🚀`)}" target="_blank" rel="noopener" class="btn-glow btn-full wa-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.616l4.532-1.474A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.17 0-4.207-.69-5.87-1.882l-.42-.312-2.689.875.891-2.633-.345-.445A9.722 9.722 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12s-4.365 9.75-9.75 9.75z"/></svg>
+              Escribir por WhatsApp
+            </a>
+            <p class="success-sub">O espera, te contactamos en menos de 24h 📩</p>
+          `;
+          form.parentNode?.insertBefore(successDiv, form);
+        }
         else { const j = await r.json(); throw new Error(j.message || 'Error'); }
       } catch (err: any) { msg.textContent = '❌ ' + err.message; msg.className = 'form-msg err'; }
       finally { btn.disabled = false; btn.textContent = 'Activar prueba gratis →'; }
@@ -677,6 +697,13 @@ const plans = [
   .urgency-badge{display:inline-block;font-size:.78rem;font-weight:700;color:#dc2626;background:#fef2f2;border:1px solid #fecaca;padding:.35rem .9rem;border-radius:100px;margin-bottom:.5rem}
   .form-msg{font-size:.83rem;text-align:center;min-height:1.2em}
   .form-msg.ok{color:var(--green-d)} .form-msg.err{color:#dc2626}
+  .form-success{text-align:center;padding:2rem 1rem}
+  .form-success .success-icon{font-size:3rem;margin-bottom:.5rem}
+  .form-success h3{font-size:1.4rem;margin-bottom:.5rem}
+  .form-success p{color:var(--txt-s);margin-bottom:1rem}
+  .form-success .wa-btn{display:inline-flex;align-items:center;justify-content:center;background:#25D366;border-color:#25D366;font-size:1.1rem;padding:.9rem 2rem;margin-bottom:1rem}
+  .form-success .wa-btn:hover{background:#1DA851;border-color:#1DA851}
+  .form-success .success-sub{font-size:.85rem;color:var(--txt-s);margin-top:.5rem}
 
   /* === FOOTER === */
   footer{border-top:1px solid var(--border);padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;max-width:var(--mw);margin:0 auto;font-size:.82rem;font-weight:700;letter-spacing:.06em;color:var(--green-dd)}
