@@ -70,6 +70,7 @@ const comparisons = [
     <h1>Un sueldo fijo. Sin sorpresas.</h1>
     <p class="hero-sub">Sin cobros por token. Sin cargos ocultos. Sin contratos. Cancela cuando quieras.</p>
     <p class="guarantee">✅ 3 días gratis de prueba &nbsp;·&nbsp; 💳 Yape, Plin, VISA, BCP, BBVA</p>
+    <p class="guarantee-link"><a href="/garantia">🛡️ Garantía de devolución de 7 días →</a></p>
   </section>
 
   <!-- PLANS -->
@@ -212,6 +213,7 @@ const comparisons = [
   .hero-pricing h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:900;letter-spacing:-.03em;margin-bottom:1rem}
   .hero-sub{font-size:1.1rem;color:var(--text2);margin-bottom:1rem;max-width:600px;margin-inline:auto}
   .guarantee{font-size:.9rem;color:var(--green-d);font-weight:600}
+  .guarantee-link{margin-top:.5rem}.guarantee-link a{font-size:.88rem;color:var(--green-d);text-decoration:none;font-weight:500;transition:opacity .2s}.guarantee-link a:hover{opacity:.7}
 
   /* PLANS */
   .plans-sec{text-align:center;padding-top:2rem}
@@ -301,10 +303,9 @@ const comparisons = [
         method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)
       });
       if(!r.ok) throw new Error('Error');
-      msg.textContent = '¡Listo! Te contactamos en menos de 24h 🚀';
-      msg.className = 'form-msg ok';
-      form.reset();
       window.umami?.track('waitlist-submit', { agentType: data.agentType, source: 'precios' });
+      form.reset();
+      window.location.href = '/gracias';
     } catch(err) {
       msg.textContent = 'Error al enviar. Intenta de nuevo.';
       msg.className = 'form-msg err';

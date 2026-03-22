@@ -447,7 +447,7 @@ const industries = [
         method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)
       });
       if(!r.ok) throw new Error('Error');
-      msg.textContent = '¡Listo! Te contactamos en menos de 24h 🚀';
+      window.umami?.track('waitlist-submit', { source: 'restaurantes' }); form.reset(); window.location.href = '/gracias'; return;
       msg.className = 'form-msg ok';
       form.reset();
       window.umami?.track('waitlist-submit', { agentType: data.agentType, source: 'restaurantes' });
