@@ -51,6 +51,7 @@ const plans = [
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script defer src="https://umami.luminari.agency/script.js" data-website-id="9a5bb1d1-9bc1-417a-8b4b-72b44044d168"></script>
 </head>
 <body>
 
@@ -330,7 +331,7 @@ const plans = [
         const r = await fetch('https://agentes-api.luminari.agency/api/waitlist', {
           method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data)
         });
-        if (r.ok) { msg.textContent = '🎉 ¡Recibido! Te contactamos en menos de 24h.'; msg.className = 'form-msg ok'; form.reset(); }
+        if (r.ok) { msg.textContent = '🎉 ¡Recibido! Te contactamos en menos de 24h.'; msg.className = 'form-msg ok'; form.reset(); window.umami?.track('waitlist-submit', { agentType: d.agentType }); }
         else { const j = await r.json(); throw new Error(j.message || 'Error'); }
       } catch (err: any) { msg.textContent = '❌ ' + err.message; msg.className = 'form-msg err'; }
       finally { btn.disabled = false; btn.textContent = 'Empezar ahora'; }
