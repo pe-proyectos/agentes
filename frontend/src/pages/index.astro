@@ -1,8 +1,8 @@
 ---
 const agents = [
-  { name: "Sofía", role: "Ventas", desc: "Prospecta, califica y cierra ventas por WhatsApp. Tu mejor vendedora, 24/7.", tags: ["WhatsApp", "CRM", "Follow-ups"], image: "/agents/sofia.png" },
-  { name: "Carlos", role: "Atención al Cliente", desc: "Resuelve dudas al instante y mantiene a tus clientes felices. Siempre amable.", tags: ["Soporte", "FAQ", "Tickets"], image: "/agents/carlos.png" },
-  { name: "Valentina", role: "Coordinación", desc: "Agenda reuniones, envía recordatorios y optimiza tu calendario automáticamente.", tags: ["Calendario", "Recordatorios", "Booking"], image: "/agents/valentina.png" },
+  { name: "Sofía", role: "Ventas", desc: "Prospecta, califica y cierra ventas por WhatsApp. Tu mejor vendedora, 24/7.", tags: ["WhatsApp", "CRM", "Follow-ups"], image: "/agents/sofia.png", link: "/ventas" },
+  { name: "Carlos", role: "Atención al Cliente", desc: "Resuelve dudas al instante y mantiene a tus clientes felices. Siempre amable.", tags: ["Soporte", "FAQ", "Tickets"], image: "/agents/carlos.png", link: "/soporte" },
+  { name: "Valentina", role: "Coordinación", desc: "Agenda reuniones, envía recordatorios y optimiza tu calendario automáticamente.", tags: ["Calendario", "Recordatorios", "Booking"], image: "/agents/valentina.png", link: "/citas" },
 ];
 const plans = [
   { name: "Básico", hours: "1h/día", price: "80", pricePen: "300", desc: "Para empezar a probar", features: ["1 agente AI", "Respaldo humano", "Reportes semanales", "3 días gratis de prueba"] },
@@ -228,6 +228,7 @@ const plans = [
             <h3>{a.name}</h3>
             <p>{a.desc}</p>
             <div class="ag-tags">{a.tags.map(t => <span>{t}</span>)}</div>
+            <a href={a.link} class="ag-link">Ver más →</a>
           </div>
         </div>
       ))}
@@ -614,6 +615,8 @@ const plans = [
   .ag-info p{font-size:.83rem;color:var(--text2);line-height:1.6;margin-bottom:.75rem}
   .ag-tags{display:flex;gap:.3rem;flex-wrap:wrap}
   .ag-tags span{font-size:.67rem;font-weight:500;color:var(--text3);border:1px solid var(--border);padding:.15rem .5rem;border-radius:100px}
+  .ag-link{display:inline-block;margin-top:.75rem;font-size:.82rem;font-weight:600;color:var(--green-d);text-decoration:none;transition:color .2s}
+  .ag-link:hover{color:var(--green)}
 
   /* === PRICING === */
   .pricing-sec{text-align:center}

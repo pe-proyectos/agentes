@@ -1,0 +1,215 @@
+---
+const title = "Agente AI para Agendar Citas por WhatsApp | AGENTES by Luminari";
+const description = "Automatiza el agendamiento de citas por WhatsApp. Tu agente AI agenda, confirma y envía recordatorios. Ideal para clínicas y consultorios. Prueba gratis.";
+const agent = { name: "Valentina", role: "Coordinación", image: "/agents/valentina.png" };
+const benefits = [
+  { icon: "📅", title: "Agenda automática", desc: "Tu agente revisa disponibilidad y propone horarios sin que tú intervengas." },
+  { icon: "🔔", title: "Recordatorios automáticos", desc: "Envía recordatorios 24h y 1h antes. Reduce inasistencias hasta un 70%." },
+  { icon: "🔄", title: "Reprogramación fácil", desc: "Si un paciente cancela, tu agente ofrece nuevo horario al instante." },
+  { icon: "📱", title: "Todo por WhatsApp", desc: "Tus pacientes no necesitan descargar nada. Agendan desde su WhatsApp." },
+  { icon: "👥", title: "Múltiples profesionales", desc: "Maneja calendarios de varios doctores o profesionales a la vez." },
+  { icon: "🛡️", title: "Respaldo humano", desc: "Si algo sale mal o el caso es especial, un humano toma el control." },
+];
+const useCases = [
+  "Clínicas dentales con alta demanda de citas",
+  "Consultorios médicos (dermatología, pediatría, etc.)",
+  "Centros de estética y spa",
+  "Consultorios psicológicos y terapeutas",
+  "Veterinarias",
+  "Salones de belleza y barberías",
+];
+const conversation = [
+  { type: "in", text: "Hola, quiero sacar una cita con el Dr. Ramírez", time: "14:20" },
+  { type: "out", text: "¡Hola! 👋 Con gusto te agendo. El Dr. Ramírez tiene disponibilidad:\n\n📅 Martes 25 - 10:00 AM\n📅 Miércoles 26 - 3:00 PM\n📅 Jueves 27 - 11:00 AM\n\n¿Cuál te queda mejor?", time: "14:20" },
+  { type: "in", text: "El miércoles a las 3", time: "14:21" },
+  { type: "out", text: "¡Perfecto! ✅ Cita agendada:\n\n👨‍⚕️ Dr. Ramírez\n📅 Miércoles 26, 3:00 PM\n📍 Av. Larco 234, Consultorio 5\n\nTe enviaré un recordatorio mañana. ¿Necesitas algo más?", time: "14:21" },
+  { type: "in", text: "No, gracias!", time: "14:22" },
+  { type: "out", text: "¡De nada! 😊 Nos vemos el miércoles. Que tengas buen día.", time: "14:22" },
+];
+---
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{title}</title>
+  <meta name="description" content={description}/>
+  <meta property="og:title" content={title}/>
+  <meta property="og:description" content={description}/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://agentes.luminari.agency/citas"/>
+  <meta property="og:image" content="https://agentes.luminari.agency/og.png"/>
+  <link rel="canonical" href="https://agentes.luminari.agency/citas"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <script defer src="https://umami.luminari.agency/script.js" data-website-id="9a5bb1d1-9bc1-417a-8b4b-72b44044d168"></script>
+</head>
+<body>
+  <nav>
+    <a href="/" class="logo">◆ AGENTES</a>
+    <div class="nav-r">
+      <a href="/#planes" class="nav-link">Planes</a>
+      <a href="/#faq" class="nav-link">FAQ</a>
+      <a href="/#empezar" class="nav-cta">Probar gratis →</a>
+    </div>
+  </nav>
+
+  <header class="uc-hero">
+    <div class="uc-hero-inner">
+      <span class="uc-tag">📅 Agente de Citas</span>
+      <h1>Nunca pierdas una cita.<br/><span class="glow-text">Agenda por WhatsApp.</span></h1>
+      <p class="uc-sub">{agent.name} agenda, confirma y envía recordatorios automáticamente. Tus pacientes agendan desde WhatsApp, tú solo revisas el calendario. <strong>Prueba 3 días gratis.</strong></p>
+      <div class="uc-btns">
+        <a href="/#empezar" class="btn-glow">Activar agente de citas →</a>
+        <a href="#demo" class="btn-outline">Ver ejemplo ↓</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="sec" id="demo">
+    <span class="tag">Ejemplo real</span>
+    <h2>Así agenda {agent.name} por ti</h2>
+    <p class="sec-sub">Conversación real de un agente AI agendando una cita médica.</p>
+    <div class="demo-phone">
+      <div class="wa">
+        <div class="wa-top">
+          <span class="wa-back">‹</span>
+          <div class="wa-av">V</div>
+          <div><div class="wa-n">{agent.name} — {agent.role}</div><div class="wa-s">en línea</div></div>
+        </div>
+        <div class="wa-msgs">
+          <div class="wa-day">Hoy</div>
+          {conversation.map(m => (
+            <div class={`msg msg-${m.type}`}><p set:html={m.text.replace(/\n/g, '<br/>')}></p><span>{m.time}{m.type === 'out' ? ' ✓✓' : ''}</span></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="tag">Beneficios</span>
+    <h2>¿Qué hace un agente de citas?</h2>
+    <div class="benefits-grid">
+      {benefits.map(b => (
+        <div class="benefit-card">
+          <span class="benefit-icon">{b.icon}</span>
+          <h3>{b.title}</h3>
+          <p>{b.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="sec alt-bg">
+    <span class="tag">Ideal para</span>
+    <h2>¿Quién usa un agente de citas?</h2>
+    <ul class="uc-list">
+      {useCases.map(u => <li>✓ {u}</li>)}
+    </ul>
+    <div class="uc-cta-box">
+      <h3>¿Pierdes pacientes por no contestar a tiempo?</h3>
+      <p>Un agente de citas responde al instante y agenda sin errores. Tú solo revisas el calendario.</p>
+      <a href="/#empezar" class="btn-glow">Probar gratis 3 días →</a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="tag">Resultados</span>
+    <h2>Números que importan</h2>
+    <div class="stats-row">
+      <div class="stat-box"><strong>70%</strong><span>menos inasistencias con recordatorios automáticos</span></div>
+      <div class="stat-box"><strong>< 5s</strong><span>tiempo de respuesta promedio</span></div>
+      <div class="stat-box"><strong>24/7</strong><span>tus pacientes agendan cuando quieran</span></div>
+    </div>
+  </section>
+
+  <section class="sec final-cta">
+    <h2>Tu agenda, en piloto automático</h2>
+    <p>3 días gratis. Sin tarjeta de crédito. Setup en menos de 24h.</p>
+    <a href="/#empezar" class="btn-glow btn-lg">Activar agente de citas →</a>
+  </section>
+
+  <footer>
+    <span>◆ AGENTES <span class="by">by Luminari</span></span>
+    <span class="copy">© 2026 Luminari</span>
+  </footer>
+
+<style is:global>
+  :root{--bg:#fafffe;--dark:#0a0f0d;--text:#1a2e23;--text2:#3d5a4a;--text3:#7a9484;--green:#25D366;--green-d:#128C7E;--green-dd:#075E54;--green-l:#DCF8C6;--border:rgba(0,60,30,0.08);--r:18px;--r-sm:10px;--mw:1100px;--font:'Inter',system-ui,sans-serif}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--bg)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(10,15,13,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(37,211,102,0.08)}
+  .logo{font-size:.95rem;font-weight:800;letter-spacing:.12em;color:#fff;text-decoration:none}
+  .nav-r{display:flex;align-items:center;gap:1.5rem}
+  .nav-link{color:rgba(255,255,255,.65);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .2s}
+  .nav-link:hover{color:#fff}
+  .nav-cta{background:var(--green);color:#fff;padding:.55rem 1.2rem;border-radius:100px;font-size:.82rem;font-weight:600;text-decoration:none;transition:all .25s}
+  .nav-cta:hover{background:var(--green-d);transform:translateY(-1px)}
+  .uc-hero{background:var(--dark);padding:8rem 2.5rem 4rem;text-align:center;position:relative;overflow:hidden}
+  .uc-hero::before{content:'';position:absolute;inset:-20%;background:radial-gradient(ellipse at 50% 30%,rgba(37,211,102,.3),transparent 60%);filter:blur(80px);z-index:0}
+  .uc-hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+  .uc-tag{display:inline-block;background:rgba(37,211,102,.12);color:var(--green);padding:.4rem 1rem;border-radius:100px;font-size:.82rem;font-weight:600;margin-bottom:1.5rem}
+  .uc-hero h1{font-size:clamp(2rem,5vw,3.2rem);color:#fff;line-height:1.15;margin-bottom:1.25rem;font-weight:800}
+  .glow-text{background:linear-gradient(135deg,var(--green),#6ee7b7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .uc-sub{color:rgba(255,255,255,.7);font-size:1.05rem;max-width:550px;margin:0 auto 2rem}
+  .uc-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .btn-glow{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;padding:.85rem 2rem;border-radius:100px;font-family:var(--font);font-size:.92rem;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:all .25s;border:none;cursor:pointer}
+  .btn-glow:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,211,102,.5)}
+  .btn-glow.btn-lg{padding:1rem 2.5rem;font-size:1.05rem}
+  .btn-outline{display:inline-flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.8);padding:.85rem 2rem;border-radius:100px;font-size:.92rem;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,.2);transition:all .25s}
+  .btn-outline:hover{border-color:rgba(255,255,255,.5);color:#fff}
+  .sec{padding:5rem 2.5rem;max-width:var(--mw);margin:0 auto}
+  .tag{display:inline-block;background:rgba(37,211,102,.08);color:var(--green-d);padding:.3rem .8rem;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.75rem}
+  .sec h2{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;margin-bottom:.5rem}
+  .sec-sub{color:var(--text2);font-size:1rem;max-width:550px;margin-bottom:2.5rem}
+  .alt-bg{background:linear-gradient(180deg,rgba(37,211,102,.03),transparent);max-width:100%;padding-left:2.5rem;padding-right:2.5rem}
+  .alt-bg>*{max-width:var(--mw);margin-left:auto;margin-right:auto}
+  .demo-phone{max-width:420px;margin:2rem auto;border-radius:var(--r);overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.12);border:1px solid var(--border)}
+  .wa{background:#e5ddd5}
+  .wa-top{display:flex;align-items:center;gap:.5rem;background:var(--green-dd);color:#fff;padding:.6rem .8rem}
+  .wa-back{font-size:1.2rem;opacity:.7}
+  .wa-av{width:32px;height:32px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+  .wa-n{font-size:.85rem;font-weight:600}
+  .wa-s{font-size:.7rem;opacity:.7}
+  .wa-msgs{padding:.75rem;display:flex;flex-direction:column;gap:.35rem;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='%23e5ddd5'/%3E%3Cpath d='M30 30m-1 0a1 1 0 102 0 1 1 0 10-2 0' fill='%23d4cdc4' opacity='.3'/%3E%3C/svg%3E")}
+  .wa-day{text-align:center;font-size:.7rem;background:rgba(255,255,255,.85);color:#666;padding:.25rem .7rem;border-radius:6px;align-self:center;margin:.25rem 0}
+  .msg{max-width:85%;padding:.45rem .6rem .15rem;border-radius:8px;font-size:.82rem;line-height:1.45}
+  .msg p{margin-bottom:.15rem}
+  .msg span{display:block;text-align:right;font-size:.62rem;color:#999;margin-top:2px}
+  .msg-in{background:#fff;align-self:flex-start;border-top-left-radius:0}
+  .msg-out{background:var(--green-l);align-self:flex-end;border-top-right-radius:0}
+  .benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+  .benefit-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;transition:all .25s}
+  .benefit-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.06)}
+  .benefit-icon{font-size:1.5rem;display:block;margin-bottom:.5rem}
+  .benefit-card h3{font-size:1rem;font-weight:700;margin-bottom:.35rem}
+  .benefit-card p{font-size:.88rem;color:var(--text2);line-height:1.5}
+  .uc-list{list-style:none;max-width:600px;margin:1.5rem auto 2.5rem}
+  .uc-list li{padding:.6rem 0;font-size:1rem;border-bottom:1px solid var(--border);color:var(--text2)}
+  .uc-list li:last-child{border-bottom:none}
+  .uc-cta-box{background:#fff;border:2px solid rgba(37,211,102,.2);border-radius:var(--r);padding:2.5rem;text-align:center;max-width:550px;margin:0 auto}
+  .uc-cta-box h3{font-size:1.2rem;margin-bottom:.5rem}
+  .uc-cta-box p{color:var(--text2);margin-bottom:1.5rem;font-size:.95rem}
+  .stats-row{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+  .stat-box{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:2rem;text-align:center;flex:1;min-width:200px;max-width:300px}
+  .stat-box strong{display:block;font-size:2.2rem;color:var(--green-d);margin-bottom:.25rem}
+  .stat-box span{font-size:.88rem;color:var(--text2)}
+  .final-cta{text-align:center;padding:5rem 2.5rem;max-width:100%;background:linear-gradient(180deg,transparent,rgba(37,211,102,.05))}
+  .final-cta h2{margin-bottom:.75rem}
+  .final-cta p{color:var(--text2);margin-bottom:2rem;font-size:1.05rem}
+  footer{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 2.5rem;border-top:1px solid var(--border);font-size:.82rem;font-weight:600;color:var(--text2)}
+  .by{font-weight:400;color:var(--text3)}
+  .copy{font-size:.75rem;color:var(--text3)}
+  @media(max-width:600px){
+    nav{padding:.75rem 1.25rem}
+    .nav-link{display:none}
+    .uc-hero{padding:6.5rem 1.25rem 3rem}
+    .sec{padding:3.5rem 1.25rem}
+    .stats-row{flex-direction:column;align-items:center}
+    footer{flex-direction:column;gap:.5rem;text-align:center}
+  }
+</style>
+</body>
+</html>
