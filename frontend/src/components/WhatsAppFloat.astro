@@ -1,0 +1,67 @@
+<!-- Floating WhatsApp Button -->
+<a
+  href="https://wa.me/51987654321?text=Hola!%20Quiero%20probar%20un%20agente%20AI%20para%20mi%20negocio."
+  target="_blank"
+  rel="noopener noreferrer"
+  class="wa-float"
+  data-umami-event="whatsapp-float-click"
+  aria-label="Contáctanos por WhatsApp"
+>
+  <span class="wa-tooltip">¿Dudas? Escríbenos</span>
+  <svg viewBox="0 0 32 32" fill="white" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0016.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.312 22.594c-.39 1.1-1.932 2.014-3.178 2.28-.852.18-1.964.324-5.71-1.228-4.796-1.986-7.882-6.85-8.12-7.168-.23-.318-1.878-2.502-1.878-4.772s1.188-3.384 1.61-3.848c.422-.464.92-.58 1.228-.58.296 0 .594.002.854.016.274.014.642-.104.996.764.368.888 1.246 3.044 1.356 3.264.11.22.184.478.036.768-.146.296-.22.478-.438.738-.22.258-.462.578-.66.774-.22.22-.448.458-.192.898.256.44 1.138 1.878 2.444 3.042 1.68 1.496 3.096 1.96 3.536 2.18.44.22.696.184.952-.11.258-.296 1.098-1.278 1.39-1.716.292-.44.584-.366.982-.22.4.146 2.55 1.204 2.99 1.422.44.22.73.33.838.51.11.184.11 1.044-.278 2.146z"/>
+  </svg>
+</a>
+
+<style>
+  .wa-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: wa-pulse 2s infinite;
+  }
+  .wa-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+  }
+  .wa-float:hover .wa-tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+  .wa-tooltip {
+    position: absolute;
+    right: 72px;
+    top: 50%;
+    transform: translateY(-50%) translateX(8px);
+    background: #fff;
+    color: #333;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  @keyframes wa-pulse {
+    0%, 100% { box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+    50% { box-shadow: 0 4px 20px rgba(37,211,102,0.6); }
+  }
+  @media (max-width: 480px) {
+    .wa-float { bottom: 16px; right: 16px; width: 54px; height: 54px; }
+    .wa-float svg { width: 28px; height: 28px; }
+  }
+</style>

@@ -10,6 +10,7 @@ const plans = [
   { name: "Full", hours: "8h/día", price: "400", pricePen: "1,500", desc: "Máxima productividad", features: ["1 agente dedicado", "Respaldo 24/7", "Reportes tiempo real", "Integración custom", "Soporte prioritario", "3 días gratis de prueba"] },
   { name: "24/7", hours: "24h/día", price: "600", pricePen: "2,280", desc: "Tu agente nunca duerme", features: ["1 agente AI dedicado", "Operación 24/7 sin pausas", "Respaldo humano ilimitado", "Reportes tiempo real", "Integración custom", "Soporte prioritario", "Account manager dedicado", "3 días gratis de prueba"] },
 ];
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
 ---
 <html lang="es">
 <head>
@@ -503,6 +504,7 @@ const plans = [
       });
     }, 2500);
   </script>
+<WhatsAppFloat />
 </body>
 </html>
 

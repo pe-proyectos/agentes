@@ -25,6 +25,7 @@ const conversation = [
   { type: "in", text: "Sí, mañana a las 4pm", time: "10:17" },
   { type: "out", text: "¡Listo! ✅ Agendado: Mañana, 4:00 PM - Limpieza dental. Te envío la dirección: Av. Balta 456, Chiclayo. ¿Alguna consulta más?", time: "10:17" },
 ];
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
 ---
 <html lang="es">
 <head>
@@ -341,5 +342,6 @@ const conversation = [
     }
   });
 </script>
+<WhatsAppFloat />
 </body>
 </html>
