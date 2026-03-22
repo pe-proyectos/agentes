@@ -1,0 +1,43 @@
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-5"
+      },
+      "workspace": "/data/workspace",
+      "maxConcurrent": 2
+    },
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "workspace": "/data/workspace"
+      }
+    ]
+  },
+  "channels": {
+    "whatsapp": {
+      "dmPolicy": "open",
+      "allowFrom": ["+51987654321", "*"],
+      "groupPolicy": "disabled",
+      "mediaMaxMb": 25,
+      "debounceMs": 2000
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "restart": true
+  },
+  "cron": {
+    "enabled": false
+  },
+  "web": {
+    "enabled": false
+  },
+  "browser": {
+    "evaluateEnabled": false
+  },
+  "messages": {
+    "ackReactionScope": "none"
+  }
+}
