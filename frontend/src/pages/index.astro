@@ -277,20 +277,20 @@ const plans = [
   .hero-wrap{position:relative;background:var(--dark);overflow:hidden;min-height:100vh}
 
   /* Aurora gradient mesh */
-  .aurora{position:absolute;inset:0;z-index:0;overflow:hidden;filter:blur(80px) saturate(1.5)}
+  .aurora{position:absolute;inset:0;z-index:0;overflow:hidden;filter:blur(90px) saturate(1.6)}
   .aurora-beam{position:absolute;border-radius:50%;mix-blend-mode:screen}
-  .a1{width:60%;height:50%;top:-10%;right:-10%;background:radial-gradient(ellipse,rgba(37,211,102,.18),transparent 70%);animation:drift1 12s ease-in-out infinite}
-  .a2{width:50%;height:60%;bottom:-5%;left:-5%;background:radial-gradient(ellipse,rgba(18,140,126,.14),transparent 70%);animation:drift2 15s ease-in-out infinite}
-  .a3{width:40%;height:40%;top:30%;left:40%;background:radial-gradient(ellipse,rgba(0,180,130,.1),transparent 70%);animation:drift3 18s ease-in-out infinite}
+  .a1{width:65%;height:55%;top:-15%;right:-10%;background:radial-gradient(ellipse,rgba(37,211,102,.35),rgba(0,200,120,.1) 50%,transparent 75%);animation:drift1 12s ease-in-out infinite}
+  .a2{width:55%;height:60%;bottom:-10%;left:-10%;background:radial-gradient(ellipse,rgba(0,180,160,.25),rgba(18,140,126,.08) 50%,transparent 75%);animation:drift2 15s ease-in-out infinite}
+  .a3{width:45%;height:45%;top:25%;left:35%;background:radial-gradient(ellipse,rgba(46,230,120,.18),rgba(0,220,180,.06) 50%,transparent 75%);animation:drift3 18s ease-in-out infinite}
   @keyframes drift1{0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}50%{transform:translate(-40px,30px) scale(1.15) rotate(8deg)}}
   @keyframes drift2{0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}50%{transform:translate(50px,-40px) scale(1.1) rotate(-6deg)}}
   @keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-30px,20px) scale(1.2)}66%{transform:translate(20px,-30px) scale(.9)}}
 
   /* Subtle grid overlay */
   .grid-overlay{position:absolute;inset:0;z-index:0;background-image:
-    linear-gradient(rgba(37,211,102,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(37,211,102,.03) 1px,transparent 1px);
-  background-size:80px 80px;mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black,transparent)}
+    linear-gradient(rgba(37,211,102,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(37,211,102,.045) 1px,transparent 1px);
+  background-size:70px 70px;mask-image:radial-gradient(ellipse 70% 60% at 50% 45%,black,transparent)}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(10,15,13,0.5);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(37,211,102,0.08)}
   .logo{font-size:.95rem;font-weight:800;letter-spacing:.12em;color:#fff;text-decoration:none}
@@ -322,9 +322,9 @@ const plans = [
 
   /* Phone mockup */
   .hero-phone{display:flex;flex-direction:column;align-items:center;gap:.75rem;position:relative}
-  .hero-phone::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:340px;height:340px;background:radial-gradient(circle,rgba(37,211,102,.12),transparent 70%);border-radius:50%;z-index:0;animation:phoneglow 4s ease-in-out infinite}
-  @keyframes phoneglow{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
-  .phone{background:#111;border-radius:32px;padding:6px;box-shadow:0 20px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06),0 0 60px rgba(37,211,102,.08);max-width:300px;width:100%;position:relative;z-index:1}
+  .hero-phone::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:380px;height:380px;background:radial-gradient(circle,rgba(37,211,102,.2),rgba(0,180,130,.08) 50%,transparent 75%);border-radius:50%;z-index:0;animation:phoneglow 4s ease-in-out infinite}
+  @keyframes phoneglow{0%,100%{opacity:.7;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
+  .phone{background:#111;border-radius:32px;padding:6px;box-shadow:0 20px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06),0 0 80px rgba(37,211,102,.12);max-width:300px;width:100%;position:relative;z-index:1}
   .ph-notch{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:80px;height:18px;background:#111;border-radius:0 0 12px 12px;z-index:5}
   .wa{border-radius:26px;overflow:hidden;background:#ECE5DD}
   .wa-top{background:var(--green-dd);color:#fff;padding:1.6rem .7rem .5rem;display:flex;align-items:center;gap:.4rem}
