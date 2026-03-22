@@ -11,6 +11,7 @@ model WaitlistEntry {
   id        String   @id @default(uuid())
   name      String
   email     String
+  phone     String?
   company   String?
   agentType String   @map("agent_type")
   message   String?
