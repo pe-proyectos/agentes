@@ -45,8 +45,9 @@ const conversation = [
 </head>
 <body>
   <nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
     <a href="/" class="logo">◆ AGENTES</a>
-    <div class="nav-r">
+    <div class="nav-r" id="nav-menu">
       <a href="/#planes" class="nav-link">Planes</a>
       <a href="/#faq" class="nav-link">FAQ</a>
       <a href="/#empezar" class="nav-cta">Probar gratis →</a>
@@ -247,7 +248,17 @@ const conversation = [
   .by{font-weight:400;color:var(--text3)}
   .copy{font-size:.75rem;color:var(--text3)}
 
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;z-index:101;flex-direction:column;gap:5px}
+  .nav-toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
   @media(max-width:600px){
+    .nav-toggle{display:flex}
+    .nav-r{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(10,15,13,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:1.5rem;gap:1rem;border-bottom:1px solid rgba(37,211,102,.1)}
+    .nav-r.open{display:flex}
+    .nav-link{display:block!important;font-size:1rem;padding:.5rem 0}
+    .nav-cta{text-align:center}
     nav{padding:.75rem 1.25rem}
     .nav-link{display:none}
     .uc-hero{padding:6.5rem 1.25rem 3rem}
@@ -256,5 +267,19 @@ const conversation = [
     footer{flex-direction:column;gap:.5rem;text-align:center}
   }
 </style>
+<script>
+    const navToggle = document.getElementById("nav-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    if(navToggle && navMenu){
+      navToggle.addEventListener("click",()=>{
+        const open=navMenu.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded",String(open));
+      });
+      navMenu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+        navMenu.classList.remove("open");
+        navToggle.setAttribute("aria-expanded","false");
+      }));
+    }
+  </script>
 </body>
 </html>

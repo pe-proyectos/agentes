@@ -65,7 +65,10 @@ const plans = [
     <div class="grid-overlay" aria-hidden="true"></div>
     <nav>
       <a href="#" class="logo">◆ AGENTES</a>
-      <div class="nav-r">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-r" id="nav-menu">
         <a href="#calculadora" class="nav-link">Ahorro</a>
         <a href="#agentes" class="nav-link">Equipo</a>
         <a href="#planes" class="nav-link">Planes</a>
@@ -376,6 +379,18 @@ const plans = [
   </footer>
 
   <script>
+    // === Mobile nav ===
+    const navToggle = document.getElementById('nav-toggle')!;
+    const navMenu = document.getElementById('nav-menu')!;
+    navToggle.addEventListener('click', () => {
+      const open = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }));
+
     // === Form ===
     const form = document.getElementById('wl-form') as HTMLFormElement;
     const msg = document.getElementById('form-msg')!;
@@ -737,9 +752,21 @@ const plans = [
     .stats-inner{flex-wrap:wrap;gap:1.5rem}
     .stat-div{display:none}
   }
+  /* === HAMBURGER === */
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;z-index:101;flex-direction:column;gap:5px}
+  .nav-toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+  @media(max-width:600px){
+    .nav-toggle{display:flex}
+    .nav-r{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(10,15,13,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:1.5rem;gap:1rem;border-bottom:1px solid rgba(37,211,102,.1)}
+    .nav-r.open{display:flex}
+    .nav-link{display:block!important;font-size:1rem;padding:.5rem 0}
+    .nav-cta{text-align:center}
+  }
   @media(max-width:600px){
     nav{padding:.75rem 1.25rem}
-    .nav-link{display:none}
     .hero{padding:6.5rem 1.25rem 3rem}
     .sec{padding:3.5rem 1.25rem}
     footer{flex-direction:column;gap:.5rem;text-align:center}
