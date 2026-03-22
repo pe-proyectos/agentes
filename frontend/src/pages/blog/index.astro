@@ -1,156 +1,108 @@
 ---
-const articles = [
-  {
-    slug: "secretaria-virtual-whatsapp-peru",
-    title: "Secretaria virtual por WhatsApp: la solución más rentable para negocios en Perú (2026)",
-    excerpt: "¿Buscas una secretaria virtual que atienda tus clientes por WhatsApp 24/7? Comparamos opciones, precios y te mostramos cómo funciona con IA en Perú.",
-    date: "2026-03-22",
-    readTime: "8 min",
-    tag: "Secretaria"
-  },
-  {
-    slug: "responder-automaticamente-whatsapp-business",
-    title: "Cómo responder automáticamente en WhatsApp Business sin perder clientes (2026)",
-    excerpt: "Comparamos las opciones: respuestas nativas de WhatsApp Business, chatbots de flujo y agentes AI. Cuál realmente cierra ventas y cuánto cuesta.",
-    date: "2026-03-22",
-    readTime: "7 min",
-    tag: "WhatsApp"
-  },
-  {
-    slug: "roi-agente-ia-negocio-peru",
-    title: "¿Vale la pena un agente AI? Calculamos el ROI real para negocios en Perú",
-    excerpt: "Análisis detallado del retorno de inversión al contratar un agente AI para WhatsApp. Números reales, comparativas y 3 escenarios con ROI calculado.",
-    date: "2026-03-22",
-    readTime: "8 min",
-    tag: "ROI"
-  },
-  {
-    slug: "agente-ia-atencion-cliente-whatsapp",
-    title: "Agente IA para atención al cliente por WhatsApp: cómo funciona y cuánto cuesta (2026)",
-    excerpt: "Descubre cómo un agente de inteligencia artificial atiende clientes por WhatsApp 24/7. Precios, casos reales en Perú y cómo implementarlo.",
-    date: "2026-03-22",
-    readTime: "9 min",
-    tag: "Atención"
-  },
-  {
-    slug: "asistente-virtual-whatsapp-negocios-peru",
-    title: "Asistente virtual para WhatsApp: la guía completa para negocios en Perú (2026)",
-    excerpt: "Todo lo que necesitas saber sobre asistentes virtuales de WhatsApp. Precios, funciones, comparativa y cómo elegir el mejor para tu negocio en Perú.",
-    date: "2026-03-22",
-    readTime: "8 min",
-    tag: "Guía"
-  },
-  {
-    slug: "cuanto-cuesta-contratar-community-manager-peru",
-    title: "¿Cuánto cuesta contratar un community manager en Perú? (2026) — La alternativa AI",
-    excerpt: "Análisis de costos reales de un community manager vs un agente AI. Sueldos, beneficios, rendimiento y cuándo conviene cada opción.",
-    date: "2026-03-22",
-    readTime: "7 min",
-    tag: "Costos"
-  },
-  {
-    slug: "chatbot-whatsapp-peru-negocios",
-    title: "Chatbot para WhatsApp en Perú: Guía completa para negocios 2026",
-    excerpt: "Descubre cómo un chatbot de WhatsApp puede transformar tu negocio en Perú. Aprende costos, beneficios y cómo implementarlo en menos de 24 horas.",
-    date: "2026-03-20",
-    readTime: "8 min",
-    tag: "Guía"
-  },
-  {
-    slug: "automatizar-citas-whatsapp-clinica",
-    title: "Cómo automatizar citas por WhatsApp en tu clínica o consultorio",
-    excerpt: "Reduce las llamadas perdidas y las citas olvidadas. Un agente AI agenda, confirma y recuerda citas automáticamente por WhatsApp.",
-    date: "2026-03-18",
-    readTime: "6 min",
-    tag: "Clínicas"
-  },
-  {
-    slug: "vendedor-ai-whatsapp-pymes",
-    title: "Tu vendedor AI: cómo las PYMEs peruanas están cerrando ventas 24/7 por WhatsApp",
-    excerpt: "Casos reales de negocios que duplicaron sus ventas con un agente AI en WhatsApp. Sin contratar, sin capacitar, sin horarios.",
-    date: "2026-03-15",
-    readTime: "7 min",
-    tag: "Ventas"
-  }
-];
-import WhatsAppFloat from "../../components/WhatsAppFloat.astro";
+// Blog index - AGENTES by Luminari
 ---
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog — AGENTES | Automatización con IA para negocios</title>
-  <meta name="description" content="Artículos sobre agentes AI, automatización de WhatsApp y cómo hacer crecer tu negocio en Perú con inteligencia artificial."/>
-  <meta property="og:title" content="Blog — AGENTES"/>
-  <meta property="og:description" content="Tips, guías y casos de éxito sobre agentes AI para negocios."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://agentes.luminari.agency/blog"/>
-  <link rel="canonical" href="https://agentes.luminari.agency/blog"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — AGENTES by Luminari</title>
+  <meta name="description" content="Artículos sobre agentes AI, automatización y productividad para negocios." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <script defer src="https://umami.luminari.agency/script.js" data-website-id="9a5bb1d1-9bc1-417a-8b4b-72b44044d168"></script>
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    :root{--bg:#0a0a0f;--card:#12121a;--border:#1e1e2e;--green:#25D366;--green-d:#1da851;--text:#e4e4e7;--muted:#71717a}
-    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-    a{color:inherit;text-decoration:none}
-    nav{max-width:1100px;margin:0 auto;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between}
-    .logo{font-weight:800;font-size:1.1rem;letter-spacing:-0.5px}
-    .nav-r a{margin-left:1.5rem;font-size:.9rem;color:var(--muted);transition:color .2s}
-    .nav-r a:hover{color:var(--green)}
-    .nav-cta{background:var(--green)!important;color:#000!important;padding:.5rem 1.2rem;border-radius:8px;font-weight:600}
-    .blog-hero{max-width:800px;margin:3rem auto 2rem;padding:0 2rem;text-align:center}
-    .blog-hero h1{font-size:2.5rem;font-weight:800;letter-spacing:-1px;margin-bottom:.5rem}
-    .blog-hero p{color:var(--muted);font-size:1.1rem}
-    .articles{max-width:800px;margin:0 auto;padding:0 2rem 4rem}
-    .article-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem;transition:border-color .3s,transform .2s}
-    .article-card:hover{border-color:var(--green);transform:translateY(-2px)}
-    .article-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;font-size:.85rem;color:var(--muted)}
-    .article-tag{background:rgba(37,211,102,.15);color:var(--green);padding:.2rem .6rem;border-radius:6px;font-weight:600;font-size:.8rem}
-    .article-card h2{font-size:1.4rem;font-weight:700;letter-spacing:-0.5px;margin-bottom:.5rem}
-    .article-card h2 a:hover{color:var(--green)}
-    .article-card p{color:var(--muted);font-size:.95rem;line-height:1.6}
-    .read-more{display:inline-block;margin-top:.75rem;color:var(--green);font-weight:600;font-size:.9rem}
-    .read-more:hover{text-decoration:underline}
-    footer{text-align:center;padding:2rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #25D366;
+      --green-light: #e8faf0;
+      --green-lighter: #f0fdf5;
+      --white: #ffffff;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+    }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--white); color: var(--gray-800);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.8); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    nav .inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .logo { font-weight: 800; font-size: 1.15rem; color: var(--gray-900); text-decoration: none; letter-spacing: -0.02em; }
+    .logo span { color: var(--green); }
+    nav .links { display: flex; align-items: center; gap: 28px; }
+    nav .links a { text-decoration: none; color: var(--gray-600); font-weight: 500; font-size: 0.9rem; transition: color .2s; }
+    nav .links a:hover { color: var(--gray-900); }
+    nav .links .cta-nav {
+      background: var(--green); color: white; padding: 8px 20px; border-radius: 100px;
+      font-weight: 600; font-size: 0.85rem;
+    }
+    nav .links .cta-nav:hover { color: white; }
+
+    .page {
+      max-width: 720px; margin: 0 auto; padding: 140px 24px 100px;
+      min-height: 80vh;
+    }
+    .page h1 {
+      font-size: 2.2rem; font-weight: 900; color: var(--gray-900);
+      margin-bottom: 12px; letter-spacing: -0.02em;
+    }
+    .page .sub { color: var(--gray-500); font-size: 1.05rem; margin-bottom: 48px; }
+
+    .empty {
+      text-align: center; padding: 80px 20px;
+      background: var(--green-lighter); border-radius: 16px;
+      border: 1px solid rgba(37,211,102,0.15);
+    }
+    .empty .icon { font-size: 3rem; margin-bottom: 16px; }
+    .empty h2 { font-size: 1.3rem; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
+    .empty p { color: var(--gray-500); font-size: 0.95rem; }
+
+    footer {
+      padding: 40px 0; text-align: center;
+      border-top: 1px solid var(--gray-200);
+      color: var(--gray-400); font-size: 0.82rem;
+    }
+    footer a { color: var(--green); text-decoration: none; font-weight: 600; }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="/" class="logo">◆ AGENTES</a>
-    <div class="nav-r">
-      <a href="/">Inicio</a>
-      <a href="/precios">Precios</a>
+
+<nav>
+  <div class="inner">
+    <a href="/" class="logo"><span>◆</span> AGENTES</a>
+    <div class="links">
       <a href="/blog">Blog</a>
-      <a href="/#empezar" class="nav-cta">Probar gratis →</a>
+      <a href="/#empezar" class="cta-nav">Empezar</a>
     </div>
-  </nav>
-
-  <div class="blog-hero">
-    <h1>Blog</h1>
-    <p>Guías, tips y casos de éxito para automatizar tu negocio con IA</p>
   </div>
+</nav>
 
-  <div class="articles">
-    {articles.map(a => (
-      <article class="article-card">
-        <div class="article-meta">
-          <span class="article-tag">{a.tag}</span>
-          <span>{a.date}</span>
-          <span>·</span>
-          <span>{a.readTime} lectura</span>
-        </div>
-        <h2><a href={`/blog/${a.slug}`}>{a.title}</a></h2>
-        <p>{a.excerpt}</p>
-        <a href={`/blog/${a.slug}`} class="read-more">Leer artículo →</a>
-      </article>
-    ))}
+<main class="page">
+  <h1>Blog</h1>
+  <p class="sub">Ideas, guías y novedades sobre agentes AI para negocios.</p>
+  <div class="empty">
+    <div class="icon">✍️</div>
+    <h2>Próximamente</h2>
+    <p>Estamos preparando contenido increíble. Vuelve pronto.</p>
   </div>
+</main>
 
-  <footer>
-    <p>© 2026 AGENTES by Luminari. Todos los derechos reservados.</p>
-  </footer>
-<WhatsAppFloat />
+<footer>
+  <div><a href="/">◆ AGENTES</a> by Luminari &copy; 2026</div>
+</footer>
+
 </body>
 </html>

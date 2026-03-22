@@ -1,799 +1,489 @@
 ---
-const agents = [
-  { name: "Sofía", role: "Ventas", desc: "Prospecta, califica y cierra ventas por WhatsApp. Tu mejor vendedora, 24/7.", tags: ["WhatsApp", "CRM", "Follow-ups"], image: "/agents/sofia.png", link: "/ventas" },
-  { name: "Carlos", role: "Atención al Cliente", desc: "Resuelve dudas al instante y mantiene a tus clientes felices. Siempre amable.", tags: ["Soporte", "FAQ", "Tickets"], image: "/agents/carlos.png", link: "/soporte" },
-  { name: "Valentina", role: "Coordinación", desc: "Agenda reuniones, envía recordatorios y optimiza tu calendario automáticamente.", tags: ["Calendario", "Recordatorios", "Booking"], image: "/agents/valentina.png", link: "/citas" },
-];
-const plans = [
-  { name: "Básico", hours: "1h/día", price: "80", pricePen: "300", desc: "Para empezar a probar", features: ["1 agente AI", "Respaldo humano", "Reportes semanales", "3 días gratis de prueba"] },
-  { name: "Pro", hours: "4h/día", price: "250", pricePen: "950", desc: "Para negocios en crecimiento", popular: true, features: ["1 agente AI", "Respaldo prioritario", "Reportes diarios", "Personalización avanzada", "3 días gratis de prueba"] },
-  { name: "Full", hours: "8h/día", price: "400", pricePen: "1,500", desc: "Máxima productividad", features: ["1 agente dedicado", "Respaldo 24/7", "Reportes tiempo real", "Integración custom", "Soporte prioritario", "3 días gratis de prueba"] },
-  { name: "24/7", hours: "24h/día", price: "600", pricePen: "2,280", desc: "Tu agente nunca duerme", features: ["1 agente AI dedicado", "Operación 24/7 sin pausas", "Respaldo humano ilimitado", "Reportes tiempo real", "Integración custom", "Soporte prioritario", "Account manager dedicado", "3 días gratis de prueba"] },
-];
-import WhatsAppFloat from "../components/WhatsAppFloat.astro";
-import ExitIntentPopup from "../components/ExitIntentPopup.astro";
+// Landing page - AGENTES by Luminari
 ---
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AGENTES — Contrata tu primer empleado AI | Luminari</title>
-  <meta name="description" content="Agentes AI autónomos con respaldo humano. Recibe un WhatsApp configurado y listo. Prueba 3 días gratis."/>
-  <meta property="og:title" content="AGENTES — Tu primer empleado AI | Prueba gratis"/>
-  <meta property="og:description" content="Agentes AI con respaldo humano. WhatsApp listo para trabajar. Prueba 3 días gratis."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://agentes.luminari.agency"/>
-  <meta property="og:image" content="https://agentes.luminari.agency/og.png"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-  <link rel="canonical" href="https://agentes.luminari.agency"/>
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "AGENTES by Luminari",
-    "applicationCategory": "BusinessApplication",
-    "description": "Agentes AI autónomos con respaldo humano para WhatsApp. Ventas, soporte y agendamiento automatizado.",
-    "url": "https://agentes.luminari.agency",
-    "offers": [
-      { "@type": "Offer", "name": "Básico", "price": "80", "priceCurrency": "USD", "description": "1 agente AI, 1h/día, respaldo humano" },
-      { "@type": "Offer", "name": "Pro", "price": "250", "priceCurrency": "USD", "description": "1 agente AI, 4h/día, respaldo prioritario" },
-      { "@type": "Offer", "name": "Full", "price": "400", "priceCurrency": "USD", "description": "1 agente dedicado, 8h/día, respaldo 24/7" }
-    ],
-    "provider": {
-      "@type": "Organization",
-      "name": "Luminari",
-      "url": "https://luminari.agency"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "ratingCount": "3",
-      "bestRating": "5"
-    }
-  })}></script>
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "¿Qué pasa si la IA no sabe responder?", "acceptedAnswer": { "@type": "Answer", "text": "Cada agente tiene respaldo humano. Si la IA no puede resolver algo, un humano de nuestro equipo toma el control de la conversación sin que el cliente lo note." }},
-      { "@type": "Question", "name": "¿Necesito un número de WhatsApp nuevo?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, te proporcionamos un número dedicado ya configurado. También podemos integrarlo con tu número existente según el plan." }},
-      { "@type": "Question", "name": "¿Cuánto tarda en estar listo?", "acceptedAnswer": { "@type": "Answer", "text": "Menos de 24 horas. Nos cuentas qué necesitas, configuramos el agente con tu información y lo activamos." }},
-      { "@type": "Question", "name": "¿Puedo cancelar cuando quiera?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, sin penalidades ni contratos a largo plazo. Pagas mes a mes." }},
-      { "@type": "Question", "name": "¿Los precios son en dólares o soles?", "acceptedAnswer": { "@type": "Answer", "text": "Los precios están en dólares (USD). Aceptamos Yape, Plin, transferencia bancaria, y tarjetas VISA." }},
-      { "@type": "Question", "name": "¿Qué tipo de negocios atienden?", "acceptedAnswer": { "@type": "Answer", "text": "Clínicas, consultorios, tiendas, restaurantes, inmobiliarias — cualquier negocio que atienda clientes por WhatsApp." }}
-    ]
-  })}></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGENTES — Tu empleado digital que ejecuta</title>
+  <meta name="description" content="No es un chatbot. Es un empleado digital que programa, diseña, administra y ejecuta por ti. WhatsApp es solo el canal." />
+  <meta property="og:title" content="AGENTES — Tu empleado digital que ejecuta" />
+  <meta property="og:description" content="Un empleado AI que hace cosas reales por tu negocio." />
+  <meta property="og:image" content="/og.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <script defer src="https://umami.luminari.agency/script.js" data-website-id="9a5bb1d1-9bc1-417a-8b4b-72b44044d168"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #25D366;
+      --green-light: #e8faf0;
+      --green-lighter: #f0fdf5;
+      --green-medium: #b8f0d0;
+      --white: #ffffff;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --radius: 16px;
+      --radius-sm: 12px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--gray-800);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    nav .inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo { font-weight: 800; font-size: 1.15rem; color: var(--gray-900); text-decoration: none; letter-spacing: -0.02em; }
+    .logo span { color: var(--green); }
+    nav .links { display: flex; align-items: center; gap: 28px; }
+    nav .links a { text-decoration: none; color: var(--gray-600); font-weight: 500; font-size: 0.9rem; transition: color .2s; }
+    nav .links a:hover { color: var(--gray-900); }
+    nav .links .cta-nav {
+      background: var(--green); color: white; padding: 8px 20px; border-radius: 100px;
+      font-weight: 600; font-size: 0.85rem; transition: transform .2s, box-shadow .2s;
+    }
+    nav .links .cta-nav:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(37,211,102,0.35); color: white; }
+
+    /* HERO */
+    .hero {
+      padding: 140px 0 80px;
+      background: linear-gradient(170deg, var(--white) 0%, var(--green-lighter) 50%, var(--green-light) 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,211,102,0.08) 0%, transparent 70%);
+    }
+    .hero .container { text-align: center; position: relative; }
+    .hero .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.2);
+      padding: 6px 16px; border-radius: 100px; font-size: 0.82rem;
+      font-weight: 600; color: #15803d; margin-bottom: 24px;
+    }
+    .hero .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900; line-height: 1.1; letter-spacing: -0.03em;
+      color: var(--gray-900); max-width: 780px; margin: 0 auto 20px;
+    }
+    .hero h1 em { font-style: normal; color: var(--green); }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--gray-600); max-width: 560px; margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .hero .cta-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--green); color: white; padding: 16px 36px;
+      border-radius: 100px; font-weight: 700; font-size: 1.05rem;
+      text-decoration: none; transition: all .3s;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.3);
+    }
+    .hero .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(37,211,102,0.4); }
+    .hero .cta-btn svg { width: 20px; height: 20px; }
+
+    /* CAPABILITIES */
+    .capabilities { padding: 100px 0; background: var(--white); }
+    .section-label {
+      text-align: center; font-size: 0.8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--green);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      text-align: center; font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800; color: var(--gray-900); margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      text-align: center; font-size: 1.05rem; color: var(--gray-500);
+      max-width: 520px; margin: 0 auto 56px;
+    }
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .cap-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: all .3s;
+      position: relative; overflow: hidden;
+    }
+    .cap-card:hover {
+      border-color: var(--green-medium);
+      box-shadow: 0 8px 32px rgba(37,211,102,0.1);
+      transform: translateY(-4px);
+    }
+    .cap-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--green-light); display: flex; align-items: center;
+      justify-content: center; margin-bottom: 16px; font-size: 1.5rem;
+    }
+    .cap-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--gray-900); margin-bottom: 6px; }
+    .cap-card p { font-size: 0.82rem; color: var(--gray-500); line-height: 1.5; }
+
+    /* HOW IT WORKS */
+    .how { padding: 100px 0; background: var(--green-lighter); }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; margin-top: 0; }
+    .step {
+      text-align: center; padding: 40px 28px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(37,211,102,0.15);
+      border-radius: var(--radius);
+    }
+    .step-num {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--green); color: white;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.3rem; margin-bottom: 20px;
+    }
+    .step h3 { font-size: 1.1rem; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
+    .step p { font-size: 0.9rem; color: var(--gray-500); }
+
+    /* FORM */
+    .form-section { padding: 100px 0; background: var(--white); }
+    .form-wrapper {
+      max-width: 560px; margin: 0 auto;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--gray-200);
+      border-radius: 20px;
+      padding: 40px 36px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.06);
+    }
+    .progress-bar { display: flex; gap: 8px; margin-bottom: 36px; }
+    .progress-bar .bar {
+      flex: 1; height: 4px; border-radius: 100px;
+      background: var(--gray-200); transition: background .4s;
+    }
+    .progress-bar .bar.active { background: var(--green); }
+
+    .form-step { display: none; animation: fadeIn .4s ease; }
+    .form-step.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    .form-step h3 { font-size: 1.3rem; font-weight: 800; color: var(--gray-900); margin-bottom: 8px; }
+    .form-step .hint { font-size: 0.88rem; color: var(--gray-500); margin-bottom: 28px; }
+
+    label.field { display: block; margin-bottom: 16px; }
+    label.field span { display: block; font-size: 0.82rem; font-weight: 600; color: var(--gray-700); margin-bottom: 6px; }
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%; padding: 14px 16px; border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-sm); font-size: 0.95rem;
+      font-family: inherit; transition: border-color .2s;
+      background: var(--white); color: var(--gray-900);
+    }
+    input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(37,211,102,0.15); }
+
+    .checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .checkbox-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 14px; border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-sm); cursor: pointer;
+      transition: all .2s; font-size: 0.88rem; font-weight: 500; color: var(--gray-700);
+    }
+    .checkbox-item:hover { border-color: var(--green-medium); }
+    .checkbox-item.checked { border-color: var(--green); background: var(--green-light); color: #15803d; }
+    .checkbox-item input { display: none; }
+
+    .form-nav { display: flex; gap: 12px; margin-top: 28px; }
+    .btn-back {
+      flex: 1; padding: 14px; border-radius: 100px;
+      border: 1.5px solid var(--gray-200); background: var(--white);
+      font-family: inherit; font-weight: 600; font-size: 0.95rem;
+      color: var(--gray-600); cursor: pointer; transition: all .2s;
+    }
+    .btn-back:hover { border-color: var(--gray-400); }
+    .btn-next, .btn-submit {
+      flex: 2; padding: 14px; border-radius: 100px;
+      border: none; background: var(--green);
+      font-family: inherit; font-weight: 700; font-size: 0.95rem;
+      color: white; cursor: pointer; transition: all .2s;
+    }
+    .btn-next:hover, .btn-submit:hover { box-shadow: 0 4px 16px rgba(37,211,102,0.35); transform: translateY(-1px); }
+    .btn-next:disabled, .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .success-msg {
+      display: none; text-align: center; padding: 20px;
+    }
+    .success-msg.show { display: block; animation: fadeIn .5s ease; }
+    .success-msg .check { font-size: 3rem; margin-bottom: 12px; }
+    .success-msg h3 { font-size: 1.3rem; font-weight: 800; color: var(--gray-900); margin-bottom: 8px; }
+    .success-msg p { color: var(--gray-500); font-size: 0.95rem; }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0; text-align: center;
+      border-top: 1px solid var(--gray-200);
+      color: var(--gray-400); font-size: 0.82rem;
+    }
+    footer a { color: var(--green); text-decoration: none; font-weight: 600; }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      .hero { padding: 120px 0 60px; }
+      .form-wrapper { padding: 28px 20px; }
+      .checkbox-grid { grid-template-columns: 1fr; }
+      .cap-grid { grid-template-columns: 1fr 1fr; }
+      nav .links a:not(.cta-nav) { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ===== HERO (dark, full-bleed) ===== -->
-  <div class="hero-wrap">
-    <div class="aurora" aria-hidden="true">
-      <div class="aurora-beam a1"></div>
-      <div class="aurora-beam a2"></div>
-      <div class="aurora-beam a3"></div>
-    </div>
-    <div class="grid-overlay" aria-hidden="true"></div>
-    <nav>
-      <a href="#" class="logo">◆ AGENTES</a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-r" id="nav-menu">
-        <a href="/demo" class="nav-link">Demo</a>
-        <a href="#calculadora" class="nav-link">Ahorro</a>
-        <a href="#agentes" class="nav-link">Equipo</a>
-        <a href="#planes" class="nav-link">Planes</a>
-        <a href="/precios" class="nav-link">Precios</a>
-        <a href="/casos-de-exito" class="nav-link">Casos</a>
-        <a href="/blog" class="nav-link">Blog</a>
-        <a href="#faq" class="nav-link">FAQ</a>
-        <a href="#empezar" class="nav-cta">Probar gratis →</a>
-      </div>
-    </nav>
-
-    <section class="hero">
-      <div class="hero-text">
-        <p class="hero-tag">Empleados AI con respaldo humano</p>
-        <h1>Contrata un agente que<br/><span class="glow-text">trabaja por WhatsApp.</span></h1>
-        <p class="hero-sub">Responde clientes, agenda citas y cierra ventas. Tú supervisas, la IA ejecuta. <strong>Prueba 3 días gratis.</strong></p>
-        <div class="hero-btns">
-          <a href="#empezar" class="btn-glow">Probar gratis 3 días →</a>
-          <a href="/demo" class="btn-outline">Probar demo en vivo →</a>
-        </div>
-        <div class="hero-logos">
-          <span class="hl-label">Métodos de pago:</span>
-          <div class="hl-row">
-            <span class="hl-chip">Yape</span>
-            <span class="hl-chip">Plin</span>
-            <span class="hl-chip">VISA</span>
-            <span class="hl-chip">BCP</span>
-            <span class="hl-chip">BBVA</span>
-            <span class="hl-chip">Transferencia</span>
-          </div>
-        </div>
-      </div>
-      <div class="hero-phone" id="demo">
-        <div class="phone">
-          <div class="ph-notch"></div>
-          <div class="wa">
-            <div class="wa-top">
-              <span class="wa-back">‹</span>
-              <div class="wa-av">S</div>
-              <div><div class="wa-n">Sofía — Ventas</div><div class="wa-s">en línea</div></div>
-            </div>
-            <div class="wa-msgs">
-              <div class="wa-day">Hoy</div>
-              <div class="msg msg-in"><p>Hola, vi su anuncio. ¿Cuánto cuesta?</p><span>10:32</span></div>
-              <div class="msg msg-out"><p>¡Hola! 👋 El plan básico es $80/mes. Incluye 1h diaria y respaldo humano.</p><span>10:32 ✓✓</span></div>
-              <div class="msg msg-out"><p>¿Agendamos una demo de 15 min? Puedo buscarte horario mañana 📅</p><span>10:33 ✓✓</span></div>
-              <div class="msg msg-in"><p>Dale, mañana a las 10am</p><span>10:34</span></div>
-              <div class="msg msg-out"><p>¡Listo! Agendado mañana 10am. Te envié la invitación. ✅</p><span>10:34 ✓✓</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="phone-label">
-          <span class="pl-dot"></span>
-          Conversación real de un agente AI
-        </div>
-        <!-- Hand-drawn annotations -->
-        <div class="ann ann-ai">
-          <svg class="ann-arrow" width="50" height="40" viewBox="0 0 50 40"><path d="M45 5 C30 5, 15 10, 8 35" stroke="#25D366" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M3 28 L8 35 L14 30" stroke="#25D366" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span>¡Esto lo hace la IA!</span>
-        </div>
-        <div class="ann ann-auto">
-          <span>Agenda sola 🤯</span>
-          <svg class="ann-arrow" width="50" height="40" viewBox="0 0 50 40"><path d="M5 5 C20 5, 35 10, 42 35" stroke="#25D366" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M36 30 L42 35 L47 28" stroke="#25D366" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ===== STATS BAR ===== -->
-  <div class="stats-bar">
-    <div class="stats-inner">
-      <div class="stat-item"><strong>24/7</strong><span>Disponibilidad</span></div>
-      <div class="stat-div"></div>
-      <div class="stat-item"><strong>< 5s</strong><span>Tiempo de respuesta</span></div>
-      <div class="stat-div"></div>
-      <div class="stat-item"><strong>100%</strong><span>Respaldo humano</span></div>
-      <div class="stat-div"></div>
-      <div class="stat-item"><strong>3 días</strong><span>Gratis de prueba</span></div>
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <a href="/" class="logo"><span>◆</span> AGENTES</a>
+    <div class="links">
+      <a href="/blog">Blog</a>
+      <a href="#empezar" class="cta-nav">Empezar</a>
     </div>
   </div>
+</nav>
 
-  <!-- ===== ROI CALCULATOR ===== -->
-  <section class="sec calc-sec" id="calculadora">
-    <span class="tag">Ahorro</span>
-    <h2>¿Cuánto te ahorras con un agente AI?</h2>
-    <p class="sec-sub">Compara el costo de un empleado humano vs un agente AI de AGENTES.</p>
-    <div class="calc-wrap">
-      <div class="calc-left">
-        <label class="calc-label">Sueldo mensual de un empleado (USD)</label>
-        <input type="range" id="calc-salary" min="300" max="2000" value="800" step="50"/>
-        <div class="calc-range-labels"><span>$300</span><span id="calc-salary-val">$800</span><span>$2,000</span></div>
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="badge"><div class="dot"></div> Disponible ahora</div>
+    <h1>Tu negocio merece un <em>empleado digital</em> que ejecute</h1>
+    <p>No es un chatbot. Es un agente AI que programa, diseña, administra y resuelve — todo desde WhatsApp.</p>
+    <a href="#empezar" class="cta-btn">
+      Quiero mi agente
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
 
-        <label class="calc-label" style="margin-top:1.25rem">Horas diarias que necesitas</label>
-        <input type="range" id="calc-hours" min="1" max="8" value="4" step="1"/>
-        <div class="calc-range-labels"><span>1h</span><span id="calc-hours-val">4h</span><span>8h</span></div>
+<!-- CAPABILITIES -->
+<section class="capabilities">
+  <div class="container">
+    <div class="section-label">Capacidades</div>
+    <h2 class="section-title">Todo lo que tu agente puede hacer</h2>
+    <p class="section-sub">Un empleado que nunca descansa, aprende tu negocio y ejecuta tareas reales.</p>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon">📊</div>
+        <h3>Contabilidad</h3>
+        <p>Registra gastos, genera reportes y organiza tus finanzas.</p>
       </div>
-      <div class="calc-right">
-        <div class="calc-compare">
-          <div class="calc-col calc-human">
-            <span class="calc-col-label">👤 Empleado humano</span>
-            <div class="calc-col-price" id="calc-human-price">$800<span>/mes</span></div>
-            <ul>
-              <li>Horario limitado</li>
-              <li>Vacaciones, faltas</li>
-              <li>Capacitación lenta</li>
-              <li>1 conversación a la vez</li>
-            </ul>
-          </div>
-          <div class="calc-vs">VS</div>
-          <div class="calc-col calc-ai">
-            <span class="calc-col-label">🤖 Agente AGENTES</span>
-            <div class="calc-col-price" id="calc-ai-price">$250<span>/mes</span></div>
-            <ul>
-              <li>✓ Disponible 24/7</li>
-              <li>✓ Nunca falta</li>
-              <li>✓ Listo en 24h</li>
-              <li>✓ Multiples chats simultáneos</li>
-            </ul>
-          </div>
-        </div>
-        <div class="calc-savings">
-          Ahorras <strong id="calc-savings-val">$550</strong>/mes → <strong id="calc-savings-year">$6,600</strong>/año
-        </div>
+      <div class="cap-card">
+        <div class="cap-icon">🎨</div>
+        <h3>Diseño gráfico</h3>
+        <p>Crea posts, flyers y material visual para tus redes.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">💻</div>
+        <h3>Desarrollo web</h3>
+        <p>Construye landing pages, dashboards y herramientas internas.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📅</div>
+        <h3>Agendar citas</h3>
+        <p>Gestiona tu calendario y confirma citas automáticamente.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🤝</div>
+        <h3>Atención al cliente</h3>
+        <p>Responde consultas, resuelve dudas y da seguimiento 24/7.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📱</div>
+        <h3>Redes sociales</h3>
+        <p>Planifica contenido, redacta posts y analiza métricas.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📈</div>
+        <h3>Dashboards</h3>
+        <p>Genera reportes visuales y métricas de tu negocio en tiempo real.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🛒</div>
+        <h3>Ventas</h3>
+        <p>Califica leads, envía cotizaciones y cierra ventas por ti.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== HOW IT WORKS ===== -->
-  <section class="sec steps-sec">
-    <span class="tag">Proceso</span>
-    <h2>Tres pasos. Listo.</h2>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="sc-num">01</div>
-        <h3>Nos cuentas qué necesitas</h3>
-        <p>Ventas, soporte, agendamiento — tú defines el rol y las reglas.</p>
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container">
+    <div class="section-label">Proceso</div>
+    <h2 class="section-title">3 pasos para empezar</h2>
+    <p class="section-sub">Configurar tu agente es rápido y simple.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Cuéntanos sobre tu negocio</h3>
+        <p>Completa el formulario con las áreas donde necesitas ayuda.</p>
       </div>
-      <div class="step-card">
-        <div class="sc-num">02</div>
+      <div class="step">
+        <div class="step-num">2</div>
         <h3>Configuramos tu agente</h3>
-        <p>Lo entrenamos con tu info, conectamos WhatsApp y asignamos respaldo humano.</p>
+        <p>Lo entrenamos con la info de tu negocio y lo conectamos a WhatsApp.</p>
       </div>
-      <div class="step-card">
-        <div class="sc-num">03</div>
+      <div class="step">
+        <div class="step-num">3</div>
         <h3>Tu agente empieza a trabajar</h3>
-        <p>Recibes un número de WhatsApp activo. Tu agente responde desde el día 1.</p>
+        <p>Desde el día uno ejecuta tareas reales y aprende cada vez más.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== AGENTS ===== -->
-  <section class="sec agents-sec" id="agentes">
-    <span class="tag">Equipo</span>
-    <h2>Conoce a tus agentes</h2>
-    <div class="agents-grid">
-      {agents.map((a) => (
-        <div class="ag-card">
-          <div class="ag-img-wrap">
-            <img src={a.image} alt={a.name} loading="lazy"/>
+<!-- FORM -->
+<section class="form-section" id="empezar">
+  <div class="container">
+    <div class="section-label">Únete</div>
+    <h2 class="section-title">Empieza ahora</h2>
+    <p class="section-sub">Completa estos 3 pasos y nos pondremos en contacto contigo.</p>
+    <div class="form-wrapper">
+      <div class="progress-bar">
+        <div class="bar active" data-step="1"></div>
+        <div class="bar" data-step="2"></div>
+        <div class="bar" data-step="3"></div>
+      </div>
+
+      <form id="onboarding-form">
+        <!-- Step 1 -->
+        <div class="form-step active" data-step="1">
+          <h3>¿Cómo se llama tu negocio?</h3>
+          <p class="hint">Puede ser tu marca, empresa o proyecto.</p>
+          <label class="field">
+            <span>Nombre del negocio</span>
+            <input type="text" id="business-name" placeholder="Ej: Clínica San Martín" required />
+          </label>
+          <div class="form-nav">
+            <button type="button" class="btn-next" onclick="nextStep(2)">Continuar</button>
           </div>
-          <div class="ag-info">
-            <span class="ag-role">{a.role}</span>
-            <h3>{a.name}</h3>
-            <p>{a.desc}</p>
-            <div class="ag-tags">{a.tags.map(t => <span>{t}</span>)}</div>
-            <a href={a.link} class="ag-link">Ver más →</a>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step" data-step="2">
+          <h3>¿En qué áreas necesitas ayuda?</h3>
+          <p class="hint">Selecciona todas las que apliquen.</p>
+          <div class="checkbox-grid">
+            <label class="checkbox-item" onclick="toggleCheck(this)"><input type="checkbox" name="areas" value="ventas" />🛒 Ventas</label>
+            <label class="checkbox-item" onclick="toggleCheck(this)"><input type="checkbox" name="areas" value="soporte" />🤝 Soporte</label>
+            <label class="checkbox-item" onclick="toggleCheck(this)"><input type="checkbox" name="areas" value="contabilidad" />📊 Contabilidad</label>
+            <label class="checkbox-item" onclick="toggleCheck(this)"><input type="checkbox" name="areas" value="diseño" />🎨 Diseño</label>
+            <label class="checkbox-item" onclick="toggleCheck(this)"><input type="checkbox" name="areas" value="desarrollo-web" />💻 Desarrollo web</label>
+            <label class="checkbox-item" onclick="toggleCheck(this)"><input type="checkbox" name="areas" value="redes-sociales" />📱 Redes sociales</label>
+            <label class="checkbox-item" onclick="toggleCheck(this)"><input type="checkbox" name="areas" value="citas" />📅 Agendar citas</label>
+            <label class="checkbox-item" onclick="toggleCheck(this)"><input type="checkbox" name="areas" value="otro" />✨ Otro</label>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn-back" onclick="prevStep(1)">Atrás</button>
+            <button type="button" class="btn-next" onclick="nextStep(3)">Continuar</button>
           </div>
         </div>
-      ))}
-    </div>
-  </section>
 
-  <!-- ===== PRICING ===== -->
-  <section class="sec pricing-sec" id="planes">
-    <span class="tag">Planes</span>
-    <h2>Un sueldo fijo. Sin sorpresas.</h2>
-    <p class="sec-sub">Sin cobros por token. Sin cargos ocultos. Cancela cuando quieras.</p>
-    <div class="plans-grid">
-      {plans.map((p) => (
-        <div class={`pl-card ${p.popular ? 'pl-pop' : ''}`}>
-          {p.popular && <span class="pl-badge">Popular</span>}
-          <h3>{p.name}</h3>
-          <p class="pl-hrs">{p.hours}</p>
-          <div class="pl-price"><span class="pl-s">$</span><span class="pl-n">{p.price}</span><span class="pl-p">/mes</span></div>
-          <p class="pl-pen">≈ S/{p.pricePen} soles</p>
-          <p class="pl-desc">{p.desc}</p>
-          <ul>{p.features.map(f => <li>✓ {f}</li>)}</ul>
-          <a href="#empezar" class={p.popular ? 'btn-glow btn-sm' : 'btn-outline-dark btn-sm'}>Probar gratis</a>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- ===== SOCIAL PROOF ===== -->
-  <section class="sec proof-sec">
-    <span class="tag">Resultados</span>
-    <h2>Lo que dicen nuestros clientes</h2>
-    <div class="proof-grid">
-      <div class="proof-card">
-        <div class="proof-stars">★★★★★</div>
-        <p>"Sofía cerró 3 ventas la primera semana. Yo ni tuve que intervenir."</p>
-        <div class="proof-author">
-          <strong>Dr. Cristian C.</strong>
-          <span>Clínica dental · Chiclayo</span>
-        </div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-stars">★★★★★</div>
-        <p>"Mis pacientes reciben respuesta inmediata. Antes perdía consultas por no contestar a tiempo."</p>
-        <div class="proof-author">
-          <strong>Dr. Juan J.</strong>
-          <span>Geriatra · Lima</span>
-        </div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-stars">★★★★★</div>
-        <p>"El agente agenda citas solo. Yo solo reviso el calendario cada mañana. Increíble."</p>
-        <div class="proof-author">
-          <strong>Dr. Gustavo D.</strong>
-          <span>Especialista · Lima</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FAQ ===== -->
-  <section class="sec faq-sec" id="faq">
-    <span class="tag">Preguntas</span>
-    <h2>Preguntas frecuentes</h2>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>¿Qué pasa si la IA no sabe responder?</summary>
-        <p>Cada agente tiene respaldo humano. Si la IA no puede resolver algo, un humano de nuestro equipo toma el control de la conversación sin que el cliente lo note.</p>
-      </details>
-      <details class="faq-item">
-        <summary>¿Necesito un número de WhatsApp nuevo?</summary>
-        <p>Sí, te proporcionamos un número dedicado ya configurado. También podemos integrarlo con tu número existente según el plan.</p>
-      </details>
-      <details class="faq-item">
-        <summary>¿Cuánto tarda en estar listo?</summary>
-        <p>Menos de 24 horas. Nos cuentas qué necesitas, configuramos el agente con tu información y lo activamos.</p>
-      </details>
-      <details class="faq-item">
-        <summary>¿Puedo cancelar cuando quiera?</summary>
-        <p>Sí, sin penalidades ni contratos a largo plazo. Pagas mes a mes.</p>
-      </details>
-      <details class="faq-item">
-        <summary>¿Los precios son en dólares o soles?</summary>
-        <p>Los precios están en dólares (USD). Aceptamos Yape, Plin, transferencia bancaria, y tarjetas VISA.</p>
-      </details>
-      <details class="faq-item">
-        <summary>¿Qué tipo de negocios atienden?</summary>
-        <p>Clínicas, consultorios, tiendas, restaurantes, inmobiliarias — cualquier negocio que atienda clientes por WhatsApp. Mira nuestras soluciones para <a href="/clinicas" style="color:var(--green-d);font-weight:600">clínicas</a>, <a href="/restaurantes" style="color:var(--green-d);font-weight:600">restaurantes</a> e <a href="/inmobiliarias" style="color:var(--green-d);font-weight:600">inmobiliarias</a>, <a href="/abogados" style="color:var(--green-d);font-weight:600">abogados</a> y <a href="/contadores" style="color:var(--green-d);font-weight:600">contadores</a>.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- ===== EMPEZAR (disguised waitlist) ===== -->
-  <section class="sec start-sec" id="empezar">
-    <div class="start-wrap">
-      <div class="start-left">
-        <div class="free-trial-badge">🎁 PRUEBA GRATIS</div>
-        <div class="urgency-badge" id="urgency-badge">⚡ Solo 3 cupos disponibles</div>
-        <h2>3 días gratis. Sin compromiso.</h2>
-        <p>Completa tus datos y en menos de 24h tendrás tu agente funcionando. Si no te convence, no pagas nada.</p>
-        <ul>
-          <li>✓ Activo en menos de 24h</li>
-          <li>✓ 3 días completamente gratis</li>
-          <li>✓ Sin tarjeta de crédito</li>
-          <li>✓ Setup personalizado incluido</li>
-          <li>✓ Cancela cuando quieras</li>
-        </ul>
-      </div>
-      <form id="wl-form">
-        <input type="text" name="name" placeholder="Tu nombre" required/>
-        <input type="email" name="email" placeholder="tu@email.com" required/>
-        <input type="tel" name="phone" placeholder="WhatsApp (ej: 951234567)" required/>
-        <input type="text" name="company" placeholder="Empresa (opcional)"/>
-        <select name="agentType" required>
-          <option value="" disabled selected>¿Qué agente necesitas?</option>
-          <option value="ventas">Ventas</option>
-          <option value="atencion">Atención al cliente</option>
-          <option value="agendamiento">Agendamiento de citas</option>
-          <option value="soporte">Soporte técnico</option>
-          <option value="community">Community manager</option>
-          <option value="otro">Otro</option>
-        </select>
-        <textarea name="message" placeholder="Cuéntanos sobre tu negocio (opcional)" rows="3"></textarea>
-        <button type="submit" class="btn-glow btn-full" id="sub-btn">Activar prueba gratis →</button>
-        <p id="form-msg" class="form-msg"></p>
-        <div class="form-wa-alt">
-          <span>¿Prefieres escribirnos directo?</span>
-          <a href="https://wa.me/51987654321?text=Hola%21%20Quiero%20probar%20un%20agente%20AI%20para%20mi%20negocio.%20%F0%9F%9A%80" target="_blank" rel="noopener" class="wa-alt-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.616l4.532-1.474A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.17 0-4.207-.69-5.87-1.882l-.42-.312-2.689.875.891-2.633-.345-.445A9.722 9.722 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12s-4.365 9.75-9.75 9.75z"/></svg>
-            Escríbenos por WhatsApp
-          </a>
+        <!-- Step 3 -->
+        <div class="form-step" data-step="3">
+          <h3>¿Cómo te contactamos?</h3>
+          <p class="hint">Te escribiremos para configurar tu agente.</p>
+          <label class="field">
+            <span>Correo electrónico</span>
+            <input type="email" id="email" placeholder="tu@empresa.com" required />
+          </label>
+          <label class="field">
+            <span>WhatsApp</span>
+            <input type="tel" id="whatsapp" placeholder="+51 999 999 999" required />
+          </label>
+          <div class="form-nav">
+            <button type="button" class="btn-back" onclick="prevStep(2)">Atrás</button>
+            <button type="submit" class="btn-submit">Empezar ahora 🚀</button>
+          </div>
         </div>
       </form>
+
+      <div class="success-msg" id="success">
+        <div class="check">✅</div>
+        <h3>¡Listo!</h3>
+        <p>Recibimos tu solicitud. Te contactaremos pronto para configurar tu agente.</p>
+      </div>
     </div>
-  </section>
-
-  <!-- Floating CTA -->
-  <a href="https://wa.me/51987654321?text=Hola%21%20Quiero%20probar%20un%20agente%20AI%20para%20mi%20negocio.%20%F0%9F%9A%80" target="_blank" rel="noopener" class="wa-float" aria-label="Escríbenos por WhatsApp">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.616l4.532-1.474A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.17 0-4.207-.69-5.87-1.882l-.42-.312-2.689.875.891-2.633-.345-.445A9.722 9.722 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12s-4.365 9.75-9.75 9.75z"/></svg>
-    <span>WhatsApp directo</span>
-  </a>
-
-  <!-- Sticky mobile CTA bar -->
-  <div class="sticky-cta" id="sticky-cta">
-    <span>3 días gratis</span>
-    <a href="https://wa.me/51987654321?text=Hola%21%20Quiero%20probar%20un%20agente%20AI%20para%20mi%20negocio.%20%F0%9F%9A%80" target="_blank" rel="noopener" class="btn-glow btn-sticky">💬 WhatsApp</a>
-    <a href="#empezar" class="btn-outline-dark btn-sticky">Formulario</a>
   </div>
+</section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <span>◆ AGENTES <span class="by">by Luminari</span></span>
-    <span class="copy">© 2026 Luminari</span>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <a href="/">◆ AGENTES</a> by Luminari &copy; 2026
+  </div>
+</footer>
 
-  <script>
-    // === Dynamic urgency badge ===
-    {
-      const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-      const badge = document.getElementById('urgency-badge');
-      if (badge) badge.textContent = `⚡ Solo 3 cupos disponibles en ${meses[new Date().getMonth()]}`;
-    }
-
-    // === Mobile nav ===
-    const navToggle = document.getElementById('nav-toggle')!;
-    const navMenu = document.getElementById('nav-menu')!;
-    navToggle.addEventListener('click', () => {
-      const open = navMenu.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(open));
+<script>
+  function nextStep(n) {
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    document.querySelector(`.form-step[data-step="${n}"]`).classList.add('active');
+    document.querySelectorAll('.progress-bar .bar').forEach(b => {
+      b.classList.toggle('active', parseInt(b.dataset.step) <= n);
     });
-    navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      navMenu.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    }));
-
-    // === Form ===
-    const form = document.getElementById('wl-form') as HTMLFormElement;
-    const msg = document.getElementById('form-msg')!;
-    const btn = document.getElementById('sub-btn') as HTMLButtonElement;
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      btn.disabled = true; btn.textContent = 'Procesando...';
-      msg.textContent = ''; msg.className = 'form-msg';
-      try {
-        const data = Object.fromEntries(new FormData(form));
-        const r = await fetch('https://agentes-api.luminari.agency/api/waitlist', {
-          method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data)
-        });
-        if (r.ok) {
-          window.umami?.track('waitlist-submit', { agentType: data.agentType });
-          form.reset();
-          window.location.href = '/gracias';
-        }
-        else { const j = await r.json(); throw new Error(j.message || 'Error'); }
-      } catch (err: any) { msg.textContent = '❌ ' + err.message; msg.className = 'form-msg err'; }
-      finally { btn.disabled = false; btn.textContent = 'Activar prueba gratis →'; }
-    });
-
-    // === Scroll reveal ===
-    const io = new IntersectionObserver((es) => {
-      es.forEach(e => { if (e.isIntersecting) { (e.target as HTMLElement).style.opacity = '1'; (e.target as HTMLElement).style.transform = 'translateY(0)'; io.unobserve(e.target); }});
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.step-card, .ag-card, .pl-card, .proof-card, .faq-item').forEach(el => {
-      (el as HTMLElement).style.opacity = '0';
-      (el as HTMLElement).style.transform = 'translateY(24px)';
-      (el as HTMLElement).style.transition = 'opacity .6s ease, transform .6s ease';
-      io.observe(el);
-    });
-    // === ROI Calculator ===
-    const plans_map: Record<string, number> = { '1': 80, '2': 80, '3': 80, '4': 250, '5': 250, '6': 250, '7': 250, '8': 400, '24': 600 };
-    const salarySlider = document.getElementById('calc-salary') as HTMLInputElement;
-    const hoursSlider = document.getElementById('calc-hours') as HTMLInputElement;
-    function updateCalc() {
-      const salary = Number(salarySlider.value);
-      const hours = Number(hoursSlider.value);
-      const aiPrice = hours <= 1 ? 80 : hours <= 4 ? 250 : hours <= 8 ? 400 : 600;
-      const savings = Math.max(0, salary - aiPrice);
-      document.getElementById('calc-salary-val')!.textContent = `$${salary}`;
-      document.getElementById('calc-hours-val')!.textContent = `${hours}h`;
-      document.getElementById('calc-human-price')!.innerHTML = `$${salary}<span>/mes</span>`;
-      document.getElementById('calc-ai-price')!.innerHTML = `$${aiPrice}<span>/mes</span>`;
-      document.getElementById('calc-savings-val')!.textContent = `$${savings}`;
-      document.getElementById('calc-savings-year')!.textContent = `$${(savings * 12).toLocaleString()}`;
-    }
-    salarySlider.addEventListener('input', updateCalc);
-    hoursSlider.addEventListener('input', updateCalc);
-    updateCalc();
-
-    // === Dynamic month in urgency badge ===
-    const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-    const urgBadge = document.querySelector('.urgency-badge');
-    if (urgBadge) urgBadge.textContent = `⚡ Solo 3 cupos disponibles en ${months[new Date().getMonth()]}`;
-
-    // === Sticky CTA on scroll ===
-    const stickyCta = document.getElementById('sticky-cta');
-    const empezarSec = document.getElementById('empezar');
-    if (stickyCta && empezarSec) {
-      let lastY = 0;
-      window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        const empRect = empezarSec.getBoundingClientRect();
-        const show = y > 400 && empRect.top > window.innerHeight;
-        stickyCta.classList.toggle('visible', show);
-        lastY = y;
-      }, { passive: true });
-    }
-
-    // Fallback
+  }
+  function prevStep(n) { nextStep(n); }
+  function toggleCheck(el) {
     setTimeout(() => {
-      document.querySelectorAll('.step-card, .ag-card, .pl-card, .proof-card, .faq-item').forEach(el => {
-        (el as HTMLElement).style.opacity = '1';
-        (el as HTMLElement).style.transform = 'translateY(0)';
+      el.classList.toggle('checked', el.querySelector('input').checked);
+    }, 0);
+  }
+
+  document.getElementById('onboarding-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    const areas = [...document.querySelectorAll('input[name="areas"]:checked')].map(c => c.value);
+    try {
+      await fetch('https://agentes-api.luminari.agency/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          businessName: document.getElementById('business-name').value,
+          areas,
+          email: document.getElementById('email').value,
+          whatsapp: document.getElementById('whatsapp').value,
+        })
       });
-    }, 2500);
-  </script>
-<WhatsAppFloat />
-<ExitIntentPopup />
+    } catch (err) {}
+    document.getElementById('onboarding-form').style.display = 'none';
+    document.querySelector('.progress-bar').style.display = 'none';
+    document.getElementById('success').classList.add('show');
+  });
+</script>
+
 </body>
 </html>
-
-<style is:global>
-  :root {
-    --bg: #fafffe;
-    --dark: #0a0f0d;
-    --text: #1a2e23;
-    --text2: #3d5a4a;
-    --text3: #7a9484;
-    --green: #25D366;
-    --green-d: #128C7E;
-    --green-dd: #075E54;
-    --green-l: #DCF8C6;
-    --border: rgba(0,60,30,0.08);
-    --r: 18px;
-    --r-sm: 10px;
-    --mw: 1100px;
-    --font: 'Inter', system-ui, sans-serif;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:var(--font);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--bg)}
-
-  /* === HERO DARK SECTION === */
-  .hero-wrap{position:relative;background:var(--dark);overflow:hidden}
-
-  /* Aurora gradient mesh */
-  .aurora{position:absolute;inset:-20%;z-index:0;overflow:hidden;filter:blur(100px) saturate(1.8)}
-  .aurora-beam{position:absolute;border-radius:50%}
-  .a1{width:70%;height:60%;top:-5%;right:-5%;background:radial-gradient(ellipse,rgba(37,211,102,.5),rgba(0,200,120,.15) 50%,transparent 70%);animation:drift1 12s ease-in-out infinite}
-  .a2{width:60%;height:65%;bottom:0;left:-5%;background:radial-gradient(ellipse,rgba(0,180,160,.35),rgba(18,140,126,.1) 50%,transparent 70%);animation:drift2 15s ease-in-out infinite}
-  .a3{width:50%;height:50%;top:20%;left:30%;background:radial-gradient(ellipse,rgba(46,230,120,.25),rgba(0,220,180,.08) 50%,transparent 70%);animation:drift3 18s ease-in-out infinite}
-  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}50%{transform:translate(-40px,30px) scale(1.15) rotate(8deg)}}
-  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}50%{transform:translate(50px,-40px) scale(1.1) rotate(-6deg)}}
-  @keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-30px,20px) scale(1.2)}66%{transform:translate(20px,-30px) scale(.9)}}
-
-  /* Subtle grid overlay */
-  .grid-overlay{position:absolute;inset:0;z-index:0;background-image:
-    linear-gradient(rgba(37,211,102,.045) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(37,211,102,.045) 1px,transparent 1px);
-  background-size:70px 70px;mask-image:radial-gradient(ellipse 70% 60% at 50% 45%,black,transparent)}
-
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(10,15,13,0.5);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(37,211,102,0.08)}
-  .logo{font-size:.95rem;font-weight:800;letter-spacing:.12em;color:#fff;text-decoration:none}
-  .nav-r{display:flex;align-items:center;gap:1.5rem}
-  .nav-link{font-size:.85rem;color:rgba(255,255,255,.6);text-decoration:none;font-weight:500;transition:color .15s}
-  .nav-link:hover{color:#fff}
-  .nav-cta{font-size:.82rem;font-weight:600;color:var(--dark);background:var(--green);padding:.45rem 1.1rem;border-radius:100px;text-decoration:none;transition:all .2s}
-  .nav-cta:hover{background:#2ee072;box-shadow:0 0 20px rgba(37,211,102,.3)}
-
-  .hero{position:relative;z-index:1;max-width:var(--mw);margin:0 auto;padding:8rem 2rem 4rem;display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;gap:3rem}
-  .hero-tag{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem}
-  .hero-tag::before{content:'';width:24px;height:2px;background:var(--green);border-radius:2px}
-  .hero h1{font-size:clamp(2.2rem,4.8vw,3.2rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;color:#fff;margin-bottom:1.5rem}
-  .glow-text{color:var(--green);text-shadow:0 0 40px rgba(37,211,102,.3)}
-  .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:2rem;max-width:460px}
-  .hero-sub strong{color:rgba(255,255,255,.85)}
-
-  .hero-btns{display:flex;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap}
-  .btn-glow{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font);font-size:.95rem;font-weight:700;color:var(--dark);background:var(--green);padding:.9rem 2rem;border-radius:100px;border:none;cursor:pointer;text-decoration:none;transition:all .25s;box-shadow:0 0 30px rgba(37,211,102,.2),0 4px 14px rgba(37,211,102,.3)}
-  .btn-glow:hover{background:#2ee072;box-shadow:0 0 50px rgba(37,211,102,.3),0 6px 20px rgba(37,211,102,.4);transform:translateY(-1px)}
-  .btn-glow:disabled{opacity:.5;cursor:not-allowed;transform:none}
-  .btn-outline{font-size:.95rem;font-weight:500;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.15);padding:.85rem 1.8rem;border-radius:100px;text-decoration:none;transition:all .2s}
-  .btn-outline:hover{color:#fff;border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.04)}
-
-  .hero-logos{display:flex;flex-direction:column;gap:.5rem}
-  .hl-label{font-size:.7rem;color:rgba(255,255,255,.3);font-weight:500;letter-spacing:.05em}
-  .hl-row{display:flex;gap:.4rem;flex-wrap:wrap}
-  .hl-chip{font-size:.65rem;font-weight:600;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.1);padding:.2rem .55rem;border-radius:100px;background:rgba(255,255,255,.03)}
-
-  /* Phone mockup */
-  .hero-phone{display:flex;flex-direction:column;align-items:center;gap:.75rem;position:relative}
-  .hero-phone::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:420px;height:420px;background:radial-gradient(circle,rgba(37,211,102,.28),rgba(0,180,130,.12) 45%,transparent 70%);border-radius:50%;z-index:0;animation:phoneglow 4s ease-in-out infinite}
-  @keyframes phoneglow{0%,100%{opacity:.8;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}}
-  .phone{background:#111;border-radius:32px;padding:6px;box-shadow:0 20px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06),0 0 80px rgba(37,211,102,.12);max-width:300px;width:100%;position:relative;z-index:1}
-  .ph-notch{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:80px;height:18px;background:#111;border-radius:0 0 12px 12px;z-index:5}
-  .wa{border-radius:26px;overflow:hidden;background:#ECE5DD}
-  .wa-top{background:var(--green-dd);color:#fff;padding:1.6rem .7rem .5rem;display:flex;align-items:center;gap:.4rem}
-  .wa-back{font-size:1rem;opacity:.7}
-  .wa-av{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700}
-  .wa-n{font-size:.72rem;font-weight:600}
-  .wa-s{font-size:.58rem;opacity:.7}
-  .wa-msgs{padding:.4rem;display:flex;flex-direction:column;gap:.2rem}
-  .wa-day{text-align:center;font-size:.58rem;color:#8696a0;background:rgba(255,255,255,.8);padding:.15rem .5rem;border-radius:6px;align-self:center;margin:.15rem 0}
-  .msg{max-width:84%;padding:.35rem .5rem;border-radius:7px;font-size:.7rem;line-height:1.4}
-  .msg span{display:block;text-align:right;font-size:.52rem;color:#8696a0;margin-top:.1rem}
-  .msg-in{background:#fff;align-self:flex-start;border-radius:0 7px 7px 7px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
-  .msg-out{background:var(--green-l);align-self:flex-end;border-radius:7px 0 7px 7px}
-  .phone-label{display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:rgba(255,255,255,.35);font-weight:500}
-  .pl-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
-  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(37,211,102,.4)}50%{opacity:.6;box-shadow:0 0 0 5px rgba(37,211,102,0)}}
-
-  /* === ANNOTATIONS === */
-  .ann{position:absolute;z-index:3;font-family:'Caveat',cursive;font-size:1.1rem;font-weight:700;color:var(--green);display:flex;align-items:flex-start;gap:.2rem;white-space:nowrap;filter:drop-shadow(0 2px 8px rgba(0,0,0,.3))}
-  .ann-ai{top:35%;right:-60px}
-  .ann-ai span{margin-top:-5px}
-  .ann-auto{bottom:25%;left:-70px}
-  .ann-auto span{margin-top:-5px}
-  @media(max-width:900px){.ann{display:none}}
-
-  /* === STATS BAR === */
-  .stats-bar{background:#fff;border-bottom:1px solid var(--border);position:relative;z-index:2}
-  .stats-inner{max-width:var(--mw);margin:0 auto;padding:1.5rem 2rem;display:flex;justify-content:center;align-items:center;gap:2.5rem}
-  .stat-item{text-align:center}
-  .stat-item strong{display:block;font-size:1.4rem;font-weight:800;color:var(--green-dd);letter-spacing:-.02em}
-  .stat-item span{font-size:.72rem;color:var(--text3);font-weight:500}
-  .stat-div{width:1px;height:32px;background:var(--border)}
-
-  /* === COMMON SECTION === */
-  .sec{max-width:var(--mw);margin:0 auto;padding:5rem 2rem}
-  .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--green-d);background:rgba(37,211,102,.08);padding:.25rem .7rem;border-radius:100px;margin-bottom:.75rem}
-  .sec h2{font-size:clamp(1.7rem,3.5vw,2.3rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;line-height:1.2}
-  .sec-sub{color:var(--text2);font-size:.95rem;margin-bottom:2.5rem}
-
-  /* === CALCULATOR === */
-  .calc-sec{text-align:center}
-  .calc-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:2.5rem;text-align:left;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;box-shadow:0 4px 20px rgba(0,60,30,.03);margin-top:2rem}
-  .calc-label{display:block;font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.5rem}
-  .calc-wrap input[type=range]{width:100%;accent-color:var(--green);height:6px;cursor:pointer}
-  .calc-range-labels{display:flex;justify-content:space-between;font-size:.72rem;color:var(--text3);margin-top:.25rem}
-  .calc-range-labels span:nth-child(2){font-weight:700;color:var(--green-d);font-size:.85rem}
-  .calc-compare{display:flex;align-items:stretch;gap:1rem}
-  .calc-col{flex:1;padding:1.25rem;border-radius:var(--r-sm);text-align:center}
-  .calc-human{background:#fef2f2;border:1px solid #fecaca}
-  .calc-ai{background:#f0fdf4;border:1px solid #bbf7d0}
-  .calc-col-label{font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:.5rem}
-  .calc-col-price{font-size:1.8rem;font-weight:900;letter-spacing:-.02em;margin-bottom:.75rem}
-  .calc-col-price span{font-size:.75rem;font-weight:400;color:var(--text3)}
-  .calc-human .calc-col-price{color:#dc2626}
-  .calc-ai .calc-col-price{color:var(--green-d)}
-  .calc-col ul{list-style:none;text-align:left;display:flex;flex-direction:column;gap:.3rem}
-  .calc-col li{font-size:.78rem;color:var(--text2)}
-  .calc-human li{color:#991b1b}
-  .calc-ai li{color:var(--green-dd)}
-  .calc-vs{display:flex;align-items:center;font-size:1rem;font-weight:900;color:var(--text3)}
-  .calc-savings{margin-top:1.25rem;text-align:center;font-size:1rem;color:var(--text);background:linear-gradient(135deg,rgba(37,211,102,.08),rgba(18,140,126,.05));padding:.75rem;border-radius:var(--r-sm)}
-  .calc-savings strong{color:var(--green-d);font-size:1.2rem}
-  @media(max-width:900px){.calc-wrap{grid-template-columns:1fr}.calc-compare{flex-direction:column}}
-
-  /* === STEPS === */
-  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
-  .step-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:2rem 1.5rem;transition:all .3s;position:relative;overflow:hidden}
-  .step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--green-d));opacity:0;transition:opacity .3s}
-  .step-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,60,30,.06)}
-  .step-card:hover::before{opacity:1}
-  .sc-num{font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,rgba(37,211,102,.2),rgba(18,140,126,.1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:.75rem;letter-spacing:-.04em}
-  .step-card h3{font-size:1rem;font-weight:700;margin-bottom:.35rem}
-  .step-card p{font-size:.85rem;color:var(--text2);line-height:1.6}
-
-  /* === AGENTS === */
-  .agents-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
-  .ag-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .3s}
-  .ag-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,60,30,.05)}
-  .ag-img-wrap{height:280px;background:linear-gradient(180deg,#f4faf6,#e8f5ec);display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
-  .ag-img-wrap img{height:90%;width:auto;max-width:85%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 4px 12px rgba(0,0,0,.08));transition:transform .4s cubic-bezier(.16,1,.3,1)}
-  .ag-card:hover img{transform:scale(1.04)}
-  .ag-info{padding:1.25rem 1.5rem 1.5rem}
-  .ag-role{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green-d);display:block;margin-bottom:.1rem}
-  .ag-info h3{font-size:1.2rem;font-weight:800;margin-bottom:.35rem}
-  .ag-info p{font-size:.83rem;color:var(--text2);line-height:1.6;margin-bottom:.75rem}
-  .ag-tags{display:flex;gap:.3rem;flex-wrap:wrap}
-  .ag-tags span{font-size:.67rem;font-weight:500;color:var(--text3);border:1px solid var(--border);padding:.15rem .5rem;border-radius:100px}
-  .ag-link{display:inline-block;margin-top:.75rem;font-size:.82rem;font-weight:600;color:var(--green-d);text-decoration:none;transition:color .2s}
-  .ag-link:hover{color:var(--green)}
-
-  /* === PRICING === */
-  .pricing-sec{text-align:center}
-  .plans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;text-align:left}
-  .pl-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:2rem 1.75rem;position:relative;display:flex;flex-direction:column;transition:all .3s}
-  .pl-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,60,30,.05)}
-  .pl-pop{border-color:var(--green)!important;box-shadow:0 0 0 1px var(--green),0 8px 30px rgba(37,211,102,.08)!important}
-  .pl-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:.68rem;font-weight:700;color:#fff;background:var(--green);padding:.2rem .8rem;border-radius:100px;white-space:nowrap}
-  .pl-card h3{font-size:1.1rem;font-weight:800;margin-bottom:.1rem}
-  .pl-hrs{font-size:.8rem;color:var(--text3);margin-bottom:1.25rem}
-  .pl-price{display:flex;align-items:baseline;gap:.1rem;margin-bottom:.75rem}
-  .pl-s{font-size:1rem;font-weight:600;color:var(--text2)}
-  .pl-n{font-size:2.8rem;font-weight:900;line-height:1;letter-spacing:-.03em}
-  .pl-p{font-size:.82rem;color:var(--text3);margin-left:.15rem}
-  .pl-pen{font-size:.75rem;color:var(--text3);margin-top:-.4rem;margin-bottom:.75rem}
-  .pl-desc{font-size:.83rem;color:var(--text2);margin-bottom:1.5rem}
-  .pl-card ul{list-style:none;display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.5rem;flex:1}
-  .pl-card li{font-size:.83rem;color:var(--text2)}
-  .btn-outline-dark{display:block;text-align:center;font-family:var(--font);font-size:.87rem;font-weight:600;color:var(--text);border:1px solid var(--border);padding:.7rem;border-radius:var(--r-sm);text-decoration:none;transition:all .2s}
-  .btn-outline-dark:hover{border-color:var(--green);color:var(--green-d);background:rgba(37,211,102,.04)}
-  .btn-sm{font-size:.87rem!important;padding:.7rem 1.5rem!important;display:block;text-align:center;width:100%;border-radius:var(--r-sm)!important}
-
-  /* === SOCIAL PROOF === */
-  .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
-  .proof-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:all .3s}
-  .proof-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,60,30,.05)}
-  .proof-stars{color:#f59e0b;font-size:1rem;margin-bottom:.75rem;letter-spacing:.1em}
-  .proof-card>p{font-size:.9rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:1.25rem}
-  .proof-author strong{display:block;font-size:.85rem;font-weight:700;color:var(--text)}
-  .proof-author span{font-size:.75rem;color:var(--text3)}
-
-  /* === FAQ === */
-  .faq-list{max-width:700px;margin:2rem auto 0;display:flex;flex-direction:column;gap:.5rem}
-  .faq-item{background:#fff;border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden;transition:all .2s}
-  .faq-item[open]{box-shadow:0 4px 16px rgba(0,60,30,.04)}
-  .faq-item summary{padding:1rem 1.25rem;font-size:.9rem;font-weight:600;color:var(--text);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
-  .faq-item summary::after{content:'+';font-size:1.2rem;font-weight:400;color:var(--text3);transition:transform .2s}
-  .faq-item[open] summary::after{content:'−'}
-  .faq-item summary::-webkit-details-marker{display:none}
-  .faq-item p{padding:0 1.25rem 1rem;font-size:.85rem;color:var(--text2);line-height:1.7}
-
-  /* === START === */
-  .start-sec{padding-bottom:6rem}
-  .start-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:3rem;box-shadow:0 4px 20px rgba(0,60,30,.03)}
-  .start-left h2{margin-bottom:.75rem}
-  .start-left>p{font-size:.93rem;color:var(--text2);line-height:1.7;margin-bottom:1.5rem}
-  .start-left ul{list-style:none;display:flex;flex-direction:column;gap:.45rem}
-  .start-left li{font-size:.87rem;color:var(--text2)}
-  form{display:flex;flex-direction:column;gap:.65rem}
-  input,select,textarea{width:100%;padding:.72rem .85rem;background:#fafffe;border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);font-family:var(--font);font-size:.87rem;outline:none;transition:border-color .15s,box-shadow .15s}
-  input:focus,select:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(37,211,102,.1)}
-  input::placeholder,textarea::placeholder{color:var(--text3)}
-  select{cursor:pointer} select option{background:#fff}
-  textarea{resize:vertical;min-height:65px}
-  .btn-full{width:100%;text-align:center;justify-content:center;margin-top:.3rem}
-  .free-trial-badge{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.1em;color:#fff;background:linear-gradient(135deg,var(--green),var(--green-d));padding:.4rem 1rem;border-radius:100px;margin-bottom:1rem;animation:badge-pulse 2s ease-in-out infinite}
-  @keyframes badge-pulse{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.3)}50%{box-shadow:0 0 0 8px rgba(37,211,102,0)}}
-  .urgency-badge{display:inline-block;font-size:.78rem;font-weight:700;color:#dc2626;background:#fef2f2;border:1px solid #fecaca;padding:.35rem .9rem;border-radius:100px;margin-bottom:.5rem}
-  .form-msg{font-size:.83rem;text-align:center;min-height:1.2em}
-  .form-msg.ok{color:var(--green-d)} .form-msg.err{color:#dc2626}
-  .form-wa-alt{text-align:center;margin-top:1rem;padding-top:1rem;border-top:1px solid #e5e7eb}
-  .form-wa-alt span{display:block;font-size:.8rem;color:#888;margin-bottom:.5rem}
-  .wa-alt-link{display:inline-flex;align-items:center;gap:.4rem;color:#25D366;font-weight:600;font-size:.9rem;text-decoration:none;transition:opacity .2s}
-  .wa-alt-link:hover{opacity:.8}
-  .form-success{text-align:center;padding:2rem 1rem}
-  .form-success .success-icon{font-size:3rem;margin-bottom:.5rem}
-  .form-success h3{font-size:1.4rem;margin-bottom:.5rem}
-  .form-success p{color:var(--txt-s);margin-bottom:1rem}
-  .form-success .wa-btn{display:inline-flex;align-items:center;justify-content:center;background:#25D366;border-color:#25D366;font-size:1.1rem;padding:.9rem 2rem;margin-bottom:1rem}
-  .form-success .wa-btn:hover{background:#1DA851;border-color:#1DA851}
-  .form-success .success-sub{font-size:.85rem;color:var(--txt-s);margin-top:.5rem}
-
-  /* === FOOTER === */
-  footer{border-top:1px solid var(--border);padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;max-width:var(--mw);margin:0 auto;font-size:.82rem;font-weight:700;letter-spacing:.06em;color:var(--green-dd)}
-  .by{font-weight:400;color:var(--text3);letter-spacing:0}
-  .copy{font-size:.75rem;color:var(--text3);font-weight:400;letter-spacing:0}
-
-  /* === FLOATING WHATSAPP === */
-  .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;display:flex;align-items:center;gap:.5rem;background:#25D366;color:#fff;padding:.75rem 1.25rem;border-radius:100px;text-decoration:none;font-family:var(--font);font-size:.87rem;font-weight:600;box-shadow:0 4px 20px rgba(37,211,102,.4),0 2px 8px rgba(0,0,0,.15);transition:all .25s;animation:wafloat-in .6s ease-out}
-  .wa-float:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 6px 28px rgba(37,211,102,.5),0 4px 12px rgba(0,0,0,.2)}
-  .wa-float svg{flex-shrink:0}
-  @keyframes wafloat-in{from{opacity:0;transform:translateY(20px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
-  @media(max-width:600px){.wa-float span{display:none}.wa-float{padding:.9rem;border-radius:50%;bottom:4.5rem}}
-
-  /* === STICKY MOBILE CTA === */
-  .sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:998;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:.65rem 1.25rem;display:none;align-items:center;justify-content:space-between;box-shadow:0 -4px 20px rgba(0,0,0,.08);transform:translateY(100%);transition:transform .3s ease}
-  .sticky-cta.visible{transform:translateY(0)}
-  .sticky-cta span{font-size:.82rem;font-weight:700;color:var(--green-d)}
-  .btn-sticky{font-size:.82rem!important;padding:.6rem 1.2rem!important;border-radius:100px!important;white-space:nowrap}
-  @media(max-width:900px){.sticky-cta{display:flex}}
-  @media(min-width:901px){.sticky-cta{display:none!important}}
-
-  /* === RESPONSIVE === */
-  @media(max-width:900px){
-    .hero{grid-template-columns:1fr;text-align:center}
-    .hero-text{display:flex;flex-direction:column;align-items:center}
-    .hero-sub{max-width:100%}
-    .hero-btns{justify-content:center}
-    .hero-logos{align-items:center}
-    .steps-grid,.agents-grid,.proof-grid{grid-template-columns:1fr;max-width:400px;margin-inline:auto}
-    .plans-grid{grid-template-columns:1fr 1fr;max-width:600px;margin-inline:auto}
-    .start-wrap{grid-template-columns:1fr;padding:2rem}
-    .stats-inner{flex-wrap:wrap;gap:1.5rem}
-    .stat-div{display:none}
-  }
-  /* === HAMBURGER === */
-  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;z-index:101;flex-direction:column;gap:5px}
-  .nav-toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
-  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
-  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-  @media(max-width:600px){
-    .nav-toggle{display:flex}
-    .nav-r{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(10,15,13,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:1.5rem;gap:1rem;border-bottom:1px solid rgba(37,211,102,.1)}
-    .nav-r.open{display:flex}
-    .nav-link{display:block!important;font-size:1rem;padding:.5rem 0}
-    .nav-cta{text-align:center}
-  }
-  @media(max-width:600px){
-    nav{padding:.75rem 1.25rem}
-    .hero{padding:6.5rem 1.25rem 3rem}
-    .sec{padding:3.5rem 1.25rem}
-    footer{flex-direction:column;gap:.5rem;text-align:center}
-  }
-</style>
