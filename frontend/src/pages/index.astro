@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <script defer src="https://umami.luminari.agency/script.js" data-website-id="9a5bb1d1-9bc1-417a-8b4b-72b44044d168"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -66,7 +67,7 @@
       border-bottom: 1px solid var(--gray-100);
       transition: all 0.3s;
     }
-    nav.scrolled { background: rgba(255,255,255,0.95); box-shadow: 0 1px 8px rgba(0,0,0,0.04); }
+    nav.scrolled { background: rgba(255,255,255,0.97); box-shadow: 0 4px 24px rgba(0,0,0,0.08); backdrop-filter: blur(32px); }
     nav .inner {
       max-width: 1200px; margin: 0 auto; padding: 0 24px;
       display: flex; align-items: center; justify-content: space-between;
@@ -535,6 +536,52 @@
       .cap-grid { grid-template-columns: 1fr; }
       .phone-mockup { width: 260px; }
     }
+
+    /* MARQUEE BAR */
+    .marquee-bar {
+      background: #064e3b; padding: 10px 0; overflow: hidden; white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-block; animation: marquee 25s linear infinite;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.15em; color: rgba(255,255,255,0.7);
+    }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* REVEAL CUSTOM */
+    .rv { opacity: 0; transform: translateY(30px); transition: 0.6s cubic-bezier(.16,1,.3,1); }
+    .rv.show { opacity: 1; transform: none; }
+    .rv-d1 { transition-delay: 0.1s; }
+    .rv-d2 { transition-delay: 0.2s; }
+    .rv-d3 { transition-delay: 0.3s; }
+    .rv-d4 { transition-delay: 0.4s; }
+    .rv-d5 { transition-delay: 0.5s; }
+    .rv-d6 { transition-delay: 0.6s; }
+
+    /* ENHANCED CARD HOVER */
+    .pain-card:hover, .cap-card:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(37,211,102,0.12);
+    }
+
+    /* PHONE ENHANCED */
+    .phone-mockup {
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.35),
+        0 0 0 1px rgba(255,255,255,0.1) inset,
+        0 0 120px rgba(37,211,102,0.1),
+        0 60px 100px rgba(0,0,0,0.15);
+    }
+
+    /* PULSE RING */
+    .hero-badge .dot::before {
+      animation: pulseRing 2s cubic-bezier(0.4,0,0.6,1) infinite;
+    }
+    @keyframes pulseRing {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(3); opacity: 0; }
+      100% { transform: scale(3); opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -555,13 +602,13 @@
   <div class="container">
     <div class="hero-content">
       <div class="hero-text">
-        <div class="hero-badge">
+        <div class="hero-badge" data-aos="fade-up" data-aos-delay="100">
           <div class="dot"></div>
           Disponible ahora
         </div>
-        <h1>IA QUE TRABAJA<br><em>POR TU NEGOCIO</em></h1>
-        <p class="hero-sub">Tu mano derecha digital. Pídele lo que necesites por WhatsApp y lo ejecuta: reportes, agenda, cobros, lo que sea. Como tener un empleado estrella que nunca descansa.</p>
-        <a href="#empezar" class="hero-cta">
+        <h1 data-aos="fade-up" data-aos-delay="200">IA QUE TRABAJA<br><em>POR TU NEGOCIO</em></h1>
+        <p class="hero-sub" data-aos="fade-up" data-aos-delay="300">Tu mano derecha digital. Pídele lo que necesites por WhatsApp y lo ejecuta: reportes, agenda, cobros, lo que sea. Como tener un empleado estrella que nunca descansa.</p>
+        <a href="#empezar" class="hero-cta" data-aos="fade-up" data-aos-delay="400">
           Quiero mi agente
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
         </a>
@@ -619,56 +666,61 @@
 <div class="stats-bar">
   <div class="container">
     <div class="inner">
-      <div class="stat-item">
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Disponible 24/7
+        Disponible <span class="counter" data-target="24" data-suffix="/7">24/7</span>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
         Soporte incluido
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        Desde $300/mes
+        Desde $<span class="counter" data-target="300" data-suffix="/mes">300</span>/mes
       </div>
-      <div class="stat-item">
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        Setup en 48h
+        Setup en <span class="counter" data-target="48" data-suffix="h">48</span>h
       </div>
     </div>
   </div>
 </div>
 
+<!-- MARQUEE BAR -->
+<div class="marquee-bar">
+  <div class="marquee-track"><span>WhatsApp &nbsp;•&nbsp; Reportes &nbsp;•&nbsp; Automatización &nbsp;•&nbsp; Desarrollo Web &nbsp;•&nbsp; Contabilidad &nbsp;•&nbsp; Monitoreo 24/7 &nbsp;•&nbsp; Agenda &nbsp;•&nbsp; Ventas &nbsp;•&nbsp; WhatsApp &nbsp;•&nbsp; Reportes &nbsp;•&nbsp; Automatización &nbsp;•&nbsp; Desarrollo Web &nbsp;•&nbsp; Contabilidad &nbsp;•&nbsp; Monitoreo 24/7 &nbsp;•&nbsp; Agenda &nbsp;•&nbsp; Ventas &nbsp;•&nbsp;</span></div>
+</div>
+
 <!-- PAIN POINTS -->
 <section class="pain-points">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header" data-aos="fade-up">
       <h2>¿Te suena familiar?</h2>
       <p>Los problemas de siempre que frenan tu crecimiento</p>
     </div>
     <div class="pain-grid">
-      <div class="pain-card reveal" data-delay="0">
+      <div class="pain-card" data-aos="fade-up" data-aos-delay="100">
         <div class="pain-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <h3>Más administrando que creciendo</h3>
         <p>Pasas más tiempo apagando incendios que haciendo crecer tu negocio.</p>
       </div>
-      <div class="pain-card reveal" data-delay="1">
+      <div class="pain-card" data-aos="fade-up" data-aos-delay="200">
         <div class="pain-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
         </div>
         <h3>100 tareas, solo dos manos</h3>
         <p>Tienes 100 tareas pendientes y no alcanzas a hacer todo tú solo.</p>
       </div>
-      <div class="pain-card reveal" data-delay="2">
+      <div class="pain-card" data-aos="fade-up" data-aos-delay="300">
         <div class="pain-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
         <h3>Necesitas equipo, no presupuesto</h3>
         <p>Necesitas un equipo pero contratar gente es caro y complicado.</p>
       </div>
-      <div class="pain-card reveal" data-delay="3">
+      <div class="pain-card" data-aos="fade-up" data-aos-delay="400">
         <div class="pain-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
@@ -682,11 +734,11 @@
 <!-- QUE HACE TU AGENTE -->
 <section class="capabilities">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header" data-aos="fade-up">
       <h2>Qué hace tu agente</h2>
     </div>
-    <div class="cap-grid reveal">
-      <div class="cap-card">
+    <div class="cap-grid">
+      <div class="cap-card rv rv-d1">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
@@ -694,7 +746,7 @@
         <p>Te genera informes de ventas, finanzas y métricas. Solo pídelo por WhatsApp.</p>
         <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">"Hazme un resumen de ventas del mes" → listo en segundos.</p>
       </div>
-      <div class="cap-card">
+      <div class="cap-card rv rv-d2">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
@@ -702,7 +754,7 @@
         <p>Agenda reuniones, envía recordatorios y coordina con tu equipo automáticamente.</p>
         <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">"Agenda reunión mañana a las 10" → todos reciben la invitación.</p>
       </div>
-      <div class="cap-card">
+      <div class="cap-card rv rv-d3">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
         </div>
@@ -710,7 +762,7 @@
         <p>Crea y mantiene tu presencia digital: landing pages, sitios web, sistemas internos.</p>
         <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">Tu presencia digital profesional sin depender de un programador.</p>
       </div>
-      <div class="cap-card">
+      <div class="cap-card rv rv-d4">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
         </div>
@@ -718,7 +770,7 @@
         <p>Facturas, cobros, seguimiento de pagos y procesos repetitivos en piloto automático.</p>
         <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">Lo que hacías en 2 horas, tu agente lo resuelve en segundos.</p>
       </div>
-      <div class="cap-card">
+      <div class="cap-card rv rv-d5">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>
         </div>
@@ -726,7 +778,7 @@
         <p>Control de gastos, ingresos y reportes financieros automatizados.</p>
         <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">Olvídate de las hojas de Excel que nadie actualiza.</p>
       </div>
-      <div class="cap-card">
+      <div class="cap-card rv rv-d6">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
@@ -741,11 +793,11 @@
 <!-- PRICING -->
 <section class="pricing" id="precios">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header" data-aos="fade-up">
       <h2>Planes</h2>
       <p style="font-size:14px;color:var(--gray-500);margin-top:10px;font-weight:500">Un empleado tradicional te cuesta más de $1,200/mes. Tu agente digital desde $300.</p>
     </div>
-    <div class="pricing-grid reveal">
+    <div class="pricing-grid" data-aos="fade-up" data-aos-delay="200">
       <div class="pricing-card">
         <div class="mono-label" style="margin-bottom:12px">Entry Level</div>
         <h3 style="color:var(--gray-900)">Agente Compartido</h3>
@@ -782,10 +834,10 @@
 <!-- FORM -->
 <section class="form-section" id="empezar">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header" data-aos="fade-up">
       <h2>Solicita tu agente</h2>
     </div>
-    <div class="form-inner reveal">
+    <div class="form-inner" data-aos="fade-up" data-aos-delay="200">
       <div class="form-wrapper">
         <div class="progress-bar">
           <div class="bar active" data-step="1"></div>
@@ -851,10 +903,10 @@
 <!-- FAQ -->
 <section class="faq">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header" data-aos="fade-up">
       <h2>Preguntas frecuentes</h2>
     </div>
-    <div class="faq-list reveal">
+    <div class="faq-list" data-aos="fade-up" data-aos-delay="200">
       <div class="faq-item">
         <button class="faq-question">¿Funciona para mi tipo de negocio? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
         <div class="faq-answer"><p>Sí. Trabajamos con clínicas, restaurantes, tiendas, consultoras y más. Si diriges un negocio y necesitas ayuda para administrarlo, un agente te va a servir.</p></div>
@@ -902,10 +954,14 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-  // Nav scroll
+  // AOS init
+  AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+  // Nav scroll with blur
   window.addEventListener('scroll', function() {
-    document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 20);
+    document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
   });
 
   // Form multi-step
@@ -963,21 +1019,36 @@
     });
   });
 
-  // Scroll reveal
+  // RV reveal observer
   (function() {
-    var reveals = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)) {
-      reveals.forEach(function(el) { el.classList.add('visible'); });
-      return;
-    }
-    document.documentElement.classList.add('reveal-ready');
+    var rvEls = document.querySelectorAll('.rv');
+    if (!rvEls.length) return;
     var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); }
       });
-    }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
-    reveals.forEach(function(el) { obs.observe(el); });
-    setTimeout(function() { reveals.forEach(function(el) { el.classList.add('visible'); }); }, 2500);
+    }, { threshold: 0.15 });
+    rvEls.forEach(function(el) { obs.observe(el); });
+  })();
+
+  // Counter animation
+  (function() {
+    var counters = document.querySelectorAll('.counter');
+    if (!counters.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        var el = e.target, target = parseInt(el.dataset.target), current = 0;
+        var step = Math.max(1, Math.floor(target / 30));
+        var iv = setInterval(function() {
+          current += step;
+          if (current >= target) { current = target; clearInterval(iv); }
+          el.textContent = current;
+        }, 30);
+        obs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function(c) { obs.observe(c); });
   })();
 </script>
 
