@@ -638,6 +638,130 @@
       50% { transform: scale(3); opacity: 0; }
       100% { transform: scale(3); opacity: 0; }
     }
+
+    /* === ANIMATION: Hero badge glow === */
+    .hero-badge {
+      animation: heroIn 0.7s ease-out forwards, badgeGlow 3s ease-in-out 1s infinite !important;
+    }
+    @keyframes badgeGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+      50% { box-shadow: 0 0 16px 2px rgba(37,211,102,0.15); }
+    }
+
+    /* === ANIMATION: Stats bar icons === */
+    .stat-item svg {
+      transition: transform 0.3s ease;
+    }
+    .stat-item:hover svg {
+      transform: rotate(15deg) scale(1.15);
+    }
+
+    /* === ANIMATION: Pain point card icons bounce on hover === */
+    .pain-card .pain-icon svg {
+      transition: transform 0.4s cubic-bezier(.36,1.56,.64,1);
+    }
+    .pain-card:hover .pain-icon svg {
+      transform: translateY(-3px) scale(1.12);
+    }
+
+    /* === ANIMATION: Capability card icon pop + shimmer === */
+    .cap-card .cap-icon svg {
+      transition: transform 0.35s cubic-bezier(.36,1.56,.64,1), color 0.3s;
+    }
+    .cap-card:hover .cap-icon svg {
+      transform: scale(1.2) rotate(8deg);
+    }
+    .cap-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .cap-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(37,211,102,0.06), transparent);
+      transition: none;
+      transform: skewX(-20deg);
+    }
+    .cap-card:hover::after {
+      animation: shimmerCard 0.6s ease forwards;
+    }
+    @keyframes shimmerCard {
+      to { left: 150%; }
+    }
+
+    /* === ANIMATION: Differentiator icons breathe (staggered) === */
+    .diff-icon {
+      animation: breathe 4s ease-in-out infinite;
+    }
+    .diff-card:nth-child(2) .diff-icon { animation-delay: 1s; }
+    .diff-card:nth-child(3) .diff-icon { animation-delay: 2s; }
+    .diff-card:nth-child(4) .diff-icon { animation-delay: 3s; }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* === ANIMATION: Pricing featured glow pulse === */
+    .pricing-card.featured {
+      animation: featuredGlow 3s ease-in-out infinite;
+    }
+    @keyframes featuredGlow {
+      0%, 100% { box-shadow: 0 12px 48px rgba(37,211,102,0.2); }
+      50% { box-shadow: 0 12px 48px rgba(37,211,102,0.35), 0 0 20px rgba(37,211,102,0.15); }
+    }
+    .pricing-card:not(.featured):hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 56px rgba(0,0,0,0.12);
+    }
+
+    /* === ANIMATION: FAQ toggle bounce on open === */
+    .faq-item.open .faq-toggle {
+      animation: toggleBounce 0.5s cubic-bezier(.36,1.56,.64,1);
+    }
+    @keyframes toggleBounce {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.25); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); }
+    }
+
+    /* === ANIMATION: Marquee edge fade === */
+    .marquee-bar {
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+      mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    }
+
+    /* === ANIMATION: CTA button shimmer === */
+    .hero-cta, .pricing-btn, .btn-next, .btn-submit, .nav-cta {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-cta::after, .pricing-btn::after, .btn-next::after, .btn-submit::after, .nav-cta::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: skewX(-20deg);
+      animation: btnShimmer 4s ease-in-out infinite;
+    }
+    .pricing-btn::after { animation-delay: 0.5s; }
+    .btn-next::after, .btn-submit::after { animation-delay: 1s; }
+    .nav-cta::after { animation-delay: 1.5s; }
+    @keyframes btnShimmer {
+      0%, 75%, 100% { left: -100%; }
+      50% { left: 150%; }
+    }
+
+    /* === Reduced motion: disable all custom animations === */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-badge, .diff-icon, .pricing-card.featured { animation: none !important; }
+      .cap-card::after, .hero-cta::after, .pricing-btn::after,
+      .btn-next::after, .btn-submit::after, .nav-cta::after { animation: none !important; }
+      .faq-item.open .faq-toggle { animation: none !important; }
+    }
   </style>
 </head>
 <body>
