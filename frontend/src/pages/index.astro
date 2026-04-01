@@ -548,12 +548,12 @@
 
     /* MARQUEE BAR */
     .marquee-bar {
-      background: #064e3b; padding: 10px 0; overflow: hidden; white-space: nowrap;
+      background: #075E54; padding: .6rem 0; overflow: hidden; white-space: nowrap;
     }
     .marquee-track {
-      display: inline-block; animation: marquee 25s linear infinite;
-      font-size: 11px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.15em; color: rgba(255,255,255,0.7);
+      display: flex; gap: 3rem; animation: marquee 25s linear infinite;
+      font-size: .75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .2em; color: #fff;
     }
     @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
@@ -696,9 +696,10 @@
 </div>
 
 <!-- MARQUEE BAR -->
-<div class="marquee-bar">
-  <div class="marquee-track"><span>WhatsApp &nbsp;•&nbsp; Reportes &nbsp;•&nbsp; Automatización &nbsp;•&nbsp; Desarrollo Web &nbsp;•&nbsp; Contabilidad &nbsp;•&nbsp; Monitoreo 24/7 &nbsp;•&nbsp; Agenda &nbsp;•&nbsp; Ventas &nbsp;•&nbsp; WhatsApp &nbsp;•&nbsp; Reportes &nbsp;•&nbsp; Automatización &nbsp;•&nbsp; Desarrollo Web &nbsp;•&nbsp; Contabilidad &nbsp;•&nbsp; Monitoreo 24/7 &nbsp;•&nbsp; Agenda &nbsp;•&nbsp; Ventas &nbsp;•&nbsp;</span></div>
-</div>
+<div class="marquee-bar"><div class="marquee-track">
+<span>WHATSAPP</span><span>REPORTES</span><span>AUTOMATIZACIÓN</span><span>DESARROLLO WEB</span><span>CONTABILIDAD</span><span>MONITOREO 24/7</span><span>AGENDA</span><span>VENTAS</span>
+<span>WHATSAPP</span><span>REPORTES</span><span>AUTOMATIZACIÓN</span><span>DESARROLLO WEB</span><span>CONTABILIDAD</span><span>MONITOREO 24/7</span><span>AGENDA</span><span>VENTAS</span>
+</div></div>
 
 <!-- PAIN POINTS -->
 <section class="pain-points">
@@ -747,7 +748,7 @@
       <h2>Qué hace tu agente</h2>
     </div>
     <div class="cap-grid">
-      <div class="cap-card rv rv-d1">
+      <div class="cap-card" data-aos="fade-up" data-aos-delay="100">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
@@ -755,7 +756,7 @@
         <p>Te genera informes de ventas, finanzas y métricas. Solo pídelo por WhatsApp.</p>
         <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">"Hazme un resumen de ventas del mes" → listo en segundos.</p>
       </div>
-      <div class="cap-card rv rv-d2">
+      <div class="cap-card" data-aos="fade-up" data-aos-delay="200">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
@@ -763,7 +764,7 @@
         <p>Agenda reuniones, envía recordatorios y coordina con tu equipo automáticamente.</p>
         <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">"Agenda reunión mañana a las 10" → todos reciben la invitación.</p>
       </div>
-      <div class="cap-card rv rv-d3">
+      <div class="cap-card" data-aos="fade-up" data-aos-delay="300">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
         </div>
@@ -771,7 +772,7 @@
         <p>Crea y mantiene tu presencia digital: landing pages, sitios web, sistemas internos.</p>
         <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">Tu presencia digital profesional sin depender de un programador.</p>
       </div>
-      <div class="cap-card rv rv-d4">
+      <div class="cap-card" data-aos="fade-up" data-aos-delay="400">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
         </div>
@@ -779,7 +780,7 @@
         <p>Facturas, cobros, seguimiento de pagos y procesos repetitivos en piloto automático.</p>
         <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">Lo que hacías en 2 horas, tu agente lo resuelve en segundos.</p>
       </div>
-      <div class="cap-card rv rv-d5">
+      <div class="cap-card" data-aos="fade-up" data-aos-delay="500">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>
         </div>
@@ -787,7 +788,7 @@
         <p>Control de gastos, ingresos y reportes financieros automatizados.</p>
         <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">Olvídate de las hojas de Excel que nadie actualiza.</p>
       </div>
-      <div class="cap-card rv rv-d6">
+      <div class="cap-card" data-aos="fade-up" data-aos-delay="600">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
@@ -806,8 +807,8 @@
       <h2>Planes</h2>
       <p style="font-size:14px;color:var(--gray-500);margin-top:10px;font-weight:500">Un empleado tradicional te cuesta más de $1,200/mes. Tu agente digital desde $300.</p>
     </div>
-    <div class="pricing-grid" data-aos="fade-up" data-aos-delay="200">
-      <div class="pricing-card">
+    <div class="pricing-grid">
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
         <div class="mono-label" style="margin-bottom:12px">Entry Level</div>
         <h3 style="color:var(--gray-900)">Agente Compartido</h3>
         <div class="pricing-desc">Automatización inicial para validar resultados</div>
@@ -821,7 +822,7 @@
         </ul>
         <a href="#empezar" class="pricing-btn dark">Seleccionar</a>
       </div>
-      <div class="pricing-card featured">
+      <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
         <div class="pricing-badge-ent">Recomendado</div>
         <div class="mono-label" style="color:rgba(255,255,255,0.6);margin-bottom:12px">High Performance</div>
         <h3>Agente Dedicado</h3>
@@ -846,7 +847,7 @@
     <div class="section-header" data-aos="fade-up">
       <h2>Solicita tu agente</h2>
     </div>
-    <div class="form-inner" data-aos="fade-up" data-aos-delay="200">
+    <div class="form-inner" data-aos="fade-up" data-aos-delay="100">
       <div class="form-wrapper">
         <div class="progress-bar">
           <div class="bar active" data-step="1"></div>
@@ -915,28 +916,28 @@
     <div class="section-header" data-aos="fade-up">
       <h2>Preguntas frecuentes</h2>
     </div>
-    <div class="faq-list" data-aos="fade-up" data-aos-delay="200">
-      <div class="faq-item">
+    <div class="faq-list">
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
         <button class="faq-question">¿Funciona para mi tipo de negocio? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
         <div class="faq-answer"><p>Sí. Trabajamos con clínicas, restaurantes, tiendas, consultoras y más. Si diriges un negocio y necesitas ayuda para administrarlo, un agente te va a servir.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
         <button class="faq-question">¿Cómo le doy instrucciones al agente? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
         <div class="faq-answer"><p>Por WhatsApp, como si hablaras con un empleado. Le escribes lo que necesitas y lo ejecuta. Sin apps complicadas, sin interfaces raras.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
         <button class="faq-question">¿Y si necesito algo que el agente no sabe hacer? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
         <div class="faq-answer"><p>Lo entrenamos y adaptamos a lo que necesites. Si surge algo nuevo, lo agregamos. Tu agente aprende y mejora con el tiempo.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
         <button class="faq-question">¿Puedo probarlo antes de comprometerme? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
         <div class="faq-answer"><p>Sí. Hacemos una demo personalizada para tu negocio para que veas exactamente cómo funcionaría antes de decidir.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
         <button class="faq-question">¿Qué tan segura es mi información? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
         <div class="faq-answer"><p>Tu información está cifrada y protegida. Solo tú y tu agente tienen acceso. No compartimos datos con terceros ni los usamos para otros fines.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
         <button class="faq-question">¿Qué pasa si quiero cancelar? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
         <div class="faq-answer"><p>Sin contratos largos ni penalidades. Puedes cancelar cuando quieras. Creemos que te quedas porque funciona, no porque te obligamos.</p></div>
       </div>
