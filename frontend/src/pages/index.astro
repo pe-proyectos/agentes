@@ -308,7 +308,7 @@
       max-width: 800px; margin: 0 auto;
     }
     .pain-card {
-      padding: 28px; border-radius: 16px;
+      padding: 34px; border-radius: 16px;
       background: rgba(255,255,255,0.7);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(37,211,102,0.12);
@@ -327,17 +327,17 @@
     }
     .pain-card .pain-icon svg { width: 20px; height: 20px; color: var(--green); }
     .pain-card h3 {
-      font-size: 14px; font-weight: 800; color: var(--gray-900);
-      margin-bottom: 6px; text-transform: uppercase; letter-spacing: -0.01em;
+      font-size: 16px; font-weight: 800; color: var(--gray-900);
+      margin-bottom: 8px; text-transform: uppercase; letter-spacing: -0.01em;
     }
-    .pain-card p { font-size: 13px; color: var(--gray-500); line-height: 1.5; }
+    .pain-card p { font-size: 14px; color: var(--gray-500); line-height: 1.5; }
     @media (max-width: 600px) { .pain-grid { grid-template-columns: 1fr; } }
 
     /* CAPABILITIES GRID */
     .capabilities { padding: 64px 0; border-bottom: 1px solid var(--gray-100); }
     .section-header { text-align: center; margin-bottom: 40px; }
     .section-header h2 {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
       font-weight: 900; color: var(--gray-900); letter-spacing: -0.03em;
       text-transform: uppercase;
     }
@@ -345,24 +345,66 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
     }
     .cap-card {
-      padding: 24px; border-radius: 12px;
+      padding: 28px; border-radius: 12px;
       border: 1px solid var(--gray-200); background: white;
       transition: all 0.3s;
     }
     .cap-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.06); border-color: rgba(37,211,102,0.3); }
     .cap-card .cap-icon {
-      width: 36px; height: 36px; background: var(--gray-50);
-      border: 1px solid var(--gray-200); border-radius: 8px;
+      width: 44px; height: 44px; background: var(--gray-50);
+      border: 1px solid var(--gray-200); border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 14px; color: var(--green); transition: all 0.3s;
+      margin-bottom: 16px; color: var(--green); transition: all 0.3s;
     }
     .cap-card:hover .cap-icon { background: var(--green); color: white; }
-    .cap-card .cap-icon svg { width: 18px; height: 18px; }
+    .cap-card .cap-icon svg { width: 22px; height: 22px; }
     .cap-card h3 {
-      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      font-size: 15px; font-weight: 700; text-transform: uppercase;
       letter-spacing: -0.01em; color: var(--gray-900); margin-bottom: 6px;
     }
-    .cap-card p { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
+    .cap-card p { font-size: 13.5px; color: var(--gray-500); line-height: 1.5; }
+
+    /* DIFFERENTIATORS */
+    .differentiators { padding: 80px 0; background: var(--white); border-bottom: 1px solid var(--gray-100); }
+    .diff-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .diff-card {
+      padding: 28px 24px; border-radius: 14px;
+      border: 1px solid var(--gray-200); background: white;
+      transition: all 0.3s; text-align: center;
+    }
+    .diff-card:hover { border-color: rgba(37,211,102,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    .diff-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--green-light); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px; color: var(--green);
+    }
+    .diff-icon svg { width: 22px; height: 22px; }
+    .diff-card h3 { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; color: var(--gray-900); margin-bottom: 8px; }
+    .diff-card p { font-size: 13px; color: var(--gray-500); line-height: 1.5; }
+    @media (max-width: 768px) { .diff-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .diff-grid { grid-template-columns: 1fr; } }
+
+    /* PRICING MOTIVATIONAL */
+    .pricing-motivation {
+      max-width: 720px; margin: 0 auto 40px; text-align: center;
+      padding: 32px; background: white; border-radius: 16px;
+      border: 1px solid var(--gray-200);
+    }
+    .pricing-motivation h3 {
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 900;
+      color: var(--gray-900); letter-spacing: -0.03em; margin-bottom: 8px;
+    }
+    .pricing-motivation p { font-size: 15px; color: var(--gray-500); line-height: 1.6; max-width: 520px; margin: 0 auto; }
+    .pricing-motivation .compare {
+      display: inline-block; margin-top: 16px; padding: 8px 20px;
+      background: var(--gray-50); border-radius: 8px;
+      font-size: 13px; font-weight: 700; color: var(--gray-400);
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .pricing-motivation .compare span { color: var(--gray-600); text-decoration: line-through; }
 
     /* PRICING */
     .pricing { padding: 64px 0; background: var(--gray-50); border-bottom: 1px solid var(--gray-100); }
@@ -488,7 +530,7 @@
       display: flex; align-items: center; justify-content: space-between;
       width: 100%; padding: 0; cursor: pointer; background: none; border: none;
       font-family: inherit; text-align: left;
-      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      font-size: 14px; font-weight: 700; text-transform: uppercase;
       letter-spacing: -0.01em; color: var(--gray-900); transition: color 0.2s;
     }
     .faq-question:hover { color: var(--green); }
@@ -502,7 +544,7 @@
     .faq-item.open .faq-toggle svg { color: white; transform: rotate(180deg); }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
     .faq-item.open .faq-answer { max-height: 200px; }
-    .faq-answer p { font-size: 13px; color: var(--gray-500); line-height: 1.6; padding-top: 12px; max-width: 550px; }
+    .faq-answer p { font-size: 14px; color: var(--gray-500); line-height: 1.6; padding-top: 12px; max-width: 550px; }
 
     /* FOOTER */
     footer {
@@ -804,12 +846,55 @@
   </div>
 </section>
 
+<!-- LA DIFERENCIA -->
+<section class="differentiators">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <h2>La diferencia</h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>No es un chatbot</h3>
+        <p>Es un empleado digital con un equipo humano detrás que lo entrena y mejora constantemente.</p>
+      </div>
+      <div class="diff-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Setup en 48 horas</h3>
+        <p>Nosotros hacemos todo: configuración, integración con tus herramientas, entrenamiento inicial.</p>
+      </div>
+      <div class="diff-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Sin conocimiento técnico</h3>
+        <p>Tú solo hablas por WhatsApp, nosotros nos encargamos de toda la parte técnica.</p>
+      </div>
+      <div class="diff-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3>Evoluciona contigo</h3>
+        <p>Tu agente aprende de tu negocio y se adapta semana a semana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section class="pricing" id="precios">
   <div class="container">
     <div class="section-header" data-aos="fade-up">
       <h2>Planes</h2>
-      <p style="font-size:14px;color:var(--gray-500);margin-top:10px;font-weight:500">Un empleado tradicional te cuesta más de $1,200/mes. Tu agente digital desde $300.</p>
+    </div>
+    <div class="pricing-motivation" data-aos="fade-up" data-aos-delay="50">
+      <h3>Invierte en crecer, no en administrar</h3>
+      <p>Mientras tú te enfocas en lo importante, tu agente se encarga del resto. Sin contratos largos, sin sorpresas.</p>
+      <div class="compare">Un empleado tradicional: <span>$1,200+/mes</span></div>
     </div>
     <div class="pricing-grid">
       <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
