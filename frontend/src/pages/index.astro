@@ -154,6 +154,19 @@
     }
     .stat-item svg { width: 14px; height: 14px; color: var(--green); }
 
+    /* PAIN POINTS */
+    .pain-points { padding: 32px 0; background: #f0faf4; border-bottom: 1px solid var(--gray-100); }
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .pain-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 500; color: var(--gray-600); line-height: 1.4;
+    }
+    .pain-item svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--gray-400); }
+    @media (max-width: 768px) { .pain-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .pain-grid { grid-template-columns: 1fr; } }
+
     /* CAPABILITIES GRID */
     .capabilities { padding: 64px 0; border-bottom: 1px solid var(--gray-100); }
     .section-header { text-align: center; margin-bottom: 40px; }
@@ -379,7 +392,7 @@
       Disponible ahora
     </div>
     <h1>IA QUE TRABAJA<br><em>POR TU NEGOCIO</em></h1>
-    <p>Automatiza tareas, atiende clientes y ejecuta procesos desde WhatsApp. Sin fricción, sin demoras.</p>
+    <p>¿Cansado de responder los mismos mensajes, perder clientes por no contestar a tiempo y hacer todo tú solo? Tu agente se encarga mientras tú te enfocas en crecer.</p>
     <a href="#empezar" class="hero-cta">
       Quiero mi agente
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
@@ -411,6 +424,30 @@
   </div>
 </div>
 
+<!-- PAIN POINTS -->
+<section class="pain-points">
+  <div class="container">
+    <div class="pain-grid">
+      <div class="pain-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        Pierdes clientes por no responder a tiempo
+      </div>
+      <div class="pain-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Gastas horas en tareas que no generan ingresos
+      </div>
+      <div class="pain-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        Tu negocio se detiene cuando tú no estás
+      </div>
+      <div class="pain-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Contratar personal es caro y complicado
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- QUE HACE TU AGENTE -->
 <section class="capabilities">
   <div class="container">
@@ -424,6 +461,7 @@
         </div>
         <h3>Atención al cliente</h3>
         <p>Soporte automatizado por WhatsApp, tickets y cierre de ventas asistido.</p>
+        <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">Nunca más pierdas un cliente por no contestar a las 11pm.</p>
       </div>
       <div class="cap-card">
         <div class="cap-icon">
@@ -431,6 +469,7 @@
         </div>
         <h3>Automatización</h3>
         <p>Sincronización de datos, reportes automáticos y facturación recurrente.</p>
+        <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">Deja de hacer manualmente lo que una IA puede resolver en segundos.</p>
       </div>
       <div class="cap-card">
         <div class="cap-icon">
@@ -438,6 +477,7 @@
         </div>
         <h3>Desarrollo web</h3>
         <p>Landing pages, sistemas internos y mantenimiento de infraestructura.</p>
+        <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">Tu presencia digital profesional sin depender de un programador.</p>
       </div>
       <div class="cap-card">
         <div class="cap-icon">
@@ -445,6 +485,7 @@
         </div>
         <h3>Contabilidad</h3>
         <p>Control de gastos, conciliación y reportes financieros automatizados.</p>
+        <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">Olvídate de las hojas de Excel que nadie actualiza.</p>
       </div>
       <div class="cap-card">
         <div class="cap-icon">
@@ -452,6 +493,7 @@
         </div>
         <h3>Ventas</h3>
         <p>Calificación de leads, seguimiento y actualización de embudos CRM.</p>
+        <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">Que ningún interesado se te escape por falta de seguimiento.</p>
       </div>
       <div class="cap-card">
         <div class="cap-icon">
@@ -459,6 +501,7 @@
         </div>
         <h3>Monitoreo</h3>
         <p>Detección proactiva de fallos y autorecuperación de servicios.</p>
+        <p style="font-size:11px;color:var(--green-dark);margin-top:6px;font-weight:500">Tus sistemas funcionando aunque tú estés durmiendo.</p>
       </div>
     </div>
   </div>
@@ -469,6 +512,7 @@
   <div class="container">
     <div class="section-header reveal">
       <h2>Planes</h2>
+      <p style="font-size:14px;color:var(--gray-500);margin-top:10px;font-weight:500">Un empleado tradicional te cuesta más de $1,200/mes. Tu agente digital desde $300.</p>
     </div>
     <div class="pricing-grid reveal">
       <div class="pricing-card">
@@ -581,28 +625,28 @@
     </div>
     <div class="faq-list reveal">
       <div class="faq-item">
-        <button class="faq-question">¿Requiere infraestructura propia? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-answer"><p>No. Nosotros gestionamos servidores VPS dedicados con 99.9% de uptime. No necesitas nada propio.</p></div>
+        <button class="faq-question">¿Funciona para mi tipo de negocio? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="faq-answer"><p>Si. Trabajamos con clínicas, restaurantes, tiendas, consultoras y más. Si tu negocio atiende clientes o maneja procesos repetitivos, un agente te va a servir.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">¿Es compatible con mi stack actual? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-answer"><p>Si. Se integra via webhooks y APIs estándar con la mayoría de CRMs, ERPs y herramientas de gestión.</p></div>
+        <button class="faq-question">¿Mis clientes sabrán que es una IA? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="faq-answer"><p>El agente responde con el tono y estilo de tu marca. La experiencia es natural y fluida. Si prefieres que se identifique como asistente virtual, también se puede configurar.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">¿Cuánto tarda el despliegue? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-answer"><p>Entre 48 horas y 7 días hábiles, dependiendo de la complejidad de tus flujos de trabajo.</p></div>
+        <button class="faq-question">¿Y si necesito algo que el agente no sabe hacer? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="faq-answer"><p>Lo entrenamos y adaptamos a lo que necesites. Si surge algo nuevo, lo agregamos. Tu agente aprende y mejora con el tiempo.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">¿Cómo se garantiza la seguridad? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-answer"><p>Cifrado de extremo a extremo y cumplimiento de estándares de privacidad para proteger tu información.</p></div>
+        <button class="faq-question">¿Puedo probarlo antes de comprometerme? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="faq-answer"><p>Si. Hacemos una demo personalizada para tu negocio para que veas exactamente cómo funcionaría antes de decidir.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">¿Puedo cambiar de plan después? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-answer"><p>Si. Puedes escalar de compartido a dedicado en cualquier momento sin perder configuración.</p></div>
+        <button class="faq-question">¿Cómo se conecta a mi WhatsApp? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="faq-answer"><p>Nosotros nos encargamos de toda la configuración técnica. Solo necesitas darnos acceso y en menos de 48 horas tu agente está operativo.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">¿Qué incluye el soporte? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-answer"><p>Soporte técnico por WhatsApp y Discord. En el plan dedicado incluye SLA de respuesta garantizado.</p></div>
+        <button class="faq-question">¿Qué pasa si quiero cancelar? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="faq-answer"><p>Sin contratos largos ni penalidades. Puedes cancelar cuando quieras. Creemos que te quedas porque funciona, no porque te obligamos.</p></div>
       </div>
     </div>
   </div>
