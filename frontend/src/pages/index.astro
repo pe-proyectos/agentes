@@ -16,6 +16,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    /* Fallback: if AOS JS fails, show content after 2s */
+    .aos-fallback [data-aos] { opacity: 1 !important; transform: none !important; }
+  </style>
   <script defer src="https://umami.luminari.agency/script.js" data-website-id="9a5bb1d1-9bc1-417a-8b4b-72b44044d168"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -967,7 +971,8 @@
 <script is:inline src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script is:inline>
   // AOS init
-  AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+  try { AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 }); } catch(e) { document.documentElement.classList.add('aos-fallback'); }
+  setTimeout(function(){ document.querySelectorAll('[data-aos]').forEach(function(el){ el.style.opacity='1'; el.style.transform='none'; }); }, 2500);
 
   // Nav scroll with blur
   window.addEventListener('scroll', function() {
