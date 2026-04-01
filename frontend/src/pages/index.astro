@@ -1,5 +1,5 @@
 ---
-// Landing page - AGENTES by Luminari — Design by Estick
+// Landing page - AGENTES by Luminari — Compact redesign
 ---
 <html lang="es">
 <head>
@@ -22,7 +22,6 @@
       --green: #25D366;
       --green-dark: #128C7E;
       --green-light: #e8faf0;
-      --green-lighter: #f0fdf5;
       --white: #ffffff;
       --gray-50: #f9fafb;
       --gray-100: #f3f4f6;
@@ -34,11 +33,6 @@
       --gray-700: #374151;
       --gray-800: #1f2937;
       --gray-900: #111827;
-      --red-50: #fef2f2;
-      --red-100: #fee2e2;
-      --red-300: #fca5a5;
-      --red-400: #f87171;
-      --red-500: #ef4444;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -48,19 +42,15 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-
-    /* UTILITY */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
     .mono-label {
       font-size: 10px; font-weight: 700; text-transform: uppercase;
       letter-spacing: 0.12em; color: var(--gray-400);
     }
-    .technical-border { border: 1px solid var(--gray-200); }
-    .section-border { border-bottom: 1px solid var(--gray-100); }
 
     /* REVEAL */
     .reveal { opacity: 1; transform: translateY(0); }
-    .reveal-ready .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-ready .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal-ready .reveal.visible { opacity: 1; transform: translateY(0); }
     @media (prefers-reduced-motion: reduce) {
       .reveal-ready .reveal { opacity: 1; transform: none; transition: none; }
@@ -77,17 +67,11 @@
     nav .inner {
       max-width: 1200px; margin: 0 auto; padding: 0 24px;
       display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
+      height: 56px;
     }
-    .logo { text-decoration: none; font-weight: 800; font-size: 1.15rem; letter-spacing: .12em; color: var(--gray-900); text-transform: uppercase; }
-    .logo .diamond { color: #25D366; }
-    .logo-icon {
-      width: 32px; height: 32px; background: var(--green);
-      border-radius: 8px; display: flex; align-items: center; justify-content: center;
-    }
-    .logo-icon svg { width: 18px; height: 18px; color: white; }
-    .logo-text { font-weight: 900; font-size: 1.15rem; color: var(--gray-900); letter-spacing: -0.03em; text-transform: uppercase; }
-    nav .links { display: flex; align-items: center; gap: 32px; }
+    .logo { text-decoration: none; font-weight: 800; font-size: 1.1rem; letter-spacing: .12em; color: var(--gray-900); text-transform: uppercase; }
+    .logo .diamond { color: var(--green); }
+    nav .links { display: flex; align-items: center; gap: 28px; }
     nav .links a {
       text-decoration: none; font-size: 11px; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.08em;
@@ -96,7 +80,7 @@
     nav .links a:hover { color: var(--green); }
     .nav-cta {
       background: var(--green) !important; color: white !important;
-      padding: 8px 24px; border-radius: 8px;
+      padding: 7px 20px; border-radius: 8px;
       box-shadow: 0 4px 16px rgba(37,211,102,0.2);
       transition: all 0.2s;
     }
@@ -104,10 +88,9 @@
 
     /* HERO */
     .hero {
-      padding: 160px 0 96px;
+      padding: 120px 0 0;
       text-align: center;
-      border-bottom: 1px solid var(--gray-100);
-      position: relative; overflow: hidden;
+      position: relative;
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -115,7 +98,7 @@
       padding: 4px 14px; border-radius: 6px;
       font-size: 10px; text-transform: uppercase; font-weight: 700;
       letter-spacing: 0.12em; color: var(--green);
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
     .hero-badge .dot {
       position: relative; width: 6px; height: 6px;
@@ -131,207 +114,82 @@
     }
     @keyframes ping { 0% { transform: scale(1); opacity: 1; } 75%,100% { transform: scale(2.5); opacity: 0; } }
     .hero h1 {
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      font-weight: 900; line-height: 0.9; letter-spacing: -0.04em;
-      color: var(--gray-900); margin-bottom: 32px;
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 900; line-height: 0.92; letter-spacing: -0.04em;
+      color: var(--gray-900); margin-bottom: 20px;
     }
     .hero h1 em { font-style: normal; color: var(--green); }
     .hero p {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: var(--gray-500); max-width: 600px; margin: 0 auto 48px;
-      line-height: 1.7; font-weight: 500;
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      color: var(--gray-500); max-width: 540px; margin: 0 auto 32px;
+      line-height: 1.6; font-weight: 500;
     }
     .hero-cta {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: var(--green); color: white; padding: 20px 48px;
-      border-radius: 8px; font-weight: 700; font-size: 14px;
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--green); color: white; padding: 16px 40px;
+      border-radius: 8px; font-weight: 700; font-size: 13px;
       text-transform: uppercase; letter-spacing: 0.1em;
       text-decoration: none; transition: all 0.3s;
       box-shadow: 0 8px 32px rgba(37,211,102,0.25);
     }
     .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(37,211,102,0.35); }
-    .hero-cta svg { width: 18px; height: 18px; transition: transform 0.2s; }
-    .hero-cta:hover svg { transform: translate(2px, -2px); }
-    .hero-trust {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      margin-top: 24px; font-size: 10px; color: var(--gray-400);
-      text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
-    }
-    .hero-trust svg { width: 14px; height: 14px; color: var(--green); }
+    .hero-cta svg { width: 16px; height: 16px; }
 
-    /* PROBLEM */
-    .problem { padding: 128px 0; background: var(--gray-50); border-bottom: 1px solid var(--gray-100); }
-    .problem .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
-    .tag { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
-    .tag svg { width: 16px; height: 16px; }
-    .tag span { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; }
-    .tag.red svg, .tag.red span { color: var(--red-500); }
-    .tag.green svg, .tag.green span { color: var(--green); }
-    .problem h2 {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 900; color: var(--gray-900); line-height: 1.15;
-      letter-spacing: -0.02em; margin-bottom: 32px;
+    /* STATS BAR */
+    .stats-bar {
+      margin-top: 48px;
+      padding: 20px 0;
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
     }
-    .problem p { font-size: 1.1rem; color: var(--gray-500); line-height: 1.7; margin-bottom: 40px; }
-    .problem-list { display: flex; flex-direction: column; gap: 16px; }
-    .problem-item {
-      display: flex; align-items: center; gap: 16px;
-      padding: 16px; background: white; border-radius: 12px;
-      border: 1px solid var(--gray-100); box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    .stats-bar .inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 40px; flex-wrap: wrap;
     }
-    .problem-item .icon {
-      width: 24px; height: 24px; background: var(--red-50); color: var(--red-500);
-      border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    .stat-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--gray-500);
     }
-    .problem-item .icon svg { width: 14px; height: 14px; }
-    .problem-item span { font-size: 14px; font-weight: 600; color: var(--gray-700); }
-    .metric-card {
-      background: white; padding: 4px; border: 1px solid var(--gray-200);
-      border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-    }
-    .metric-inner {
-      background: var(--gray-50); padding: 32px; border-radius: 12px;
-      border: 1px solid var(--gray-100);
-    }
-    .metric-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
-    .metric-header svg { width: 20px; height: 20px; color: var(--red-500); }
-    .metric-bars { display: flex; flex-direction: column; gap: 16px; }
-    .bar-track { height: 8px; background: var(--gray-200); border-radius: 999px; overflow: hidden; }
-    .bar-fill { height: 100%; border-radius: 999px; transition: width 1.5s ease; }
-    .bar-fill.red-5 { background: var(--red-500); }
-    .bar-fill.red-4 { background: var(--red-400); }
-    .bar-fill.red-3 { background: var(--red-300); }
-    .metric-bottom {
-      margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--gray-200);
-    }
-    .metric-value {
-      font-size: 1.8rem; font-weight: 900; color: var(--gray-900);
-    }
-    .metric-value span { font-size: 0.85rem; font-weight: 500; color: var(--gray-400); margin-left: 8px; }
+    .stat-item svg { width: 14px; height: 14px; color: var(--green); }
 
-    /* SOLUTION */
-    .solution { padding: 128px 0; border-bottom: 1px solid var(--gray-100); }
-    .section-header { text-align: center; margin-bottom: 80px; }
+    /* CAPABILITIES GRID */
+    .capabilities { padding: 64px 0; border-bottom: 1px solid var(--gray-100); }
+    .section-header { text-align: center; margin-bottom: 40px; }
     .section-header h2 {
-      font-size: clamp(1.8rem, 4vw, 3.5rem);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
       font-weight: 900; color: var(--gray-900); letter-spacing: -0.03em;
-      margin-bottom: 16px;
+      text-transform: uppercase;
     }
-    .section-header p {
-      font-size: 1.1rem; color: var(--gray-500); max-width: 600px;
-      margin: 0 auto; line-height: 1.7;
+    .cap-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
     }
-    .solution-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .solution-card {
-      background: white; padding: 32px; border-radius: 16px;
-      border: 1px solid var(--gray-200); transition: all 0.3s;
-      text-align: left;
+    .cap-card {
+      padding: 24px; border-radius: 12px;
+      border: 1px solid var(--gray-200); background: white;
+      transition: all 0.3s;
     }
-    .solution-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); border-color: rgba(37,211,102,0.3); }
-    .solution-card .card-icon {
-      width: 40px; height: 40px; background: var(--gray-50);
+    .cap-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.06); border-color: rgba(37,211,102,0.3); }
+    .cap-card .cap-icon {
+      width: 36px; height: 36px; background: var(--gray-50);
       border: 1px solid var(--gray-200); border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 24px; color: var(--green); transition: all 0.3s;
+      margin-bottom: 14px; color: var(--green); transition: all 0.3s;
     }
-    .solution-card:hover .card-icon { background: var(--green); color: white; }
-    .solution-card .card-icon svg { width: 20px; height: 20px; }
-    .solution-card h3 {
+    .cap-card:hover .cap-icon { background: var(--green); color: white; }
+    .cap-card .cap-icon svg { width: 18px; height: 18px; }
+    .cap-card h3 {
       font-size: 13px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: -0.01em; color: var(--gray-900); margin-bottom: 12px;
+      letter-spacing: -0.01em; color: var(--gray-900); margin-bottom: 6px;
     }
-    .solution-card p { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
-
-    /* BENEFITS */
-    .benefits { padding: 128px 0; background: var(--gray-900); color: white; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .benefits-top { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 96px; }
-    .benefits-top h2 {
-      font-size: clamp(1.8rem, 3.5vw, 3rem);
-      font-weight: 900; letter-spacing: -0.02em; line-height: 1.15;
-    }
-    .benefits-top .right { color: var(--gray-400); font-size: 1.1rem; line-height: 1.7; max-width: 400px; }
-    .benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; }
-    .benefit-item .benefit-icon {
-      width: 48px; height: 48px; background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--green); margin-bottom: 24px;
-    }
-    .benefit-item .benefit-icon svg { width: 22px; height: 22px; }
-    .benefit-item h3 {
-      font-size: 1.1rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: -0.01em; margin-bottom: 16px;
-    }
-    .benefit-item p { color: var(--gray-400); font-size: 14px; line-height: 1.7; }
-
-    /* USE CASES */
-    .use-cases { padding: 128px 0; border-bottom: 1px solid var(--gray-100); }
-    .use-cases-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 80px; gap: 32px; }
-    .use-cases-header .left { max-width: 600px; }
-    .use-cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--gray-100); }
-    .use-case-card {
-      padding: 40px; background: white; transition: background 0.2s;
-    }
-    .use-case-card:hover { background: var(--gray-50); }
-    .use-case-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
-    .use-case-card svg { width: 24px; height: 24px; color: var(--green); }
-    .use-case-card h3 {
-      font-size: 1.1rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: -0.01em; color: var(--gray-900); margin-bottom: 16px;
-    }
-    .use-case-card p { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
-
-    /* HOW IT WORKS */
-    .how-it-works { padding: 128px 0; background: var(--gray-50); border-bottom: 1px solid var(--gray-100); }
-    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
-    .step-card {
-      background: white; padding: 40px; border-radius: 16px;
-      border: 1px solid var(--gray-200);
-    }
-    .step-num {
-      font-size: 10px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.12em; color: var(--green); margin-bottom: 24px;
-    }
-    .step-card h3 {
-      font-size: 1.2rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: -0.01em; color: var(--gray-900); margin-bottom: 16px;
-    }
-    .step-card p { font-size: 14px; color: var(--gray-500); line-height: 1.7; }
-
-    /* CAPABILITIES */
-    .capabilities-section { padding: 128px 0; }
-    .cap-box {
-      max-width: 900px; margin: 0 auto;
-      background: var(--gray-900); border-radius: 24px;
-      padding: 80px; color: white; position: relative; overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .cap-box .cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
-    .cap-item { display: flex; align-items: center; gap: 16px; }
-    .cap-check {
-      width: 20px; height: 20px; background: rgba(37,211,102,0.2);
-      border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .cap-check svg { width: 12px; height: 12px; color: var(--green); }
-    .cap-item span { color: var(--gray-300); font-weight: 500; font-size: 14px; }
-    .cap-footer {
-      margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    .cap-footer p {
-      font-family: monospace; font-size: 1.1rem; color: var(--green);
-      text-transform: uppercase; letter-spacing: 0.12em;
-    }
-    .cap-glow {
-      position: absolute; bottom: -100px; right: -100px;
-      width: 400px; height: 400px; border-radius: 50%;
-      background: rgba(37,211,102,0.1); filter: blur(120px);
-    }
+    .cap-card p { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
 
     /* PRICING */
-    .pricing { padding: 128px 0; border-bottom: 1px solid var(--gray-100); }
-    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 800px; margin: 0 auto; }
+    .pricing { padding: 64px 0; background: var(--gray-50); border-bottom: 1px solid var(--gray-100); }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 720px; margin: 0 auto; }
     .pricing-card {
-      padding: 48px; border-radius: 24px; display: flex; flex-direction: column;
+      padding: 32px; border-radius: 20px; display: flex; flex-direction: column;
       border: 1px solid var(--gray-200); background: white;
       transition: all 0.3s;
     }
@@ -342,38 +200,38 @@
       position: relative; overflow: hidden;
     }
     .pricing-badge-ent {
-      position: absolute; top: 32px; right: 32px;
+      position: absolute; top: 24px; right: 24px;
       background: rgba(255,255,255,0.2); color: white;
       font-size: 8px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.12em; padding: 4px 12px; border-radius: 999px;
+      letter-spacing: 0.12em; padding: 3px 10px; border-radius: 999px;
       backdrop-filter: blur(8px);
     }
     .pricing-card h3 {
-      font-size: 1.5rem; font-weight: 900; text-transform: uppercase;
-      letter-spacing: -0.01em; margin-bottom: 8px;
+      font-size: 1.3rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: -0.01em; margin-bottom: 4px;
     }
     .pricing-card .pricing-desc {
-      font-size: 14px; margin-bottom: 32px; line-height: 1.6;
+      font-size: 13px; margin-bottom: 20px; line-height: 1.5;
     }
     .pricing-card:not(.featured) .pricing-desc { color: var(--gray-400); }
     .featured .pricing-desc { color: rgba(255,255,255,0.8); }
-    .price-amount { font-size: 3rem; font-weight: 900; letter-spacing: -0.03em; }
-    .price-period { font-size: 14px; font-weight: 700; margin-left: 8px; }
+    .price-amount { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.03em; }
+    .price-period { font-size: 13px; font-weight: 700; margin-left: 4px; }
     .pricing-card:not(.featured) .price-period { color: var(--gray-400); }
     .featured .price-period { color: rgba(255,255,255,0.6); }
-    .price-soles { margin-top: 4px; margin-bottom: 40px; }
-    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; flex: 1; }
+    .price-soles { margin-top: 2px; margin-bottom: 20px; }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; flex: 1; }
     .pricing-features li {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 14px; font-weight: 500;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 500;
     }
-    .pricing-features li svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .pricing-features li svg { width: 14px; height: 14px; flex-shrink: 0; }
     .pricing-card:not(.featured) .pricing-features li { color: var(--gray-600); }
     .pricing-card:not(.featured) .pricing-features li svg { color: var(--green); }
     .featured .pricing-features li { color: rgba(255,255,255,0.9); }
     .featured .pricing-features li svg { color: white; }
     .pricing-btn {
-      display: block; width: 100%; text-align: center; padding: 16px;
+      display: block; width: 100%; text-align: center; padding: 14px;
       border-radius: 8px; font-weight: 700; font-size: 12px;
       text-transform: uppercase; letter-spacing: 0.1em;
       text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
@@ -382,176 +240,121 @@
     .pricing-btn.dark:hover { background: black; }
     .pricing-btn.white { background: white; color: var(--green); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
     .pricing-btn.white:hover { background: var(--gray-50); }
-    .pricing-includes {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 32px;
-      margin-top: 80px;
-    }
-    .pricing-includes .inc { display: flex; align-items: center; gap: 12px; }
-    .pricing-includes svg { width: 14px; height: 14px; color: var(--green); }
 
     /* FORM */
-    .form-section { padding: 128px 0; background: var(--gray-50); border-top: 1px solid var(--gray-100); border-bottom: 1px solid var(--gray-100); }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; max-width: 900px; margin: 0 auto; }
-    .form-left h2 {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 900; color: var(--gray-900); text-transform: uppercase;
-      letter-spacing: -0.02em; margin-bottom: 32px;
-    }
-    .form-left p { color: var(--gray-500); line-height: 1.7; margin-bottom: 48px; }
-    .form-info { display: flex; align-items: center; gap: 16px; }
-    .form-info .fi-icon {
-      width: 40px; height: 40px; background: white; border: 1px solid var(--gray-200);
-      border-radius: 8px; display: flex; align-items: center; justify-content: center;
-      color: var(--green);
-    }
-    .form-info .fi-icon svg { width: 18px; height: 18px; }
+    .form-section { padding: 64px 0; border-bottom: 1px solid var(--gray-100); }
+    .form-inner { max-width: 520px; margin: 0 auto; }
     .form-wrapper {
-      background: white; padding: 40px; border-radius: 24px;
+      background: white; padding: 32px; border-radius: 20px;
       border: 1px solid var(--gray-200);
       box-shadow: 0 12px 48px rgba(0,0,0,0.06);
     }
-    .progress-bar { display: flex; gap: 8px; margin-bottom: 32px; }
+    .progress-bar { display: flex; gap: 6px; margin-bottom: 24px; }
     .progress-bar .bar {
-      flex: 1; height: 4px; border-radius: 999px;
+      flex: 1; height: 3px; border-radius: 999px;
       background: var(--gray-200); transition: background 0.4s;
     }
     .progress-bar .bar.active { background: var(--green); }
     .form-step { display: none; animation: fadeIn 0.4s ease; }
     .form-step.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    .form-step h3 { font-size: 1.2rem; font-weight: 800; color: var(--gray-900); margin-bottom: 8px; }
-    .form-step .hint { font-size: 14px; color: var(--gray-500); margin-bottom: 24px; }
-    label.field { display: block; margin-bottom: 16px; }
-    label.field span { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-400); margin-bottom: 6px; margin-left: 4px; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .form-step h3 { font-size: 1.1rem; font-weight: 800; color: var(--gray-900); margin-bottom: 6px; }
+    .form-step .hint { font-size: 13px; color: var(--gray-500); margin-bottom: 20px; }
+    label.field { display: block; margin-bottom: 14px; }
+    label.field span { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-400); margin-bottom: 5px; margin-left: 4px; }
     input[type="text"], input[type="email"], input[type="tel"] {
-      width: 100%; padding: 16px; border: 1.5px solid var(--gray-100);
-      border-radius: 12px; font-size: 14px; font-family: inherit;
+      width: 100%; padding: 14px; border: 1.5px solid var(--gray-100);
+      border-radius: 10px; font-size: 14px; font-family: inherit;
       background: var(--gray-50); color: var(--gray-900);
       transition: all 0.2s;
     }
     input:focus { outline: none; border-color: var(--green); background: white; box-shadow: 0 0 0 3px rgba(37,211,102,0.12); }
-    .checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .checkbox-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 12px 14px; border: 1.5px solid var(--gray-200);
-      border-radius: 12px; cursor: pointer; transition: all 0.2s;
-      font-size: 14px; font-weight: 500; color: var(--gray-700);
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 12px; border: 1.5px solid var(--gray-200);
+      border-radius: 10px; cursor: pointer; transition: all 0.2s;
+      font-size: 13px; font-weight: 500; color: var(--gray-700);
     }
     .checkbox-item:hover { border-color: var(--green); }
     .checkbox-item.checked { border-color: var(--green); background: var(--green-light); color: #15803d; }
     .checkbox-item input { display: none; }
-    .form-nav { display: flex; gap: 12px; margin-top: 24px; }
+    .form-nav { display: flex; gap: 10px; margin-top: 20px; }
     .btn-back {
-      flex: 1; padding: 16px; border-radius: 12px;
+      flex: 1; padding: 14px; border-radius: 10px;
       border: 1.5px solid var(--gray-200); background: white;
-      font-family: inherit; font-weight: 600; font-size: 14px;
+      font-family: inherit; font-weight: 600; font-size: 13px;
       color: var(--gray-600); cursor: pointer; transition: all 0.2s;
     }
     .btn-back:hover { border-color: var(--gray-400); }
     .btn-next, .btn-submit {
-      flex: 2; padding: 16px; border-radius: 12px;
+      flex: 2; padding: 14px; border-radius: 10px;
       border: none; background: var(--green);
-      font-family: inherit; font-weight: 700; font-size: 14px;
+      font-family: inherit; font-weight: 700; font-size: 13px;
       color: white; cursor: pointer; transition: all 0.2s;
     }
     .btn-next:hover, .btn-submit:hover { box-shadow: 0 4px 16px rgba(37,211,102,0.35); transform: translateY(-1px); }
     .btn-next:disabled, .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
-    .success-msg { display: none; text-align: center; padding: 20px; }
+    .success-msg { display: none; text-align: center; padding: 16px; }
     .success-msg.show { display: block; animation: fadeIn 0.5s ease; }
-    .success-msg h3 { font-size: 1.3rem; font-weight: 800; color: var(--gray-900); margin-bottom: 8px; }
-    .success-msg p { color: var(--gray-500); font-size: 14px; }
+    .success-msg h3 { font-size: 1.2rem; font-weight: 800; color: var(--gray-900); margin-bottom: 6px; }
+    .success-msg p { color: var(--gray-500); font-size: 13px; }
 
     /* FAQ */
-    .faq { padding: 128px 0; }
-    .faq-list { max-width: 700px; margin: 0 auto; background: white; border: 1px solid var(--gray-200); border-radius: 24px; padding: 32px; }
-    .faq-item { border-bottom: 1px solid var(--gray-100); padding: 24px 0; }
+    .faq { padding: 64px 0; }
+    .faq-list { max-width: 700px; margin: 0 auto; background: white; border: 1px solid var(--gray-200); border-radius: 16px; padding: 16px 24px; }
+    .faq-item { border-bottom: 1px solid var(--gray-100); padding: 14px 0; }
     .faq-item:last-child { border-bottom: none; }
     .faq-question {
       display: flex; align-items: center; justify-content: space-between;
       width: 100%; padding: 0; cursor: pointer; background: none; border: none;
       font-family: inherit; text-align: left;
-      font-size: 14px; font-weight: 700; text-transform: uppercase;
+      font-size: 13px; font-weight: 700; text-transform: uppercase;
       letter-spacing: -0.01em; color: var(--gray-900); transition: color 0.2s;
     }
     .faq-question:hover { color: var(--green); }
     .faq-toggle {
-      width: 24px; height: 24px; border-radius: 50%;
+      width: 22px; height: 22px; border-radius: 50%;
       background: var(--gray-50); display: flex; align-items: center; justify-content: center;
       transition: all 0.3s; flex-shrink: 0;
     }
-    .faq-toggle svg { width: 14px; height: 14px; color: var(--gray-400); transition: transform 0.3s; }
+    .faq-toggle svg { width: 12px; height: 12px; color: var(--gray-400); transition: transform 0.3s; }
     .faq-item.open .faq-toggle { background: var(--green); }
     .faq-item.open .faq-toggle svg { color: white; transform: rotate(180deg); }
-    .faq-answer {
-      max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
-    }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
     .faq-item.open .faq-answer { max-height: 200px; }
-    .faq-answer p { font-size: 14px; color: var(--gray-500); line-height: 1.7; padding-top: 24px; max-width: 550px; }
-
-    /* CTA FINAL */
-    .cta-final { padding: 128px 0; }
-    .cta-box {
-      max-width: 900px; margin: 0 auto;
-      background: var(--gray-900); border-radius: 24px;
-      padding: 96px; text-align: center; color: white;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.15);
-      position: relative; overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .cta-box h2 {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 900; letter-spacing: -0.04em;
-      text-transform: uppercase; line-height: 1; margin-bottom: 40px;
-    }
-    .cta-box h2 em { font-style: normal; color: var(--green); }
-    .cta-box p { font-size: 1.2rem; color: var(--gray-400); max-width: 500px; margin: 0 auto 48px; font-weight: 500; }
-    .cta-box .cta-btn {
-      display: inline-block; background: var(--green); color: white;
-      padding: 24px 48px; border-radius: 8px; font-weight: 700;
-      font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em;
-      text-decoration: none; transition: all 0.3s;
-      box-shadow: 0 8px 32px rgba(37,211,102,0.3);
-    }
-    .cta-box .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(37,211,102,0.4); }
+    .faq-answer p { font-size: 13px; color: var(--gray-500); line-height: 1.6; padding-top: 12px; max-width: 550px; }
 
     /* FOOTER */
     footer {
-      padding: 80px 0; border-top: 1px solid var(--gray-100); background: var(--gray-50);
+      padding: 40px 0; border-top: 1px solid var(--gray-100); background: var(--gray-50);
     }
     footer .inner {
       max-width: 1200px; margin: 0 auto; padding: 0 24px;
       display: flex; justify-content: space-between; align-items: center;
     }
-    footer .brand { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+    footer .brand { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
     footer .brand-logo { display: flex; align-items: center; gap: 8px; }
-    footer .brand-logo .li { width: 24px; height: 24px; background: var(--green); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
-    footer .brand-logo .li svg { width: 12px; height: 12px; color: white; }
-    footer .brand-logo span { font-weight: 900; font-size: 1.1rem; text-transform: uppercase; letter-spacing: -0.03em; }
-    footer .foot-links { display: flex; gap: 40px; }
+    footer .brand-logo .li { width: 22px; height: 22px; background: var(--green); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+    footer .brand-logo .li svg { width: 11px; height: 11px; color: white; }
+    footer .brand-logo span { font-weight: 900; font-size: 1rem; text-transform: uppercase; letter-spacing: -0.03em; }
+    footer .foot-links { display: flex; gap: 32px; }
     footer .foot-links a { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-400); text-decoration: none; transition: color 0.2s; }
     footer .foot-links a:hover { color: var(--green); }
 
     /* MOBILE */
     @media (max-width: 768px) {
-      .problem .grid,
-      .benefits-top,
-      .form-grid { grid-template-columns: 1fr; gap: 48px; }
-      .solution-grid,
-      .benefits-grid { grid-template-columns: 1fr 1fr; }
-      .use-cases-grid { grid-template-columns: 1fr; }
-      .use-cases-header { flex-direction: column; align-items: flex-start; }
-      .steps-grid { grid-template-columns: 1fr; gap: 24px; }
-      .cap-box { padding: 48px 24px; }
-      .cap-box .cap-grid { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .cap-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 360px; }
       .checkbox-grid { grid-template-columns: 1fr; }
+      .stats-bar .inner { gap: 20px; }
+      .stat-item { font-size: 10px; }
       nav .links a:not(.nav-cta) { display: none; }
-      footer .inner { flex-direction: column; gap: 32px; text-align: center; }
+      footer .inner { flex-direction: column; gap: 24px; text-align: center; }
       footer .brand { align-items: center; }
     }
     @media (max-width: 480px) {
-      .solution-grid,
-      .benefits-grid { grid-template-columns: 1fr; }
+      .cap-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -560,10 +363,8 @@
 <!-- NAV -->
 <nav id="main-nav">
   <div class="inner">
-    <a href="/" class="logo"><span class="diamond">◆</span> AGENTES</a>
+    <a href="/" class="logo"><span class="diamond">&#9670;</span> AGENTES</a>
     <div class="links">
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#casos-de-uso">Casos de uso</a>
       <a href="#precios">Precios</a>
       <a href="#empezar" class="nav-cta">Empezar</a>
     </div>
@@ -578,292 +379,87 @@
       Disponible ahora
     </div>
     <h1>IA QUE TRABAJA<br><em>POR TU NEGOCIO</em></h1>
-    <p>Automatiza tareas, atiende clientes y ejecuta procesos directamente desde WhatsApp. Sin fricción, sin demoras, sin errores.</p>
+    <p>Automatiza tareas, atiende clientes y ejecuta procesos desde WhatsApp. Sin fricción, sin demoras.</p>
     <a href="#empezar" class="hero-cta">
       Quiero mi agente
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
     </a>
-    <div class="hero-trust">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-      Setup rápido • Resultados inmediatos
-    </div>
   </div>
 </section>
 
-<!-- PROBLEM -->
-<section class="problem">
+<!-- STATS BAR -->
+<div class="stats-bar">
   <div class="container">
-    <div class="grid reveal">
-      <div>
-        <div class="tag red">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <span>Ineficiencia Operativa</span>
-        </div>
-        <h2>Tu negocio pierde capital en tareas que no escalan</h2>
-        <p>El trabajo manual y la falta de respuesta inmediata son los principales frenos para el crecimiento de cualquier empresa moderna.</p>
-        <div class="problem-list">
-          <div class="problem-item">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span>Clientes sin respuesta en tiempo real</span>
-          </div>
-          <div class="problem-item">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span>Procesos manuales que consumen horas</span>
-          </div>
-          <div class="problem-item">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span>Sistemas desactualizados o mal mantenidos</span>
-          </div>
-          <div class="problem-item">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-            <span>Saturación por carga operativa básica</span>
-          </div>
-        </div>
+    <div class="inner">
+      <div class="stat-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Disponible 24/7
       </div>
-      <div>
-        <div class="metric-card">
-          <div class="metric-inner">
-            <div class="metric-header">
-              <span class="mono-label">Métrica de pérdida</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
-            </div>
-            <div class="metric-bars">
-              <div class="bar-track"><div class="bar-fill red-5" data-width="85%" style="width:0"></div></div>
-              <div class="bar-track"><div class="bar-fill red-4" data-width="60%" style="width:0"></div></div>
-              <div class="bar-track"><div class="bar-fill red-3" data-width="45%" style="width:0"></div></div>
-            </div>
-            <div class="metric-bottom">
-              <div class="metric-value">-$2,400<span>/mes promedio</span></div>
-            </div>
-          </div>
-        </div>
+      <div class="stat-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        Soporte incluido
+      </div>
+      <div class="stat-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Desde $300/mes
+      </div>
+      <div class="stat-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Setup en 48h
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- SOLUTION -->
-<section class="solution">
+<!-- QUE HACE TU AGENTE -->
+<section class="capabilities">
   <div class="container">
     <div class="section-header reveal">
-      <div class="tag green" style="justify-content:center">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
-        <span>La Solución</span>
-      </div>
-      <h2>Un empleado digital que ejecuta por ti</h2>
-      <p>Tu agente de IA no solo responde — trabaja activamente en tu negocio. Integración total con <strong style="color:var(--green)">WhatsApp</strong> para una operación sin fricciones.</p>
+      <h2>Que hace tu agente</h2>
     </div>
-    <div class="solution-grid reveal">
-      <div class="solution-card">
-        <div class="card-icon">
+    <div class="cap-grid reveal">
+      <div class="cap-card">
+        <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <h3>Atención al cliente automatizada</h3>
-        <p>Soporte nivel 1 sin intervención humana.</p>
-      </div>
-      <div class="solution-card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
-        </div>
-        <h3>Ejecución de flujos lógicos</h3>
-        <p>Toma decisiones basadas en tus reglas de negocio.</p>
-      </div>
-      <div class="solution-card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-        </div>
-        <h3>Sistemas y presencia digital</h3>
-        <p>Mantenimiento activo de tu infraestructura.</p>
-      </div>
-      <div class="solution-card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-        </div>
-        <h3>Integración de ecosistemas</h3>
-        <p>Conecta tus herramientas favoritas en un solo flujo.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BENEFITS -->
-<section class="benefits">
-  <div class="container">
-    <div class="benefits-top reveal">
-      <div>
-        <div class="mono-label" style="color:var(--green);margin-bottom:24px">Resultados de alto impacto</div>
-        <h2>Más eficiencia. Menos costo.<br>Más crecimiento.</h2>
-      </div>
-      <div class="right">
-        Desbloquea el potencial de tu equipo eliminando las tareas repetitivas que consumen el 70% de su tiempo productivo.
-      </div>
-    </div>
-    <div class="benefits-grid reveal">
-      <div class="benefit-item">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <h3>Disponibilidad 24/7</h3>
-        <p>Respuesta instantánea en cualquier zona horaria, sin pausas.</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
-        </div>
-        <h3>Optimización de costos</h3>
-        <p>Escala tu operación sin aumentar proporcionalmente tu nómina.</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        </div>
-        <h3>Conversión acelerada</h3>
-        <p>Seguimiento preciso que convierte leads en clientes reales.</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
-        </div>
-        <h3>Operación centralizada</h3>
-        <p>Toda la inteligencia de tu negocio en un canal familiar.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- USE CASES -->
-<section class="use-cases" id="casos-de-uso">
-  <div class="container">
-    <div class="use-cases-header reveal">
-      <div class="left">
-        <div class="tag green">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
-          <span>Casos de Uso</span>
-        </div>
-        <h2 style="font-size:clamp(1.8rem,3.5vw,3rem);font-weight:900;color:var(--gray-900);letter-spacing:-0.02em">Capacidades de ejecución real</h2>
-      </div>
-    </div>
-    <div class="use-cases-grid reveal">
-      <div class="use-case-card">
-        <div class="use-case-top">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <span class="mono-label">Soporte</span>
         </div>
         <h3>Atención al cliente</h3>
-        <p>Gestión de tickets, resolución de dudas y cierre de ventas asistido.</p>
+        <p>Soporte automatizado por WhatsApp, tickets y cierre de ventas asistido.</p>
       </div>
-      <div class="use-case-card">
-        <div class="use-case-top">
+      <div class="cap-card">
+        <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-          <span class="mono-label">Operaciones</span>
         </div>
-        <h3>Automatización de procesos</h3>
+        <h3>Automatización</h3>
         <p>Sincronización de datos, reportes automáticos y facturación recurrente.</p>
       </div>
-      <div class="use-case-card">
-        <div class="use-case-top">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          <span class="mono-label">Tech</span>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
         </div>
-        <h3>Infraestructura digital</h3>
-        <p>Despliegue de landing pages y mantenimiento de sistemas internos.</p>
+        <h3>Desarrollo web</h3>
+        <p>Landing pages, sistemas internos y mantenimiento de infraestructura.</p>
       </div>
-      <div class="use-case-card">
-        <div class="use-case-top">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
-          <span class="mono-label">Marketing</span>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>
         </div>
-        <h3>Generación de contenido</h3>
-        <p>Creación de copys, diseño de assets y gestión de publicaciones.</p>
+        <h3>Contabilidad</h3>
+        <p>Control de gastos, conciliación y reportes financieros automatizados.</p>
       </div>
-      <div class="use-case-card">
-        <div class="use-case-top">
+      <div class="cap-card">
+        <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          <span class="mono-label">Sales</span>
         </div>
-        <h3>Ventas y CRM</h3>
-        <p>Calificación de leads y actualización automática de embudos.</p>
+        <h3>Ventas</h3>
+        <p>Calificación de leads, seguimiento y actualización de embudos CRM.</p>
       </div>
-      <div class="use-case-card">
-        <div class="use-case-top">
+      <div class="cap-card">
+        <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          <span class="mono-label">DevOps</span>
         </div>
-        <h3>Monitoreo de sistemas</h3>
+        <h3>Monitoreo</h3>
         <p>Detección proactiva de fallos y autorecuperación de servicios.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="how-it-works" id="como-funciona">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="tag green" style="justify-content:center">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
-        <span>Implementación</span>
-      </div>
-      <h2>Despliegue ágil en tres etapas</h2>
-    </div>
-    <div class="steps-grid reveal">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <h3>Análisis de procesos</h3>
-        <p>Identificamos los cuellos de botella y las tareas candidatas a automatización.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <h3>Configuración técnica</h3>
-        <p>Adaptamos el agente a tu stack tecnológico y reglas de negocio específicas.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <h3>Ejecución operativa</h3>
-        <p>El agente comienza a operar vía WhatsApp, integrándose en tu flujo diario.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CAPABILITIES -->
-<section class="capabilities-section">
-  <div class="container">
-    <div class="cap-box reveal">
-      <div style="position:relative;z-index:1">
-        <div class="mono-label" style="color:var(--green);margin-bottom:32px">Especificaciones técnicas</div>
-        <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;letter-spacing:-0.02em;text-transform:uppercase">Más que un asistente: Un ejecutor</h2>
-        <div class="cap-grid">
-          <div class="cap-item">
-            <div class="cap-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-            <span>Desarrollo de microservicios y sistemas</span>
-          </div>
-          <div class="cap-item">
-            <div class="cap-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-            <span>Integración profunda vía API REST/Webhooks</span>
-          </div>
-          <div class="cap-item">
-            <div class="cap-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-            <span>Automatización de flujos de trabajo internos</span>
-          </div>
-          <div class="cap-item">
-            <div class="cap-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-            <span>Generación multimodal de activos digitales</span>
-          </div>
-          <div class="cap-item">
-            <div class="cap-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-            <span>Análisis predictivo y toma de acciones</span>
-          </div>
-          <div class="cap-item">
-            <div class="cap-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-            <span>Control de infraestructura y servicios</span>
-          </div>
-        </div>
-        <div class="cap-footer">
-          <p>Ejecución de nivel empresarial</p>
-        </div>
-      </div>
-      <div class="cap-glow"></div>
     </div>
   </div>
 </section>
@@ -872,49 +468,38 @@
 <section class="pricing" id="precios">
   <div class="container">
     <div class="section-header reveal">
-      <div class="tag green" style="justify-content:center">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        <span>Inversión</span>
-      </div>
-      <h2>Planes de escalabilidad</h2>
+      <h2>Planes</h2>
     </div>
     <div class="pricing-grid reveal">
       <div class="pricing-card">
-        <div class="mono-label" style="margin-bottom:16px">Entry Level</div>
+        <div class="mono-label" style="margin-bottom:12px">Entry Level</div>
         <h3 style="color:var(--gray-900)">Agente Compartido</h3>
-        <div class="pricing-desc">Validación y automatización inicial</div>
+        <div class="pricing-desc">Automatización inicial para validar resultados</div>
         <div class="price-amount" style="color:var(--gray-900)">$300<span class="price-period">/MES</span></div>
         <div class="price-soles mono-label">~S/1,140</div>
         <ul class="pricing-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Acceso a motor de IA</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Motor de IA compartido</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Flujos de trabajo estándar</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integraciones vía Zapier/Make</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integraciones via Zapier/Make</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Soporte técnico prioritario</li>
         </ul>
-        <a href="#empezar" class="pricing-btn dark">Seleccionar Plan</a>
+        <a href="#empezar" class="pricing-btn dark">Seleccionar</a>
       </div>
       <div class="pricing-card featured">
-        <div class="pricing-badge-ent">Enterprise</div>
-        <div class="mono-label" style="color:rgba(255,255,255,0.6);margin-bottom:16px">High Performance</div>
+        <div class="pricing-badge-ent">Recomendado</div>
+        <div class="mono-label" style="color:rgba(255,255,255,0.6);margin-bottom:12px">High Performance</div>
         <h3>Agente Dedicado</h3>
-        <div class="pricing-desc">Infraestructura exclusiva para escalado</div>
+        <div class="pricing-desc">Infraestructura exclusiva para escalar</div>
         <div class="price-amount">$500<span class="price-period">/MES</span></div>
         <div class="price-soles mono-label" style="color:rgba(255,255,255,0.4)">~S/1,900</div>
         <ul class="pricing-features">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Instancia de IA dedicada</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Automatizaciones de alta complejidad</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Desarrollo de integraciones custom</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Automatizaciones complejas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integraciones custom</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SLA de respuesta garantizado</li>
         </ul>
-        <a href="#empezar" class="pricing-btn white">Seleccionar Plan</a>
+        <a href="#empezar" class="pricing-btn white">Seleccionar</a>
       </div>
-    </div>
-    <div class="pricing-includes reveal">
-      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><span class="mono-label">Dominio .com</span></div>
-      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><span class="mono-label">Hosting VPS</span></div>
-      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><span class="mono-label">Monitoreo 24/7</span></div>
-      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><span class="mono-label">WhatsApp API</span></div>
-      <div class="inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><span class="mono-label">Discord Access</span></div>
     </div>
   </div>
 </section>
@@ -922,24 +507,10 @@
 <!-- FORM -->
 <section class="form-section" id="empezar">
   <div class="container">
-    <div class="form-grid reveal">
-      <div class="form-left">
-        <div class="tag green">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <span>Contacto</span>
-        </div>
-        <h2>Inicia la transformación</h2>
-        <p>Completa el formulario para recibir una propuesta técnica adaptada a las necesidades específicas de tu operación.</p>
-        <div class="form-info">
-          <div class="fi-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <div class="mono-label">Tiempo de respuesta</div>
-            <div style="font-size:14px;font-weight:700;color:var(--gray-900);margin-top:4px">Menos de 24 horas</div>
-          </div>
-        </div>
-      </div>
+    <div class="section-header reveal">
+      <h2>Solicita tu agente</h2>
+    </div>
+    <div class="form-inner reveal">
       <div class="form-wrapper">
         <div class="progress-bar">
           <div class="bar active" data-step="1"></div>
@@ -948,8 +519,8 @@
         </div>
         <form id="onboarding-form">
           <div class="form-step active" data-step="1">
-            <h3>¿Cómo se llama tu negocio?</h3>
-            <p class="hint">Tu marca, empresa o proyecto. Lo que sea.</p>
+            <h3>Tu negocio</h3>
+            <p class="hint">Tu marca, empresa o proyecto.</p>
             <label class="field">
               <span>Nombre del negocio</span>
               <input type="text" id="business-name" placeholder="Ej: Clínica San Martín" required />
@@ -959,7 +530,7 @@
             </div>
           </div>
           <div class="form-step" data-step="2">
-            <h3>¿En qué áreas necesitas ayuda?</h3>
+            <h3>Areas de ayuda</h3>
             <p class="hint">Elige todas las que necesites.</p>
             <div class="checkbox-grid">
               <label class="checkbox-item"><input type="checkbox" name="areas" value="ventas" /> Ventas</label>
@@ -972,12 +543,12 @@
               <label class="checkbox-item"><input type="checkbox" name="areas" value="otro" /> Otro</label>
             </div>
             <div class="form-nav">
-              <button type="button" class="btn-back" id="btn-back2">Atrás</button>
+              <button type="button" class="btn-back" id="btn-back2">Atras</button>
               <button type="button" class="btn-next" id="btn-step2">Continuar</button>
             </div>
           </div>
           <div class="form-step" data-step="3">
-            <h3>¿Cómo te contactamos?</h3>
+            <h3>Contacto</h3>
             <p class="hint">Te escribiremos para poner tu agente a trabajar.</p>
             <label class="field">
               <span>Correo electrónico</span>
@@ -988,14 +559,14 @@
               <input type="tel" id="whatsapp" placeholder="+51 999 999 999" required />
             </label>
             <div class="form-nav">
-              <button type="button" class="btn-back" id="btn-back3">Atrás</button>
-              <button type="submit" class="btn-submit">Enviar Solicitud</button>
+              <button type="button" class="btn-back" id="btn-back3">Atras</button>
+              <button type="submit" class="btn-submit">Enviar solicitud</button>
             </div>
           </div>
         </form>
         <div class="success-msg" id="success">
-          <h3>¡Listo!</h3>
-          <p>Recibimos tu solicitud. Te contactaremos pronto para poner tu agente a trabajar.</p>
+          <h3>Listo</h3>
+          <p>Recibimos tu solicitud. Te contactaremos pronto.</p>
         </div>
       </div>
     </div>
@@ -1006,40 +577,33 @@
 <section class="faq">
   <div class="container">
     <div class="section-header reveal">
-      <div class="tag green" style="justify-content:center">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        <span>FAQ</span>
-      </div>
-      <h2 style="text-transform:uppercase">Consultas técnicas</h2>
+      <h2>Preguntas frecuentes</h2>
     </div>
     <div class="faq-list reveal">
       <div class="faq-item">
         <button class="faq-question">¿Requiere infraestructura propia? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-answer"><p>No. Nosotros gestionamos el despliegue en servidores VPS dedicados de alta disponibilidad, asegurando que tu agente esté operativo el 99.9% del tiempo.</p></div>
+        <div class="faq-answer"><p>No. Nosotros gestionamos servidores VPS dedicados con 99.9% de uptime. No necesitas nada propio.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question">¿Es compatible con mi stack actual? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-answer"><p>Sí. El agente se integra mediante webhooks y APIs estándar con la mayoría de CRMs, ERPs y herramientas de gestión del mercado.</p></div>
+        <div class="faq-answer"><p>Si. Se integra via webhooks y APIs estándar con la mayoría de CRMs, ERPs y herramientas de gestión.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">¿Cuál es el tiempo de despliegue? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-answer"><p>El tiempo promedio de configuración y entrenamiento es de 5 a 7 días hábiles, dependiendo de la complejidad de los flujos de trabajo.</p></div>
+        <button class="faq-question">¿Cuánto tarda el despliegue? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="faq-answer"><p>Entre 48 horas y 7 días hábiles, dependiendo de la complejidad de tus flujos de trabajo.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question">¿Cómo se garantiza la seguridad? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-        <div class="faq-answer"><p>Implementamos protocolos de cifrado de extremo a extremo y cumplimos con estándares de privacidad para asegurar que la información de tu negocio esté protegida.</p></div>
+        <div class="faq-answer"><p>Cifrado de extremo a extremo y cumplimiento de estándares de privacidad para proteger tu información.</p></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="cta-final">
-  <div class="container">
-    <div class="cta-box reveal">
-      <h2>Escala tu operación<br><em>sin límites</em></h2>
-      <p>Deja de gestionar tareas. Empieza a liderar el crecimiento de tu negocio.</p>
-      <a href="#empezar" class="cta-btn">Activar mi agente ahora</a>
+      <div class="faq-item">
+        <button class="faq-question">¿Puedo cambiar de plan después? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="faq-answer"><p>Si. Puedes escalar de compartido a dedicado en cualquier momento sin perder configuración.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">¿Qué incluye el soporte? <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="faq-answer"><p>Soporte técnico por WhatsApp y Discord. En el plan dedicado incluye SLA de respuesta garantizado.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1054,18 +618,17 @@
         </div>
         <span>Agentes</span>
       </div>
-      <div class="mono-label">by <a href="https://luminari.agency/" target="_blank" rel="noopener" style="color:var(--green);text-decoration:none">Luminari Agency</a> © 2026</div>
+      <div class="mono-label">by <a href="https://luminari.agency/" target="_blank" rel="noopener" style="color:var(--green);text-decoration:none">Luminari Agency</a></div>
     </div>
     <div class="foot-links">
       <a href="#">Privacidad</a>
       <a href="#">Términos</a>
-      <a href="/blog">Blog</a>
     </div>
   </div>
 </footer>
 
 <script>
-  // Nav scroll effect
+  // Nav scroll
   window.addEventListener('scroll', function() {
     document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 20);
   });
@@ -1091,7 +654,7 @@
     });
   });
 
-  // Form submit → POST to waitlist API
+  // Form submit
   document.getElementById('onboarding-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     var btn = e.target.querySelector('.btn-submit');
@@ -1114,20 +677,6 @@
     document.querySelector('.progress-bar').style.display = 'none';
     document.getElementById('success').classList.add('show');
   });
-
-  // Animated metric bars
-  var observer1 = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.bar-fill').forEach(function(bar) {
-          bar.style.width = bar.dataset.width;
-        });
-        observer1.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  var mc = document.querySelector('.metric-card');
-  if (mc) observer1.observe(mc);
 
   // FAQ accordion
   document.querySelectorAll('.faq-question').forEach(function(btn) {
