@@ -155,17 +155,44 @@
     .stat-item svg { width: 14px; height: 14px; color: var(--green); }
 
     /* PAIN POINTS */
-    .pain-points { padding: 32px 0; background: #f0faf4; border-bottom: 1px solid var(--gray-100); }
+    .pain-points {
+      padding: 80px 0;
+      background: linear-gradient(180deg, #f0faf4 0%, #f7fdf9 100%);
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .pain-points .section-header { margin-bottom: 48px; }
+    .pain-points .section-header p {
+      font-size: 15px; color: var(--gray-500); margin-top: 12px; font-weight: 500;
+    }
     .pain-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+      max-width: 800px; margin: 0 auto;
     }
-    .pain-item {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 13px; font-weight: 500; color: var(--gray-600); line-height: 1.4;
+    .pain-card {
+      padding: 28px; border-radius: 16px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(37,211,102,0.12);
+      transition: all 0.3s;
     }
-    .pain-item svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--gray-400); }
-    @media (max-width: 768px) { .pain-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 480px) { .pain-grid { grid-template-columns: 1fr; } }
+    .pain-card:hover {
+      box-shadow: 0 8px 32px rgba(37,211,102,0.1);
+      border-color: rgba(37,211,102,0.25);
+      transform: translateY(-2px);
+    }
+    .pain-card .pain-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(37,211,102,0.08);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .pain-card .pain-icon svg { width: 20px; height: 20px; color: var(--green); }
+    .pain-card h3 {
+      font-size: 14px; font-weight: 800; color: var(--gray-900);
+      margin-bottom: 6px; text-transform: uppercase; letter-spacing: -0.01em;
+    }
+    .pain-card p { font-size: 13px; color: var(--gray-500); line-height: 1.5; }
+    @media (max-width: 600px) { .pain-grid { grid-template-columns: 1fr; } }
 
     /* CAPABILITIES GRID */
     .capabilities { padding: 64px 0; border-bottom: 1px solid var(--gray-100); }
@@ -427,22 +454,38 @@
 <!-- PAIN POINTS -->
 <section class="pain-points">
   <div class="container">
-    <div class="pain-grid">
-      <div class="pain-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-        Pierdes clientes por no responder a tiempo
+    <div class="section-header reveal">
+      <h2>¿Te suena familiar?</h2>
+      <p>Los problemas de siempre que frenan tu crecimiento</p>
+    </div>
+    <div class="pain-grid reveal">
+      <div class="pain-card">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <h3>Clientes que se van</h3>
+        <p>Pierdes oportunidades por no responder a tiempo.</p>
       </div>
-      <div class="pain-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Gastas horas en tareas que no generan ingresos
+      <div class="pain-card">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Horas desperdiciadas</h3>
+        <p>Gastas tiempo en tareas que no generan ingresos.</p>
       </div>
-      <div class="pain-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-        Tu negocio se detiene cuando tú no estás
+      <div class="pain-card">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <h3>Sin ti, nada funciona</h3>
+        <p>Tu negocio se detiene cuando tú no estás.</p>
       </div>
-      <div class="pain-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        Contratar personal es caro y complicado
+      <div class="pain-card">
+        <div class="pain-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Contratar es caro</h3>
+        <p>Sumar personal es complicado y costoso.</p>
       </div>
     </div>
   </div>
